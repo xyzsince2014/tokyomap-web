@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": false,
+    "jsx": "react",
+    "rootDirs": ["src"],
+    "removeComments": true,
+    "isolatedModules": true,
+    "plugins": [{ "name": "css-module-types" }],
+    "typeRoots": ["src/types", "node_modules/@types"],
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "incremental": true,
+    "tsBuildInfoFile": "./buildcache/tsbuildinfo",
+    "importHelpers": true,
+    "downlevelIteration": true,
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "public"]
+}

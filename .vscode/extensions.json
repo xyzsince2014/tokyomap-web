@@ -1,0 +1,16 @@
+{
+  // Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
+  "recommendations": [
+    "coenraads.bracket-pair-colorizer",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "msjsdiag.debugger-for-chrome",
+    "ms-vsliveshare.vsliveshare",
+    "oderwat.indent-rainbow",
+    "VisualStudioExptTeam.vscodeintellicode",
+    "vscode-icons-team.vscode-icons",
+    "drKnoxy.eslint-disable-snippets",
+    "hedinne.stylelint-disable-snippets"
+  ],
+  "unwantedRecommendations": []
+}

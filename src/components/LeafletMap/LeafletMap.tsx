@@ -22,6 +22,11 @@ const LeafletMap: React.FC<LeafletMapProps> = ({latLng = [35.680722, 139.767271]
         Easily customizable.
       </Popup>
     </Marker>
+    <div className="leaflet-bottom">
+      <div className="watermark">
+        <span>3 May 11:41</span>
+      </div>
+    </div>
   </Map>
 );
 

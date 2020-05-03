@@ -28,3 +28,23 @@ body {
   height: 100vh;
   width: 100vw;
 }
+
+.watermark {
+  color: rgb(255, 255, 255);
+  opacity: .5;
+  padding-left: 7px;
+  padding-right: 7px;
+  background-color: rgba(0, 0, 0, .8);
+  bottom: -10px;
+  left: -10px;
+  border-bottom: 5px solid #cecece;
+}
+
+.leaflet-bottom {
+  left: 0;
+  bottom: 0;
+}
+
+.hoge {
+  border-bottom-color: #237201;
+}

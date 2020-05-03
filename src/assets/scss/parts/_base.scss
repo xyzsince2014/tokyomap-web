@@ -4,6 +4,11 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import '../libs/reset';
 
+/**
+* refactor as following
+* https://github.com/hiloki/flocss
+*/
+
 * {
   box-sizing: border-box;
 
@@ -19,7 +24,7 @@ body {
   font-family: sans-serif;
 }
 
-#root {
-  max-width: 930px;
-  margin: 2.5em auto 0;
+#map {
+  height: 100vh;
+  width: 100vw;
 }

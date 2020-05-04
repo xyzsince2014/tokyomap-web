@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+@import '../../foundation/index';
+
+.c-list {
+  list-style: none;
+
+  & > li {
+    position: relative;
+    padding-left: 1em;
+    text-align: left;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: '・';
+      font-weight: $font-weight-bold;
+    }
+  }
+
+  &--note {
+    color: $color-gray-dark;
+
+    @include font-size(s);
+
+    & > li {
+      &::before {
+        content: '※';
+        font-weight: $font-weight-normal;
+      }
+    }
+  }
+
+  &--indicate {
+    color: $color-gray-dark;
+
+    @include font-size(s);
+
+    & > li {
+      &::before {
+        content: '＊';
+        transform: scale(.8);
+        font-weight: $font-weight-normal;
+      }
+    }
+  }
+
+  &--centering {
+    & > li {
+      padding-left: 0;
+      text-align: center;
+
+      &::before {
+        position: relative;
+        display: inline;
+      }
+    }
+  }
+}

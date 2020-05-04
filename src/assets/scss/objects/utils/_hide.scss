@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+@import '../../foundation/index';
+
+.u-hide-pc {
+  @include view-at(p) {
+    display: none;
+  }
+}
+
+.u-hide-sp {
+  @include view-at(s) {
+    display: none;
+  }
+}

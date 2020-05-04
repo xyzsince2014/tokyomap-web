@@ -1,0 +1,15 @@
+@import '../variables';
+
+@mixin view-at($mode: 'p', $breakpoint: $min-width-pc-view) {
+  @if (mode == 'p') {
+    @media (max-width: $min-width-pc-view - 1) {
+      @content;
+    }
+  }
+
+  @else if (mode == 's') {
+    @media (min-width: $min-width-pc-view) {
+      @content;
+    }
+  }
+}

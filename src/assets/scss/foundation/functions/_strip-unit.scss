@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+/**
+* strip off a unit to return a value only
+* Notice: http://stackoverflow.com/a/12335841
+* @param {Number} $number: a number to strip off a unit from
+* @return {Number}: the number without the unit
+* @example strip-unit(20px); // -> 20, strip-unit(20); // -> 20
+*/
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}

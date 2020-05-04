@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+@import '../../foundation/index';
+
+.u-text-align-center {
+  text-align: center;
+}
+
+.u-text-align-left {
+  text-align: left;
+}
+
+.u-text-align-right {
+  text-align: right;
+}
+
+.u-text-align-center-pc {
+  @include view-at(p) {
+    text-align: center;
+  }
+}
+
+.u-text-align-left-pc {
+  @include view-at(p) {
+    text-align: left;
+  }
+}
+
+.u-text-align-right-pc {
+  @include view-at(p) {
+    text-align: right;
+  }
+}
+
+.u-text-align-center-sp {
+  @include view-at(s) {
+    text-align: center;
+  }
+}
+
+.u-text-align-left-sp {
+  @include view-at(s) {
+    text-align: left;
+  }
+}
+
+.u-text-align-right-sp {
+  @include view-at(s) {
+    text-align: right;
+  }
+}

@@ -1,0 +1,8 @@
+/*
+* overwrite browser default styles
+*/
+@mixin appearance($style: none) {
+  -webkit-appearance: $style;
+  -moz-appearance: $style;
+  appearance: $style;
+}

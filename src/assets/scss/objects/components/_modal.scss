@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@import '../../foundation/index';
+@import '../../foundation';
 
 .c-modal {
   position: relative;
@@ -34,7 +34,7 @@
       right: 0;
       width: 4px;
       height: 32px;
-      background-color: #fff;
+      background-color: $colour-white;
       transform: translateY(-55px) rotate(45deg);
     }
 
@@ -44,7 +44,7 @@
       right: 0;
       width: 4px;
       height: 32px;
-      background-color: #fff;
+      background-color: $colour-white;
       transform: translateY(-55px) rotate(-45deg);
     }
 
@@ -69,7 +69,7 @@
       display: block;
       font-size: 1.3em;
       font-weight: bold;
-      color: #fff;
+      color: $colour-white;
       text-align: center;
     }
   }

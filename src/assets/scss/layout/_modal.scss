@@ -28,7 +28,7 @@
     &__content {
       display: table-cell;
       vertical-align: middle;
-      background-color: rgba($colour-black, .7);
+      background-color: rgba($colour-cod-gray, .7);
 
       @include view-at(p) {
         padding: 30px 20px;

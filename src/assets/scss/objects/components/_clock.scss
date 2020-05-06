@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+@import '../../foundation';
+
+.c-clock {
+  color: rgb(255, 255, 255);
+  opacity: .5;
+  padding-left: 7px;
+  padding-right: 7px;
+  background-color: rgba(0, 0, 0, .8);
+  bottom: -10px;
+  left: -10px;
+  border-bottom: 5px solid $colour-japanese-laurel;
+}

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@import '../foundation/index';
+@import '../foundation';
 
 .l-modal {
   position: fixed;
@@ -30,13 +30,13 @@
       vertical-align: middle;
       background-color: rgba($colour-black, .7);
 
-      //   @include view-at(u) {
-      //     padding: 30px 20px;
-      //   }
+      @include view-at(p) {
+        padding: 30px 20px;
+      }
 
-      //   @include view-at(l) {
-      //     padding: 30px 10px;
-      //   }
+      @include view-at(s) {
+        padding: 30px 10px;
+      }
     }
   }
 }

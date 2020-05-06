@@ -8,7 +8,6 @@ module.exports = {
     ],
     ignoreFiles: [
       '**/node_modules/**',
-      'src/styles/semantic.min.css'
     ],
     rules: {
       'indentation': 2,
@@ -84,7 +83,7 @@ module.exports = {
       'at-rule-no-unknown': [
         true,
         {
-          ignoreAtRules: ['function', 'mixin', 'include', 'if', 'return', 'else', 'each', 'for'], // rules ignored
+          ignoreAtRules: ['function', 'mixin', 'include', 'if', 'else if', 'return', 'else', 'each', 'for', 'content'], // rules ignored
         },
       ],
       'at-rule-name-case': 'lower', // @ルールは小文字指定（大文字を禁止）

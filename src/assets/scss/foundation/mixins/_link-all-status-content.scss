@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@mixin like-all-status-content {
+@mixin link-all-status-content {
   @content;
 
   &:link {

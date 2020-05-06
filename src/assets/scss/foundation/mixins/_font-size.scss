@@ -2,7 +2,7 @@
 
 @import './view-at';
 
-@mixin view-at($size: 'm') {
+@mixin font-size($size: 'm') {
   @if ($size == 's') {
     @include view-at(p) {
       font-size: 12px;

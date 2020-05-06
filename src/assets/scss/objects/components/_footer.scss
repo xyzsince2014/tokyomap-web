@@ -23,7 +23,7 @@
       display: block;
       top: 0;
       height: 1px;
-      background-color: $color-gray;
+      background-color: $colour-gray;
 
       @include view-at(u) {
         left: $content-gutter-pc;
@@ -58,7 +58,7 @@
 
     &__copyright {
       font-size: 10px;
-      color: $color-gray-dark;
+      color: $colour-gray-dark;
 
       @include view-at(u) {
         flex: 1 1 auto;

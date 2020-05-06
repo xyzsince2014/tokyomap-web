@@ -1,14 +1,16 @@
+@charset "UTF-8";
+
 @import '../variables';
 
-@mixin view-at($mode: 'p', $breakpoint: $min-width-pc-view) {
-  @if (mode == 'p') {
-    @media (max-width: $min-width-pc-view - 1) {
+@mixin view-at($mode, $breakpoint: $min-width-pc-view) {
+  @if ($mode == 's') {
+    @media (max-width: $breakpoint - 1) {
       @content;
     }
   }
 
-  @else if (mode == 's') {
-    @media (min-width: $min-width-pc-view) {
+  @else if($mode == 'p') {
+    @media (min-width: $breakpoint) {
       @content;
     }
   }

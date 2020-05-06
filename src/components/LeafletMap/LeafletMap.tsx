@@ -10,7 +10,7 @@ export interface LeafletMapProps {
 }
 
 const LeafletMap: React.FC<LeafletMapProps> = ({latLng = [35.680722, 139.767271], zoom = 10}) => (
-  <Map id="map" center={latLng} zoom={zoom}>
+  <Map className="l-map" center={latLng} zoom={zoom}>
     <TileLayer
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

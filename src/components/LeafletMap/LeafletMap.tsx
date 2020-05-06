@@ -1,15 +1,15 @@
-/** @jsx jsx */
 import * as React from 'react';
-import {jsx} from '@emotion/core';
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet';
 import {LatLngTuple} from 'leaflet';
+
+import Clock from './Clock';
 
 export interface LeafletMapProps {
   latLng?: LatLngTuple;
   zoom?: number;
 }
 
-const LeafletMap: React.FC<LeafletMapProps> = ({latLng = [35.680722, 139.767271], zoom = 10}) => (
+const LeafletMap: React.FC<LeafletMapProps> = ({latLng = [35.680722, 139.767271], zoom = 11}) => (
   <Map className="l-leafletmap" center={latLng} zoom={zoom}>
     <TileLayer
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -21,9 +21,7 @@ const LeafletMap: React.FC<LeafletMapProps> = ({latLng = [35.680722, 139.767271]
       </Popup>
     </Marker>
     <div className="l-leafletmap__bottom">
-      <div className="c-clock">
-        <span>3 May 11:41</span>
-      </div>
+      <Clock />
     </div>
   </Map>
 );

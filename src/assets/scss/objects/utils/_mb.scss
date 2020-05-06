@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+@import '../../foundation';
+
+$gap: 5px;
+
+@for $i from 0 to 16 {
+  .u-mb#{$i * strip-unit($gap)} {
+    margin-bottom: $i * $gap;
+
+    &-pc {
+      @include view-at(p) {
+        margin-bottom: $i * $gap;
+      }
+    }
+
+    &-sp {
+      @include view-at(s) {
+        margin-bottom: $i * $gap;
+      }
+    }
+  }
+}

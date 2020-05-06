@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+@import '../foundation';
+
+.l-leafletmap {
+  height: 100vh;
+  width: 100vw;
+
+  &__bottom {
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    z-index: $leaflet-bottom-clock;
+    pointer-events: none;
+  }
+}

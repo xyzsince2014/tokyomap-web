@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+@import './view-at';
+
+@mixin font-size($size: 'm') {
+  @if ($size == 's') {
+    @include view-at(p) {
+      font-size: 12px;
+    }
+
+    @include view-at(s) {
+      font-size: 10px;
+    }
+  }
+
+  @else if ($size == 'm') {
+    @include view-at(u) {
+      font-size: 14px;
+    }
+
+    @include view-at(l) {
+      font-size: 12px;
+    }
+  }
+
+  @else if ($size == 'l') {
+    @include view-at(p) {
+      font-size: 16px;
+    }
+
+    @include view-at(s) {
+      font-size: 14px;
+    }
+  }
+
+  @else if ($size == 'xl') {
+    @include view-at(p) {
+      font-size: 18px;
+    }
+
+    @include view-at(s) {
+      font-size: 16px;
+    }
+  }
+}

@@ -10,20 +10,18 @@ export interface LeafletMapProps {
 }
 
 const LeafletMap: React.FC<LeafletMapProps> = ({latLng = [35.680722, 139.767271], zoom = 10}) => (
-  <Map id="map" center={latLng} zoom={zoom}>
+  <Map className="l-leafletmap" center={latLng} zoom={zoom}>
     <TileLayer
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     />
     <Marker position={latLng}>
       <Popup>
-        A pretty CSS3 popup.
-        <br />
-        Easily customizable.
+        A pretty CSS3 popup.<span className="u-phrase">Easily customizable.</span>
       </Popup>
     </Marker>
-    <div className="leaflet-bottom">
-      <div className="watermark">
+    <div className="l-leafletmap__bottom">
+      <div className="c-clock">
         <span>3 May 11:41</span>
       </div>
     </div>

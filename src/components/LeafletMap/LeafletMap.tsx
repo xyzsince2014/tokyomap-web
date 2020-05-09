@@ -12,7 +12,7 @@ export interface LeafletMapProps {
 
 const LeafletMap: React.FC<LeafletMapProps> = ({
   centre = [35.680722, 139.767271],
-  zoom = 11,
+  zoom = 15,
   positions = [
     [35.7101, 139.8107],
     [35.7121, 139.8207],
@@ -20,8 +20,8 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
 }) => (
   <Map className="l-leafletmap" center={centre} zoom={zoom}>
     <TileLayer
-      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
+      attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
     />
     {positions.map(pos => (
       <Marker position={pos}>

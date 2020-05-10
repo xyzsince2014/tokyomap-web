@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Map, Marker, Popup, TileLayer} from 'react-leaflet';
+import {Map, Marker, Popup, TileLayer, ZoomControl} from 'react-leaflet';
 import * as L from 'leaflet';
 
 import Clock from './Clock';
@@ -24,7 +24,14 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
 }) => {
   const bounds = L.latLngBounds([35.2564493, 139.1532045], [35.8559256, 140.4057111]);
   return (
-    <Map className="l-leafletmap" center={centre} zoom={zoom} maxBounds={bounds}>
+    <Map
+      className="l-leafletmap"
+      center={centre}
+      zoom={zoom}
+      maxBounds={bounds}
+      zoomControl={false}
+    >
+      <ZoomControl position="bottomright" />
       <TileLayer
         url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
         attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'

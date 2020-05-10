@@ -1,7 +1,7 @@
 import {Reducer} from 'redux';
 
-import {CountAction} from '../actions/Counter/countActionCreator';
-import * as ActionType from '../actions/Counter/countConstants';
+import {CountAction} from '../actions/countActionCreators';
+import * as ActionType from '../actions/countConstants';
 
 export interface CountState {
   count: number;
@@ -9,7 +9,7 @@ export interface CountState {
 
 export const initialCountState = {count: 0};
 
-const countReducer: Reducer<CountState, CountAction> = (
+const testReducer: Reducer<CountState, CountAction> = (
   state: CountState = initialCountState,
   action: CountAction,
 ): CountState => {
@@ -37,4 +37,4 @@ const countReducer: Reducer<CountState, CountAction> = (
   }
 };
 
-export default countReducer;
+export default testReducer;

@@ -5,6 +5,8 @@ import {applyMiddleware, compose, createStore} from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
 import App from './components/App';
+import rootReducer from './reducers/rootReducer';
+// import rootSaga from './sagas/github';
 
 import './assets/scss/base.scss';
 
@@ -31,4 +33,4 @@ ReactDOM.render(
 );
 
 // execute rootSaga() to run Saga's watchers
-sagaMiddleWare.run(rootSaga);
+// sagaMiddleWare.run(rootSaga);

@@ -1,6 +1,7 @@
 import * as React from 'react';
-import {Map, Marker, Popup, TileLayer, ZoomControl} from 'react-leaflet';
 import * as L from 'leaflet';
+import {Map, Marker, Popup, TileLayer, ZoomControl} from 'react-leaflet';
+import LeafletSearch from 'react-leaflet-search';
 
 import Clock from './Clock';
 
@@ -31,11 +32,12 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
       maxBounds={bounds}
       zoomControl={false}
     >
-      <ZoomControl position="bottomright" />
+      <LeafletSearch position="topleft" zoom={15} />
       <TileLayer
         url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
         attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
       />
+      <ZoomControl position="bottomright" />
       {positions.map(pos => (
         <Marker position={pos}>
           <Popup>

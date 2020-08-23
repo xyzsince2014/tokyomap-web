@@ -1,5 +1,5 @@
 import * as React from 'react';
-import LeafletMap from './LeafletMap/LeafletMap';
+import LeafletMap from './components/LeafletMap/LeafletMap';
 
 // import Counter from '../containers/Counter/Counter';
 

@@ -1,12 +1,10 @@
 import * as React from 'react';
-import LeafletMap from './components/LeafletMap/LeafletMap';
 
-// import Counter from '../containers/Counter/Counter';
+import Router from './containers/Router/Router';
 
 const App: React.FC = () => (
   <div>
-    {/* <Counter /> */}
-    <LeafletMap />
+    <Router />
   </div>
 );
 

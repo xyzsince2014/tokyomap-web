@@ -1,14 +1,15 @@
 import {combineReducers} from 'redux';
 import countReducer, {CountState} from './countReducer';
+import authReducer, {AuthState} from './authReducer';
 
 export interface RootState {
   countState: CountState;
-  // beadsCounterState: BeadsCounterState;
+  authState: AuthState;
 }
 
 const RootReducer = combineReducers({
   countState: countReducer,
-  // beadsCounterState: BeadsCounterReducer,
+  authState: authReducer,
 });
 
 export default RootReducer;

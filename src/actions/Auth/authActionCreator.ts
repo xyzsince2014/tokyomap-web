@@ -1,26 +1,16 @@
-import {AxiosError} from 'axios';
 import * as ActionType from './authConstants';
 
-export interface AuthResult {
-  isAuthorised: boolean;
-}
-
-export const authenticate = {
-  begin: () => ({
-    type: ActionType.BEGIN as typeof ActionType.BEGIN,
+export const authActionCreator = {
+  login: () => ({
+    type: ActionType.LOGIN as typeof ActionType.LOGIN,
+    payload: true,
   }),
-  resolve: (result: AuthResult) => ({
-    type: ActionType.RESOLVE as typeof ActionType.RESOLVE,
-    payload: {result},
-  }),
-  reject: (error: AxiosError) => ({
-    type: ActionType.REJECT as typeof ActionType.REJECT,
-    payload: {error},
-    error: true,
+  logout: () => ({
+    type: ActionType.LOGOUT as typeof ActionType.LOGOUT,
+    payload: false,
   }),
 };
 
 export type AuthAction =
-  | ReturnType<typeof authenticate.begin>
-  | ReturnType<typeof authenticate.resolve>
-  | ReturnType<typeof authenticate.reject>;
+  | ReturnType<typeof authActionCreator.login>
+  | ReturnType<typeof authActionCreator.logout>;

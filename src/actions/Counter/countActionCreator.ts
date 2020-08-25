@@ -1,6 +1,6 @@
 import * as ActionType from './countConstants';
 
-export const calculateCount = {
+export const countActionCreator = {
   add: (addend: number) => ({
     type: ActionType.ADD as typeof ActionType.ADD,
     payload: addend,
@@ -14,6 +14,6 @@ export const calculateCount = {
 };
 
 export type CountAction =
-  | ReturnType<typeof calculateCount.add>
-  | ReturnType<typeof calculateCount.increase>
-  | ReturnType<typeof calculateCount.decrease>;
+  | ReturnType<typeof countActionCreator.add>
+  | ReturnType<typeof countActionCreator.increase>
+  | ReturnType<typeof countActionCreator.decrease>;

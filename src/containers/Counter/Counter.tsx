@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import Counter from '../../components/Counter/Counter';
 import {RootState} from '../../reducers/rootReducer';
-import {calculateCount} from '../../actions/countActionCreators';
+import {countActionCreator} from '../../actions/Counter/countActionCreator';
 
 interface StateProps {
   count: number;
@@ -22,9 +22,9 @@ const mapStateToProps = (state: RootState): StateProps => ({
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
   bindActionCreators(
     {
-      add: addend => calculateCount.add(addend),
-      increase: () => calculateCount.increase(),
-      decrease: () => calculateCount.decrease(),
+      add: addend => countActionCreator.add(addend),
+      increase: () => countActionCreator.increase(),
+      decrease: () => countActionCreator.decrease(),
     },
     dispatch,
   );

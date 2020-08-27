@@ -21,6 +21,7 @@ module.exports = (env, args) => {
     },
     devtool: isProduction ? "source-map" : "eval-source-map",
     devServer: {
+      historyApiFallback: true,
       contentBase: outputPath,
       compress: false,
       port: 3000,

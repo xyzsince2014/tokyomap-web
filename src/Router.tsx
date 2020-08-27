@@ -4,15 +4,22 @@ import {Redirect, Route, Switch} from 'react-router';
 
 // import pages from './pages';
 
-import Auth from './components/Auth/Auth';
+import SignIn from './components/Auth/SignIn';
+import Auth from './containers/Auth/Auth';
 import LeafletMap from './components/LeafletMap/LeafletMap';
 
 const Router: React.FC<{}> = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={LeafletMap} />
-      <Route path="/auth" component={Auth} />
-      <Redirect to="/" />
+      <Route path="/auth/signin" component={SignIn} />
+      <Redirect to="/auth/signin" />
+      <Auth>
+        <Switch>
+          <Route exact path="/" component={LeafletMap} />
+          {/* <Route path="/auth/signout" component={SingOut}/> */}
+          <Redirect to="/" />
+        </Switch>
+      </Auth>
     </Switch>
   </BrowserRouter>
 );

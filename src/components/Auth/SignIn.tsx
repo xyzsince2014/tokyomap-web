@@ -2,7 +2,7 @@ import * as React from 'react';
 import {AiFillTwitterCircle} from 'react-icons/ai';
 import {FaFacebook} from 'react-icons/fa';
 
-const Auth: React.FC<{}> = () => (
+const SignIn: React.FC<{}> = () => (
   <div>
     <a href="/">
       <FaFacebook />
@@ -14,4 +14,4 @@ const Auth: React.FC<{}> = () => (
   </div>
 );
 
-export default Auth;
+export default SignIn;

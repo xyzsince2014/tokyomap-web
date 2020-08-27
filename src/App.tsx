@@ -1,11 +1,7 @@
 import * as React from 'react';
 
-import Router from './containers/Router/Router';
+import Router from './Router';
 
-const App: React.FC = () => (
-  <div>
-    <Router />
-  </div>
-);
+const App: React.FC = () => <Router />;
 
 export default App;

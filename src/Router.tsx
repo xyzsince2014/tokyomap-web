@@ -11,13 +11,13 @@ import LeafletMap from './components/LeafletMap/LeafletMap';
 const Router: React.FC<{}> = () => (
   <BrowserRouter>
     <Switch>
-      <Route path="/auth/signin" component={SignIn} />
-      <Redirect to="/auth/signin" />
+      <Route path="/auth" component={SignIn} />
+      {/* <Redirect to="/auth/signin" /> */}
       <Auth>
         <Switch>
-          <Route exact path="/" component={LeafletMap} />
+          <Route path="/" component={LeafletMap} />
           {/* <Route path="/auth/signout" component={SingOut}/> */}
-          <Redirect to="/" />
+          {/* <Redirect to="/" /> */}
         </Switch>
       </Auth>
     </Switch>

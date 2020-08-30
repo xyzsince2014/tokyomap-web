@@ -1,10 +1,11 @@
 import * as React from 'react';
-import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {bindActionCreators, Dispatch} from 'redux';
+import {Route} from 'react-router';
 
 import {RootState} from '../../reducers/rootReducer';
 import {authActionCreator} from '../../actions/Auth/authActionCreator';
+import SignIn from '../../components/Auth/SignIn';
 
 interface StateProps {
   isLoggedIn: boolean;
@@ -33,7 +34,7 @@ const AuthContainer: React.FC<EnhancedAuthProps> = ({isLoggedIn, getIsLoggedIn, 
     getIsLoggedIn();
   }, []);
 
-  return <div>{isLoggedIn ? children : <Redirect to="/auth/signin" />}</div>;
+  return <div>{isLoggedIn ? children : <Route path="/" component={SignIn} />}</div>;
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AuthContainer);

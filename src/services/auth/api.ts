@@ -1,4 +1,5 @@
 import axios from 'axios';
+// import {Hoge} from './models';
 
 interface ApiConfig {
   baseURL?: string;
@@ -6,7 +7,7 @@ interface ApiConfig {
 }
 
 const DEFAULT_API_CONFIG: ApiConfig = {
-  baseURL: process.env.DOMAIN_API_AUTH,
+  baseURL: `${process.env.DOMAIN_API_AUTH}/auth/twitter`,
   timeout: 1000 * 10,
 };
 
@@ -29,24 +30,32 @@ const createAxiosInstance = (optionalConfig?: ApiConfig) => {
  * api handlers
  ****************************************************** */
 export const getAuthFactory = (optionalConfig?: ApiConfig) => {
-  const instance = createAxiosInstance();
+  const instance = createAxiosInstance(optionalConfig);
 
-  const getIsAuthorised = async () => {
+  /**
+   * call :4000/auth/verify
+   * isAuthorised in the store is made true if the endpoint returns true
+   */
+  const getAuth = async () => {
     try {
       const response = await instance.get('/auth/verify', {
         validateStatus: status => status < 500,
-        withCredentials: true,
       });
 
-      if (response.status !== 200) {
-        return false;
-      }
+      // if (response.status !== 200) {
+      //   throw new Error('Invalid Response.');
+      // }
 
-      return response.data.authenticated;
+      /* eslint-disable prefer-destructuring */
+      const isAuthorised: boolean = response.data.success;
+      /* eslint-enable prefer-destructuring */
+
+      return isAuthorised;
     } catch (err) {
-      return false;
+      /* eslint-disable no-console */
+      throw new Error(`Exception: ${err.toJSON()}`);
     }
   };
 
-  return getIsAuthorised;
+  return getAuth;
 };

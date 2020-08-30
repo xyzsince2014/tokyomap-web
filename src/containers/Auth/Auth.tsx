@@ -8,33 +8,33 @@ import {authActionCreator} from '../../actions/Auth/authActionCreator';
 import SignIn from '../../components/Auth/SignIn';
 
 interface StateProps {
-  isLoggedIn: boolean;
+  isAuthorised: boolean;
 }
 
 interface DispatchProps {
-  getIsLoggedIn: () => void;
+  getIsAuthorised: () => void;
 }
 
 type EnhancedAuthProps = StateProps & DispatchProps;
 
 const mapStateToProps = (state: RootState): StateProps => ({
-  isLoggedIn: state.authState.isLoggedIn,
+  isAuthorised: state.authState.isAuthorised,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
   bindActionCreators(
     {
-      getIsLoggedIn: () => authActionCreator.login(),
+      getIsAuthorised: () => authActionCreator.start(),
     },
     dispatch,
   );
 
-const AuthContainer: React.FC<EnhancedAuthProps> = ({isLoggedIn, getIsLoggedIn, children}) => {
+const AuthContainer: React.FC<EnhancedAuthProps> = ({isAuthorised, getIsAuthorised, children}) => {
   React.useEffect(() => {
-    getIsLoggedIn();
+    getIsAuthorised();
   }, []);
 
-  return <div>{isLoggedIn ? children : <Route path="/" component={SignIn} />}</div>;
+  return <div>{isAuthorised ? children : <Route path="/" component={SignIn} />}</div>;
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AuthContainer);

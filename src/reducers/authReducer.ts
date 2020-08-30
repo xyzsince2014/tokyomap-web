@@ -4,25 +4,29 @@ import {AuthAction} from '../actions/Auth/authActionCreator';
 import * as ActionType from '../actions/Auth/authConstants';
 
 export interface AuthState {
-  isLoggedIn: boolean;
+  isAuthorised: boolean;
 }
 
-export const initialAuthState = {isLoggedIn: false};
+export const initialAuthState = {isAuthorised: false};
 
 const authReducer: Reducer<AuthState, AuthAction> = (
   state: AuthState = initialAuthState,
   action: AuthAction,
 ): AuthState => {
   switch (action.type) {
-    case ActionType.LOGIN:
+    case ActionType.START:
       return {
         ...state,
-        isLoggedIn: true,
       };
-    case ActionType.LOGOUT:
+    case ActionType.SUCCEED:
       return {
         ...state,
-        isLoggedIn: false,
+        isAuthorised: action.payload.isAuthorised,
+      };
+    case ActionType.FAIL:
+      return {
+        ...state,
+        isAuthorised: false,
       };
     default:
       /* eslint-disable no-case-declarations */

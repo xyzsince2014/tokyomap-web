@@ -11,12 +11,12 @@
  */
 import {takeLatest} from 'redux-saga/effects';
 
-import {runGetIsLoggedIn} from './tasks';
+import {runGetIsAuthorised} from './tasks';
 import * as ActionType from '../../actions/Auth/authConstants';
 
 /**
- * watches ActionType.LOGIN is dispathed, and executes runGetIsLoggedIn() when it is
+ * watches ActionType.LOGIN is dispathed, and executes runGetIsAuthorised() when it is
  */
-export function* watchGetIsLoggedIn() {
-  yield takeLatest(ActionType.LOGIN, runGetIsLoggedIn);
+export function* watchGetIsAuthorised() {
+  yield takeLatest(ActionType.START, runGetIsAuthorised);
 }

@@ -1,14 +1,22 @@
+import {AxiosError} from 'axios';
 import * as ActionType from './authConstants';
 
 export const authActionCreator = {
-  login: () => ({
-    type: ActionType.LOGIN as typeof ActionType.LOGIN,
+  start: () => ({
+    type: ActionType.START as typeof ActionType.START,
   }),
-  logout: () => ({
-    type: ActionType.LOGOUT as typeof ActionType.LOGOUT,
+  succeed: (isAuthorised: boolean) => ({
+    type: ActionType.SUCCEED as typeof ActionType.SUCCEED,
+    payload: {isAuthorised},
+  }),
+  fail: (error: AxiosError) => ({
+    type: ActionType.FAIL as typeof ActionType.FAIL,
+    payload: {error},
+    error: true,
   }),
 };
 
 export type AuthAction =
-  | ReturnType<typeof authActionCreator.login>
-  | ReturnType<typeof authActionCreator.logout>;
+  | ReturnType<typeof authActionCreator.start>
+  | ReturnType<typeof authActionCreator.succeed>
+  | ReturnType<typeof authActionCreator.fail>;

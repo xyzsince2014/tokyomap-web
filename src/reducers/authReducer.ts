@@ -21,7 +21,7 @@ const authReducer: Reducer<AuthState, AuthAction> = (
     case ActionType.SUCCEED:
       return {
         ...state,
-        isAuthorised: action.payload.isAuthorised,
+        isAuthorised: action.payload.result.isAuthorised,
       };
     case ActionType.FAIL:
       return {

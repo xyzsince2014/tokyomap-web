@@ -10,14 +10,15 @@
  * join: 別のタスクの終了を待つ
  */
 import {put, call} from 'redux-saga/effects';
-import {authActionCreator} from '../../actions/Auth/authActionCreator';
+import {authActionCreator, AuthActionCreatorResult} from '../../actions/Auth/authActionCreator';
 import * as api from '../../services/auth/api';
 
-export function* runGetIsAuthorised() {
+export function* runGetIsAuthorised(action: ReturnType<typeof authActionCreator.start>) {
   try {
     const handler = api.getAuthFactory();
-    const isAuthorised = yield call(handler);
-    yield put(authActionCreator.succeed(isAuthorised)); // set isAuthorised in the store = true
+    const result: any = yield call(handler);
+    // yield put(authActionCreator.succeed({isAuthorised: true}));
+    yield put(authActionCreator.succeed(result));
   } catch (error) {
     yield put(authActionCreator.fail(error));
   }

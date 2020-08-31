@@ -1,13 +1,17 @@
 import {AxiosError} from 'axios';
 import * as ActionType from './authConstants';
 
+export interface AuthActionCreatorResult {
+  isAuthorised: boolean;
+}
+
 export const authActionCreator = {
   start: () => ({
     type: ActionType.START as typeof ActionType.START,
   }),
-  succeed: (isAuthorised: boolean) => ({
+  succeed: (result: any) => ({
     type: ActionType.SUCCEED as typeof ActionType.SUCCEED,
-    payload: {isAuthorised},
+    payload: {result},
   }),
   fail: (error: AxiosError) => ({
     type: ActionType.FAIL as typeof ActionType.FAIL,

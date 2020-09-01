@@ -9,7 +9,7 @@ export interface CountState {
 
 export const initialCountState = {count: 0};
 
-const testReducer: Reducer<CountState, CountAction> = (
+const countReducer: Reducer<CountState, CountAction> = (
   state: CountState = initialCountState,
   action: CountAction,
 ): CountState => {
@@ -37,4 +37,4 @@ const testReducer: Reducer<CountState, CountAction> = (
   }
 };
 
-export default testReducer;
+export default countReducer;

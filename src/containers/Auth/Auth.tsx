@@ -24,7 +24,7 @@ const mapStateToProps = (state: RootState): StateProps => ({
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
   bindActionCreators(
     {
-      getIsAuthorised: () => authenticate.start(),
+      getIsAuthorised: () => authenticate.begin(),
     },
     dispatch,
   );

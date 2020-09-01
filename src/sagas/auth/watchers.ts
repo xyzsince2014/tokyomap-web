@@ -14,9 +14,6 @@ import {takeLatest} from 'redux-saga/effects';
 import {runGetIsAuthorised} from './tasks';
 import * as ActionType from '../../actions/Auth/authConstants';
 
-/**
- * watches ActionType.LOGIN is dispathed, and executes runGetIsAuthorised() when it is
- */
 export function* watchGetIsAuthorised() {
-  yield takeLatest(ActionType.START, runGetIsAuthorised);
+  yield takeLatest(ActionType.BEGIN, runGetIsAuthorised);
 }

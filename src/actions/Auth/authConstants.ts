@@ -1,3 +1,3 @@
-export const START = 'AUTH/START';
-export const SUCCEED = 'AUTH/SUCCEED';
-export const FAIL = 'AUTH/FAIL';
+export const BEGIN = 'AUTH/BEGIN';
+export const RESOLVE = 'AUTH/RESOLVE';
+export const REJECT = 'AUTH/REJECT';

@@ -13,12 +13,12 @@ import {put, call} from 'redux-saga/effects';
 import {authenticate} from '../../actions/Auth/authActionCreator';
 import * as api from '../../services/auth/api';
 
-export function* runGetIsAuthorised(action: ReturnType<typeof authenticate.start>) {
+export function* runGetIsAuthorised(action: ReturnType<typeof authenticate.begin>) {
   try {
     const getIsAuthorised = api.getAuthFactory();
     const isAuthorised = yield call(getIsAuthorised);
-    yield put(authenticate.succeed({isAuthorised}));
+    yield put(authenticate.resolve({isAuthorised}));
   } catch (error) {
-    yield put(authenticate.fail(error));
+    yield put(authenticate.reject(error));
   }
 }

@@ -9,8 +9,7 @@ export const authenticate = {
   start: () => ({
     type: ActionType.START as typeof ActionType.START,
   }),
-  // todo: use (result: AuthResult)
-  succeed: (result: any) => ({
+  succeed: (result: AuthResult) => ({
     type: ActionType.SUCCEED as typeof ActionType.SUCCEED,
     payload: {result},
   }),

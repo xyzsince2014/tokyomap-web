@@ -31,21 +31,18 @@ const createAxiosInstance = (optionalConfig?: ApiConfig) => {
 export const getAuthFactory = (optionalConfig?: ApiConfig) => {
   const instance = createAxiosInstance();
 
-  /**
-   * call :4000/auth/verify
-   * isAuthorised in the store is made true if the endpoint returns true
-   */
   const getIsAuthorised = async () => {
     try {
       const response = await instance.get('/auth/verify', {
         validateStatus: status => status < 500,
+        withCredentials: true,
       });
 
-      if (response.status !== 200 || response.data.status !== 200) {
+      if (response.status !== 200) {
         return false;
       }
 
-      return response.data.success;
+      return response.data.authenticated;
     } catch (err) {
       return false;
     }

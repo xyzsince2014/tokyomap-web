@@ -1,12 +1,9 @@
 import axios from 'axios';
-// import {Hoge} from './models';
 
 interface ApiConfig {
   baseURL?: string;
   timeout?: number;
 }
-
-// const DOMAIN_API_AUTH = 'http://localhost:4000';
 
 const DEFAULT_API_CONFIG: ApiConfig = {
   baseURL: process.env.DOMAIN_API_AUTH,
@@ -38,22 +35,21 @@ export const getAuthFactory = (optionalConfig?: ApiConfig) => {
    * call :4000/auth/verify
    * isAuthorised in the store is made true if the endpoint returns true
    */
-  const getAuth = async () => {
+  const getIsAuthorised = async () => {
     try {
       const response = await instance.get('/auth/verify', {
-        // validateStatus: status => status < 500,
+        validateStatus: status => status < 500,
       });
 
-      // if (response.status !== 200 || response.data.status !== 200) {
-      //   return {isAuthorised: false};
-      // }
+      if (response.status !== 200 || response.data.status !== 200) {
+        return false;
+      }
 
-      return {isAuthorised: response.data.success};
-      // return {isAuthorised: response.data};
+      return response.data.success;
     } catch (err) {
-      return {isAuthorised: false};
+      return false;
     }
   };
 
-  return getAuth;
+  return getIsAuthorised;
 };

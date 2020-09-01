@@ -4,7 +4,7 @@ import {bindActionCreators, Dispatch} from 'redux';
 import {Route} from 'react-router';
 
 import {RootState} from '../../reducers/rootReducer';
-import {authActionCreator} from '../../actions/Auth/authActionCreator';
+import {authenticate} from '../../actions/Auth/authActionCreator';
 import SignIn from '../../components/Auth/SignIn';
 
 interface StateProps {
@@ -24,7 +24,7 @@ const mapStateToProps = (state: RootState): StateProps => ({
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
   bindActionCreators(
     {
-      getIsAuthorised: () => authActionCreator.start(),
+      getIsAuthorised: () => authenticate.start(),
     },
     dispatch,
   );

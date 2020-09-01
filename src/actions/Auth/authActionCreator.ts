@@ -1,14 +1,15 @@
 import {AxiosError} from 'axios';
 import * as ActionType from './authConstants';
 
-export interface AuthActionCreatorResult {
+export interface AuthResult {
   isAuthorised: boolean;
 }
 
-export const authActionCreator = {
+export const authenticate = {
   start: () => ({
     type: ActionType.START as typeof ActionType.START,
   }),
+  // todo: use (result: AuthResult)
   succeed: (result: any) => ({
     type: ActionType.SUCCEED as typeof ActionType.SUCCEED,
     payload: {result},
@@ -21,6 +22,6 @@ export const authActionCreator = {
 };
 
 export type AuthAction =
-  | ReturnType<typeof authActionCreator.start>
-  | ReturnType<typeof authActionCreator.succeed>
-  | ReturnType<typeof authActionCreator.fail>;
+  | ReturnType<typeof authenticate.start>
+  | ReturnType<typeof authenticate.succeed>
+  | ReturnType<typeof authenticate.fail>;

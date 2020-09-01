@@ -2,6 +2,8 @@ import * as React from 'react';
 import * as L from 'leaflet';
 import {Map, Marker, Popup, TileLayer, ZoomControl} from 'react-leaflet';
 import LeafletSearch from 'react-leaflet-search';
+import Control from 'react-leaflet-control';
+import {BiLogOutCircle} from 'react-icons/bi';
 
 import Clock from './Clock';
 
@@ -45,6 +47,16 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
           </Popup>
         </Marker>
       ))}
+      <Control position="topright">
+        <button
+          type="button"
+          onClick={() => {
+            window.location.href = `${process.env.DOMAIN_API_AUTH}/auth/signout`;
+          }}
+        >
+          <BiLogOutCircle />
+        </button>
+      </Control>
       <div className="l-leafletmap__bottom">
         <Clock />
       </div>

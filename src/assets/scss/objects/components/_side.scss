@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+@import '../../foundation/index';
+
+.c-side {
+  min-height: 100vh;
+  background-color: $colour-gray-light;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    padding: 35px 20px 30px;
+
+    &__top {
+      flex: 0 1 140px;
+    }
+
+    &__service {
+      margin-left: 10px;
+      flex: 0 1 125px;
+    }
+  }
+
+  &__list {
+    background-color: $colour-gray-snow;
+
+    &__item {
+      padding: 12px 20px;
+      border-bottom: solid 1px $colour-gray;
+    }
+  }
+
+  &__search {
+    padding: 20px 15px;
+
+    &__input {
+      display: flex;
+      align-items: center;
+      background-color: $colour-gray-snow;
+      padding: 10px 14px;
+      border-radius: 48px;
+      line-height: 1;
+
+      & > [type='text'] {
+        flex: 1 1 auto;
+        background-color: $colour-gray-snow;
+        border: 0;
+        outline: 0;
+
+        @include placeholder($colour-gray-dark);
+      }
+
+      & > button {
+        flex: 0 0 auto;
+        width: 18px;
+        border: 0;
+        padding: 0;
+        outline: 0;
+        background: transparent;
+        cursor: pointer;
+
+        &:focus,
+        &:hover {
+          opacity: .5;
+        }
+      }
+    }
+  }
+}

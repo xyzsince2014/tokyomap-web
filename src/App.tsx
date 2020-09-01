@@ -1,19 +1,7 @@
-/** @jsx jsx */
 import * as React from 'react';
-import {jsx} from '@emotion/core';
 
-import HtmlTitle from './components/common/HtmlTitle';
+import Router from './Router';
 
-const App: React.FC<{}> = () => (
-  <div>
-    <HtmlTitle />
-    <article>
-      <section>
-        <h1>hoge</h1>
-        <p>fuga</p>
-      </section>
-    </article>
-  </div>
-);
+const App: React.FC = () => <Router />;
 
 export default App;

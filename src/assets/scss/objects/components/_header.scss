@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+@import '../../foundation/index';
+
+$header-height: 60px;
+
+.c-header {
+  @include view-at(p) {
+    padding: 20px $content-gutter-pc;
+
+    @include clear-fix;
+  }
+
+  @include view-at(s) {
+    padding: $header-height $content-gutter-sp 0;
+  }
+
+  &__title {
+    @include view-at(p) {
+      display: inline-block;
+    }
+
+    @include view-at(s) {
+      display: block;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+
+  &__info {
+    @include view-at(p) {
+      float: right;
+      display: inline-block;
+    }
+
+    @include view-at(s) {
+      display: block;
+      position: relative;
+      width: 100%;
+      height: $header-height;
+      background-color: $colour-gray-light;
+
+      @media screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: $z-index-header;
+      }
+    }
+
+    &__content {
+      @include view-at(p) {
+        display: inline-block;
+      }
+
+      @include view-at(s) {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
+
+.c-header-anchor {
+  @include view-at(s) {
+    @media screen {
+      margin-top: -1 * $header-height;
+      padding-top: $header-height;
+    }
+  }
+}

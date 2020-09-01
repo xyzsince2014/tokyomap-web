@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+@mixin link-all-status-content {
+  @content;
+
+  &:link {
+    @content;
+  }
+
+  &:visited {
+    @content;
+  }
+
+  &:focus {
+    @content;
+  }
+
+  &:hover {
+    @content;
+  }
+
+  &:active {
+    @content;
+  }
+}

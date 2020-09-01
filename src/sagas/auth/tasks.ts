@@ -17,7 +17,6 @@ export function* runGetIsAuthorised(action: ReturnType<typeof authenticate.start
   try {
     const getIsAuthorised = api.getAuthFactory();
     const isAuthorised = yield call(getIsAuthorised);
-    // yield put(authActionCreator.succeed({isAuthorised: true}));
     yield put(authenticate.succeed({isAuthorised}));
   } catch (error) {
     yield put(authenticate.fail(error));

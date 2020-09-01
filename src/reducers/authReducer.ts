@@ -14,16 +14,16 @@ const authReducer: Reducer<AuthState, AuthAction> = (
   action: AuthAction,
 ): AuthState => {
   switch (action.type) {
-    case ActionType.START:
+    case ActionType.BEGIN:
       return {
         ...state,
       };
-    case ActionType.SUCCEED:
+    case ActionType.RESOLVE:
       return {
         ...state,
         isAuthorised: action.payload.result.isAuthorised,
       };
-    case ActionType.FAIL:
+    case ActionType.REJECT:
       return {
         ...state,
         isAuthorised: false,

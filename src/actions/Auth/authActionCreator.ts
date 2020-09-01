@@ -6,21 +6,21 @@ export interface AuthResult {
 }
 
 export const authenticate = {
-  start: () => ({
-    type: ActionType.START as typeof ActionType.START,
+  begin: () => ({
+    type: ActionType.BEGIN as typeof ActionType.BEGIN,
   }),
-  succeed: (result: AuthResult) => ({
-    type: ActionType.SUCCEED as typeof ActionType.SUCCEED,
+  resolve: (result: AuthResult) => ({
+    type: ActionType.RESOLVE as typeof ActionType.RESOLVE,
     payload: {result},
   }),
-  fail: (error: AxiosError) => ({
-    type: ActionType.FAIL as typeof ActionType.FAIL,
+  reject: (error: AxiosError) => ({
+    type: ActionType.REJECT as typeof ActionType.REJECT,
     payload: {error},
     error: true,
   }),
 };
 
 export type AuthAction =
-  | ReturnType<typeof authenticate.start>
-  | ReturnType<typeof authenticate.succeed>
-  | ReturnType<typeof authenticate.fail>;
+  | ReturnType<typeof authenticate.begin>
+  | ReturnType<typeof authenticate.resolve>
+  | ReturnType<typeof authenticate.reject>;

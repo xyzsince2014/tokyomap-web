@@ -5,7 +5,7 @@ import LeafletSearch from 'react-leaflet-search';
 import Control from 'react-leaflet-control';
 import {BiLogOutCircle} from 'react-icons/bi';
 
-import Clock from './Clock';
+import Clock from '../../containers/Clock/Clock';
 
 export interface LeafletMapProps {
   centre?: L.LatLngTuple;

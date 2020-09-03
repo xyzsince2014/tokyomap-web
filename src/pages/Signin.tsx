@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import ListSignin from '../components/Auth/ListSignin';
+import ListSignin from '../components/Signin/ListSignin';
 
 const SignIn: React.FC = () => (
   <div className="l-partition">

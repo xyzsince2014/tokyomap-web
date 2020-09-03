@@ -15,29 +15,7 @@ $side-gap: 20px;
     flex: 0 0 auto;
 
     @include view-at(p) {
-      padding-left: $side-width + $side-gap;
-    }
-  }
-
-  &__main {
-    flex: 1 0 auto;
-
-    @include view-at(p) {
-      padding-left: $side-width + $side-gap;
-      min-height: 600px;
-    }
-
-    @include view-at(s) {
-      min-height: 300px;
-    }
-  }
-
-  &__footer {
-    flex: 0 0 auto;
-    margin-top: 60px;
-
-    @include view-at(p) {
-      padding-left: $side-width + $side-gap;
+      // padding-left: $side-width + $side-gap;
     }
   }
 
@@ -53,6 +31,28 @@ $side-gap: 20px;
 
     @include view-at(s) {
       display: none;
+    }
+  }
+
+  &__main {
+    flex: 1 0 auto;
+
+    @include view-at(p) {
+      // padding-left: $side-width + $side-gap;
+      min-height: 600px;
+    }
+
+    @include view-at(s) {
+      min-height: 300px;
+    }
+  }
+
+  &__footer {
+    flex: 0 0 auto;
+    margin-top: 60px;
+
+    @include view-at(p) {
+      // padding-left: $side-width + $side-gap;
     }
   }
 

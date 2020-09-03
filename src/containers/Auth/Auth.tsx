@@ -5,7 +5,7 @@ import {Route} from 'react-router';
 
 import {RootState} from '../../reducers/rootReducer';
 import {authenticate} from '../../actions/Auth/authActionCreator';
-import SignIn from '../../components/Auth/SignIn';
+import SignIn from '../../pages/Signin';
 
 interface StateProps {
   isAuthorised: boolean;

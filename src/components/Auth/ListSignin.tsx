@@ -35,14 +35,4 @@ const ListSignin = () => (
 );
 /* eslint-enable jsx-a11y/click-events-have-key-events */
 
-const SignIn: React.FC = () => (
-  <div className="l-partition">
-    <div className="l-partition__main">
-      <div className="l-wrapper">
-        <ListSignin />
-      </div>
-    </div>
-  </div>
-);
-
-export default SignIn;
+export default ListSignin;

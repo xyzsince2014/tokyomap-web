@@ -3,9 +3,9 @@ import {connect} from 'react-redux';
 import {bindActionCreators, Dispatch} from 'redux';
 import {Route} from 'react-router';
 
-import {RootState} from '../../reducers/rootReducer';
-import {authenticate} from '../../actions/Auth/authActionCreator';
-import SignIn from '../../pages/Signin';
+import {RootState} from '../reducers/rootReducer';
+import {authenticate} from '../actions/Auth/authActionCreator';
+import SignIn from '../components/Signin/Signin';
 
 interface StateProps {
   isAuthorised: boolean;

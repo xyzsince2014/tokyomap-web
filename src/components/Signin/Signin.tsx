@@ -1,8 +1,8 @@
 import * as React from 'react';
 // import Particles, {IParticlesParams} from 'react-particles-js';
 
-import ListSignin from '../components/Signin/ListSignin';
-import Clock from '../containers/Clock/Clock';
+import ListSignin from './ListSignin';
+import Clock from '../../containers/Clock/Clock';
 
 /* eslint-disable @typescript-eslint/camelcase */
 // const particleConfig: IParticlesParams = {

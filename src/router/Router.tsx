@@ -4,8 +4,8 @@ import {Redirect, Route, Switch} from 'react-router';
 
 // import pages from './pages';
 
-import Auth from './containers/Auth/Auth';
-import LeafletMap from './components/LeafletMap/LeafletMap';
+import Auth from './Auth';
+import LeafletMap from '../components/LeafletMap/LeafletMap';
 
 const Router: React.FC<{}> = () => (
   <BrowserRouter>

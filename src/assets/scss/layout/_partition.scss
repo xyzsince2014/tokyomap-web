@@ -11,58 +11,34 @@ $side-gap: 20px;
   display: flex;
   flex-direction: column;
 
-  &__header {
-    flex: 0 0 auto;
+  // &__header {}
 
-    @include view-at(p) {
-      padding-left: $side-width + $side-gap;
-    }
-  }
+  // &__side {}
 
   &__main {
     flex: 1 0 auto;
+    height: 100%;
+    width: 100%;
+    background-image: url(https://i.imgur.com/AtLEgFQ.jpg);
+    background-size: cover;
 
-    @include view-at(p) {
-      padding-left: $side-width + $side-gap;
-      min-height: 600px;
-    }
-
-    @include view-at(s) {
-      min-height: 300px;
+    &__content {
+      position: absolute;
+      top: 20%;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
     }
   }
 
   &__footer {
-    flex: 0 0 auto;
-    margin-top: 60px;
-
-    @include view-at(p) {
-      padding-left: $side-width + $side-gap;
-    }
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    pointer-events: none;
+    background-color: rgba($colour-black, 1);
   }
 
-  &__side {
-    @include view-at(p) {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: $side-width;
-      height: 100%;
-      z-index: $z-index-side;
-    }
-
-    @include view-at(s) {
-      display: none;
-    }
-  }
-
-  &__notice {
-    @media screen {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      z-index: $z-index-notice;
-    }
-  }
+  // &__notice {}
 }

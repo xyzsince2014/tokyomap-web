@@ -1,40 +1,23 @@
 import * as React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators, Dispatch} from 'redux';
-import {Route} from 'react-router';
+import {Route, Redirect} from 'react-router';
 
-import {RootState} from '../reducers/rootReducer';
-import {authenticate} from '../actions/Auth/authActionCreator';
 import SignIn from '../components/Signin/Signin';
 
-interface StateProps {
+interface AuthProps {
   isAuthorised: boolean;
 }
 
-interface DispatchProps {
-  getIsAuthorised: () => void;
-}
+const Auth: React.FC<AuthProps> = ({isAuthorised = false, children}) => (
+  <div>
+    {isAuthorised ? (
+      children
+    ) : (
+      <div>
+        <Route path="/" component={SignIn} />
+        <Redirect to="/" />
+      </div>
+    )}
+  </div>
+);
 
-type EnhancedAuthProps = StateProps & DispatchProps;
-
-const mapStateToProps = (state: RootState): StateProps => ({
-  isAuthorised: state.authState.isAuthorised,
-});
-
-const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
-  bindActionCreators(
-    {
-      getIsAuthorised: () => authenticate.begin(),
-    },
-    dispatch,
-  );
-
-const Auth: React.FC<EnhancedAuthProps> = ({isAuthorised, getIsAuthorised, children}) => {
-  React.useEffect(() => {
-    getIsAuthorised();
-  }, []);
-
-  return <div>{isAuthorised ? children : <Route path="/" component={SignIn} />}</div>;
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Auth);
+export default Auth;

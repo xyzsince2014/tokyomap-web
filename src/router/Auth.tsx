@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
     dispatch,
   );
 
-const AuthContainer: React.FC<EnhancedAuthProps> = ({isAuthorised, getIsAuthorised, children}) => {
+const Auth: React.FC<EnhancedAuthProps> = ({isAuthorised, getIsAuthorised, children}) => {
   React.useEffect(() => {
     getIsAuthorised();
   }, []);
@@ -37,4 +37,4 @@ const AuthContainer: React.FC<EnhancedAuthProps> = ({isAuthorised, getIsAuthoris
   return <div>{isAuthorised ? children : <Route path="/" component={SignIn} />}</div>;
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);

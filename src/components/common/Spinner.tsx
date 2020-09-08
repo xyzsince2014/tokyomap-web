@@ -1,12 +1,10 @@
 import * as React from 'react';
-import {Dimmer, Loader, Segment} from 'semantic-ui-react';
+import Loader from 'react-loader-spinner';
 
-const Spinner: React.FC<{message?: string}> = ({message = 'Loading...'}) => (
-  <Segment css="c-spinner">
-    <Dimmer active inverted>
-      <Loader inverted={false}>{message}</Loader>
-    </Dimmer>
-  </Segment>
+const Spinner: React.FC = () => (
+  <div className="l-spinner">
+    <Loader type="ThreeDots" color="#333" />
+  </div>
 );
 
 export default Spinner;

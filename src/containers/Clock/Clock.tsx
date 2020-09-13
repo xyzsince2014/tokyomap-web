@@ -22,7 +22,6 @@ const useClock = () => {
 
   React.useEffect(() => {
     const timer = setInterval(tick, 1000);
-
     return () => clearInterval(timer);
   }, []);
 

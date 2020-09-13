@@ -6,11 +6,13 @@ import Control from 'react-leaflet-control';
 import {BiLogOutCircle} from 'react-icons/bi';
 
 import Clock from '../../containers/Clock/Clock';
+import SocketForm from './SocketForm';
 
 export interface LeafletMapProps {
   centre?: L.LatLngTuple;
   zoom?: number;
   positions?: L.LatLngTuple[];
+  tweets?: any;
 }
 
 const LeafletMap: React.FC<LeafletMapProps> = ({
@@ -24,6 +26,7 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
     [35.5493975, 139.7776499],
     [35.771991, 140.3906614],
   ],
+  tweets = [],
 }) => {
   const bounds = L.latLngBounds([35.2564493, 139.1532045], [35.8559256, 140.4057111]);
   return (
@@ -56,8 +59,18 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
         >
           <BiLogOutCircle />
         </button>
+        <SocketForm />
       </Control>
       <div className="l-leafletmap__bottom">
+        {/* {tweets ? (
+          <ul>
+            {Array.from(tweets).map((t, i) => (
+              <li key={Number(i)}>t</li>
+            ))}
+          </ul>
+        ) : (
+          ''
+        )} */}
         <Clock />
       </div>
     </Map>

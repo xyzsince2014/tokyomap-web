@@ -12,7 +12,7 @@ const SocketForm: React.FC<{}> = () => {
     const postText: HTMLInputElement = document.getElementById('post_text') as HTMLInputElement;
     const postName: HTMLInputElement = document.getElementById('post_name') as HTMLInputElement;
 
-    socket.emit('post', {
+    socket.emit('posted', {
       postText: postText.value,
       postName: postName.value,
     });

@@ -16,7 +16,7 @@ export interface LeafletMapProps {
 }
 
 const LeafletMap: React.FC<LeafletMapProps> = ({
-  centre = [35.680722, 139.767271],
+  centre = [35.680722, 139.767271], // lat, long
   zoom = 15,
   positions = [
     [35.7295071, 139.7087114],

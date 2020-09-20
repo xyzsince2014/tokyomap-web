@@ -6,7 +6,7 @@ import Control from 'react-leaflet-control';
 import {BiLogOutCircle} from 'react-icons/bi';
 
 import Clock from '../../containers/Clock/Clock';
-import SocketForm from './SocketForm';
+import Socket from './Socket';
 
 export interface LeafletMapProps {
   centre?: L.LatLngTuple;
@@ -59,7 +59,7 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
         >
           <BiLogOutCircle />
         </button>
-        <SocketForm />
+        <Socket />
       </Control>
       <div className="l-leafletmap__bottom">
         {/* {tweets ? (

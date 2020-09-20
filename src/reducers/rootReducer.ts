@@ -1,14 +1,14 @@
 import {combineReducers} from 'redux';
-import countReducer, {CountState} from './countReducer';
+// import postsReducer, {PostsState} from './postsReducer';
 import authReducer, {AuthState} from './authReducer';
 
 export interface RootState {
-  countState: CountState;
+  // postsState: PostsState;
   authState: AuthState;
 }
 
 const RootReducer = combineReducers({
-  countState: countReducer,
+  // postsState: postsReducer,
   authState: authReducer,
 });
 

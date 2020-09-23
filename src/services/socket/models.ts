@@ -1,6 +1,6 @@
-export interface Post {
-  no: number;
-  user: string;
+export interface Tweet {
+  userId: number;
+  userName: string;
   message: string;
   postedAt: string;
   lat: string;

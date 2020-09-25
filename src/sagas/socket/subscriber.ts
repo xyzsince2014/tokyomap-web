@@ -14,7 +14,7 @@ const subscribe = (socket: SocketIOClient.Socket) =>
     // handlerの役割はデータをchannelに入れることです。これにより、Sagaは返されたchannelからこのデータを取得できます。
     // ここではreduxのactionがデータとしてchannelに入ります。
     // exec actions
-    const initStateHandler = async (tweets: Models.Tweet[] | []) => {
+    const initStateHandler = async (tweets: Models.Tweet[]) => {
       emit(updateTweets.begin(tweets));
     };
 

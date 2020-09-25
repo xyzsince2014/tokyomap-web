@@ -62,7 +62,7 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
         {tweets ? (
           <ul>
             {tweets.map(t => (
-              <li key={t.userId}>{t}</li>
+              <li key={t.userId}>{JSON.stringify(t)}</li>
             ))}
           </ul>
         ) : (

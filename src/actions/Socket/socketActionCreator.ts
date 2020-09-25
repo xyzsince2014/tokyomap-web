@@ -9,7 +9,7 @@ export const initSocket = {
 };
 
 export const updateTweets = {
-  begin: (tweets: Models.Tweet[] | []) => ({
+  begin: (tweets: Models.Tweet[]) => ({
     type: ActionType.STATE_UPDATE as typeof ActionType.STATE_UPDATE,
     payload: {tweets},
   }),

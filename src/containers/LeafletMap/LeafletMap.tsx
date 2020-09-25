@@ -9,7 +9,7 @@ import {RootState} from '../../reducers/rootReducer';
 import LeafletMap, {LeafletMapProps} from '../../components/LeafletMap/LeafletMap';
 
 interface StateProps {
-  tweetsFetched: Models.Tweet[] | [];
+  tweetsFetched: Models.Tweet[];
 }
 
 interface DispatchProps {
@@ -33,8 +33,7 @@ const LeafletMapContainer: React.FC<EnhancedLeafletMapProps> = ({
   React.useEffect(() => {
     initSocketInit('0');
   }, []);
-  // console.log(`type of tweets in container = ${typeof tweetsFetched}`);
-  return {tweetsFetched} ? <LeafletMap tweets={tweetsFetched} /> : <LeafletMap />;
+  return <LeafletMap tweets={tweetsFetched} />;
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LeafletMapContainer);

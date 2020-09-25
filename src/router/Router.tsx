@@ -10,7 +10,7 @@ import {authenticate} from '../actions/Auth/authActionCreator';
 import {RootState} from '../reducers/rootReducer';
 import Auth from './Auth';
 
-import LeafletMap from '../components/LeafletMap/LeafletMap';
+import LeafletMap from '../containers/LeafletMap/LeafletMap';
 import Spinner from '../components/common/Spinner';
 
 interface StateProps {

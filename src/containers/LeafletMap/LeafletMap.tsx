@@ -30,13 +30,11 @@ const LeafletMapContainer: React.FC<EnhancedLeafletMapProps> = ({
   tweetsFetched,
   initSocketInit,
 }) => {
-  const [tweets, setTweets] = React.useState<Models.Tweet[] | []>(tweetsFetched);
-
   React.useEffect(() => {
     initSocketInit('0');
   }, []);
-
-  return {tweets} ? <LeafletMap tweets={tweets} /> : <LeafletMap />;
+  // console.log(`type of tweets in container = ${typeof tweetsFetched}`);
+  return {tweetsFetched} ? <LeafletMap tweets={tweetsFetched} /> : <LeafletMap />;
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LeafletMapContainer);

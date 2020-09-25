@@ -17,7 +17,7 @@ export const createSocketConnection = () => {
  * initialise the store with the data fetched from the DB
  * @param param0
  */
-export function* initState({socket, userId}: {socket: SocketIOClient.Socket; userId: string}) {
+export function* initState(socket: SocketIOClient.Socket, userId: string) {
   yield socket.emit('initState', {userId});
 }
 

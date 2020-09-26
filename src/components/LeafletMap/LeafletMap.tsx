@@ -5,14 +5,16 @@ import LeafletSearch from 'react-leaflet-search';
 import Control from 'react-leaflet-control';
 import {BiLogOutCircle} from 'react-icons/bi';
 
-import Clock from '../../containers/Clock/Clock';
 import {Tweet} from '../../services/socket/models';
+import Clock from '../../containers/Clock/Clock';
+import Socket from './Socket';
 
 export interface LeafletMapProps {
   centre?: L.LatLngTuple;
   zoom?: number;
   positions?: L.LatLngTuple[];
-  tweets?: Tweet[] | [];
+  tweets?: Tweet[];
+  syncTweet?: (tweet: Tweet) => void;
 }
 
 const LeafletMap: React.FC<LeafletMapProps> = ({
@@ -27,6 +29,7 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
     [35.771991, 140.3906614],
   ],
   tweets = [],
+  syncTweet = () => {},
 }) => {
   const bounds = L.latLngBounds([35.2564493, 139.1532045], [35.8559256, 140.4057111]);
   return (
@@ -59,15 +62,7 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
         >
           <BiLogOutCircle />
         </button>
-        {tweets ? (
-          <ul>
-            {tweets.map(t => (
-              <li key={t.userId}>{JSON.stringify(t)}</li>
-            ))}
-          </ul>
-        ) : (
-          'hoge'
-        )}
+        <Socket tweets={tweets} syncTweet={syncTweet} />
       </Control>
       <div className="l-leafletmap__bottom">
         <Clock />

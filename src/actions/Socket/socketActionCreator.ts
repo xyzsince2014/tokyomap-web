@@ -15,13 +15,14 @@ export const updateTweets = {
   }),
 };
 
-// export const initTweets = {
-//   exec: (tweets: Models.Tweet[] | []) => ({
-//     type: ActionType.STATE_INIT,
-//     payload: {tweets},
-//   }),
-// };
+export const syncTweet = {
+  begin: (tweet: Models.Tweet) => ({
+    type: ActionType.STATE_SYNC,
+    payload: {tweet},
+  }),
+};
 
 export type SocketAction =
   | ReturnType<typeof initSocket.init>
-  | ReturnType<typeof updateTweets.begin>;
+  | ReturnType<typeof updateTweets.begin>
+  | ReturnType<typeof syncTweet.begin>;

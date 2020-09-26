@@ -1,7 +1,9 @@
-import {put, take, all, fork, call, select} from 'redux-saga/effects';
+import {put, take, all, call} from 'redux-saga/effects';
 import io from 'socket.io-client';
 
 import subscribe from './subscriber';
+import * as ActionType from '../../actions/Socket/socketConstants';
+import {syncTweet} from '../../actions/Socket/socketActionCreator';
 
 export const createSocketConnection = () => {
   const socket = io('http://localhost:4000');
@@ -13,18 +15,10 @@ export const createSocketConnection = () => {
   });
 };
 
-/**
- * initialise the store with the data fetched from the DB
- * @param param0
- */
 export function* initState(socket: SocketIOClient.Socket, userId: string) {
   yield socket.emit('initState', {userId});
 }
 
-/**
- * subscriber関数から渡ってきたデータ(reduxのaction)を取得
- * @param socket
- */
 export function* writeState(socket: SocketIOClient.Socket) {
   const channel = yield call(subscribe, socket);
   while (true) {
@@ -33,19 +27,10 @@ export function* writeState(socket: SocketIOClient.Socket) {
   }
 }
 
-/**
- * reserveBoxのdbを更新、更新した値をbroadcastして、他ブラウザのreseveBoxのstore更新
- * @param socket
- */
-// export function* syncStatus(socket: SocketIOClient.Socket) {
-//   while (true) {
-//     const {
-//       payload: {boxId, userId},
-//     } = yield take('SYNC_RESERVE');
-
-//     yield all([
-//       call(socket.emit, ['broadCastReserve', {boxId, userId}]),
-//       call(socket.emit, ['updateSelected', {boxId, userId}]),
-//     ]);
-//   }
-// }
+export function* syncState(socket: SocketIOClient.Socket, userId: string) {
+  while (true) {
+    const action: ReturnType<typeof syncTweet.begin> = yield take(ActionType.STATE_SYNC);
+    const {tweet} = action.payload;
+    yield socket.emit('broadcastTweet', {...tweet, userId});
+  }
+}

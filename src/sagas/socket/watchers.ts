@@ -1,5 +1,5 @@
 import {fork, take, call} from 'redux-saga/effects';
-import {createSocketConnection, initState, writeState} from './tasks';
+import {createSocketConnection, initState, writeState, syncState} from './tasks';
 import {initSocket} from '../../actions/Socket/socketActionCreator';
 import * as ActionType from '../../actions/Socket/socketConstants';
 
@@ -11,7 +11,7 @@ export function* watchOnSocket() {
       const socket = yield call(createSocketConnection);
       yield fork(initState, socket, action.payload.userId);
       yield fork(writeState, socket);
-      // yield fork(syncStatus, socket);
+      yield fork(syncState, socket, action.payload.userId);
     } catch (e) {
       throw e;
     }

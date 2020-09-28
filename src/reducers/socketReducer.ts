@@ -24,10 +24,10 @@ const socketReducer: Reducer<SocketState, SocketAction> = (
         ...state,
         tweets: action.payload.tweets,
       };
-    // case ActionType.REJECT:
-    //   return {
-    //     ...state,
-    //   };
+    case ActionType.STATE_SYNC:
+      return {
+        ...state,
+      };
     default:
       /* eslint-disable no-case-declarations */
       // eslint-disable-next-line @typescript-eslint/no-unused-vars

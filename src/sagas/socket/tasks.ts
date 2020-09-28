@@ -31,6 +31,6 @@ export function* syncState(socket: SocketIOClient.Socket, userId: string) {
   while (true) {
     const action: ReturnType<typeof syncTweet.begin> = yield take(ActionType.STATE_SYNC);
     const {tweet} = action.payload;
-    yield socket.emit('broadcastTweet', {...tweet, userId});
+    yield socket.emit('broadcastTweet', {tweet, userId});
   }
 }

@@ -17,7 +17,7 @@ export const updateTweets = {
 
 export const syncTweet = {
   begin: (tweet: Models.Tweet) => ({
-    type: ActionType.STATE_SYNC,
+    type: ActionType.STATE_SYNC as typeof ActionType.STATE_SYNC,
     payload: {tweet},
   }),
 };

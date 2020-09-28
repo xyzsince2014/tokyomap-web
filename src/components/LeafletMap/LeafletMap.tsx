@@ -20,14 +20,7 @@ export interface LeafletMapProps {
 const LeafletMap: React.FC<LeafletMapProps> = ({
   centre = [35.680722, 139.767271], // lat, long
   zoom = 15,
-  positions = [
-    [35.7295071, 139.7087114],
-    [35.689611, 139.6983826],
-    [35.6580382, 139.6994471],
-    [35.6812405, 139.7649361],
-    [35.5493975, 139.7776499],
-    [35.771991, 140.3906614],
-  ],
+  positions = [[35.771991, 140.3906614]],
   tweets = [],
   syncTweet = () => {},
 }) => {

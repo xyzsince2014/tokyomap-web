@@ -8,25 +8,6 @@ export interface SocketProps {
 }
 
 const Socket: React.FC<SocketProps> = ({tweets = [], syncTweet = () => {}}) => {
-  // const displayPosts = (postsDisplayed: Post[]) => {
-  //   const ul = document.getElementById('post_list')!;
-  //   ul.style.padding = '0';
-  //   Array.from(ul.childNodes).map(c => c.remove());
-
-  //   postsDisplayed.map((post: Post) => {
-  //     const li = document.createElement('li');
-  //     const span = document.createElement('span');
-  //     span.innerHTML = post.user;
-  //     li.appendChild(span);
-  //     li.innerHTML += ` : ${post.message} (${post.postedAt
-  //       .replace('T', ' ')
-  //       .replace('.000Z', '')}, ${post.lat}"N ${post.lng}"E)`;
-  //     ul.appendChild(li);
-
-  //     return false;
-  //   });
-  // };
-
   const handleSubmit = () => {
     const message: HTMLInputElement = document.getElementById('message') as HTMLInputElement;
     const userName: HTMLInputElement = document.getElementById('user') as HTMLInputElement;
@@ -34,10 +15,9 @@ const Socket: React.FC<SocketProps> = ({tweets = [], syncTweet = () => {}}) => {
     const lng: HTMLInputElement = document.getElementById('lng') as HTMLInputElement;
 
     syncTweet({
-      userId: 0,
       userName: userName.value,
       message: message.value,
-      postedAt: 'hoge',
+      postedAt: '', // todo: to be deleted
       lat: lat.value,
       lng: lng.value,
     });
@@ -60,7 +40,7 @@ const Socket: React.FC<SocketProps> = ({tweets = [], syncTweet = () => {}}) => {
         <ul>
           {tweets.map(t => (
             <li key={t.userId}>
-              <span>{t.userName}</span>` : {t.message} (
+              <span>{t.userName}</span> : {t.message} (
               {t.postedAt.replace('T', ' ').replace('.000Z', '')}, {t.lat}&quot;N {t.lng}&quot;E)
             </li>
           ))}

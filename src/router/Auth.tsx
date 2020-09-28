@@ -4,12 +4,12 @@ import {Route, Redirect} from 'react-router';
 import SignIn from '../components/Signin/Signin';
 
 interface AuthProps {
-  isAuthorised: boolean;
+  isAuthenticated: boolean;
 }
 
-const Auth: React.FC<AuthProps> = ({isAuthorised = false, children}) => (
+const Auth: React.FC<AuthProps> = ({isAuthenticated = false, children}) => (
   <div>
-    {isAuthorised ? (
+    {isAuthenticated ? (
       children
     ) : (
       <div>

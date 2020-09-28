@@ -16,9 +16,9 @@ import * as api from '../../services/auth/api';
 export function* runGetIsAuthorised(action: ReturnType<typeof authActions.authenticate.begin>) {
   try {
     const getIsAuthorised = api.getAuthFactory();
-    const isAuthorised = yield call(getIsAuthorised);
-    yield put(authActions.authenticate.resolve({isAuthorised}));
-  } catch (error) {
-    yield put(authActions.authenticate.reject(error));
+    const {isAuthenticated, userId} = yield call(getIsAuthorised);
+    yield put(authActions.authenticate.resolve({isAuthenticated, userId}));
+  } catch (err) {
+    yield put(authActions.authenticate.reject(err));
   }
 }

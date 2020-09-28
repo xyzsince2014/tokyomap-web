@@ -10,11 +10,11 @@ import LeafletMap, {LeafletMapProps} from '../../components/LeafletMap/LeafletMa
 
 interface StateProps {
   tweetsFetched: Models.Tweet[];
+  userId: number;
 }
 
 interface DispatchProps {
-  // todo: rename
-  initSocketInit: (userId: string) => void;
+  initSocketInit: (userId: number) => void;
   syncTweetBegin: (tweet: Models.Tweet) => void;
 }
 
@@ -22,6 +22,7 @@ type EnhancedLeafletMapProps = LeafletMapProps & StateProps & DispatchProps;
 
 const mapStateToProps = (state: RootState): StateProps => ({
   tweetsFetched: state.socketState.tweets,
+  userId: state.authState.userId,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
@@ -37,9 +38,10 @@ const LeafletMapContainer: React.FC<EnhancedLeafletMapProps> = ({
   tweetsFetched,
   initSocketInit,
   syncTweetBegin,
+  userId,
 }) => {
   React.useEffect(() => {
-    initSocketInit('0');
+    initSocketInit(userId);
   }, []);
   return <LeafletMap tweets={tweetsFetched} syncTweet={syncTweetBegin} />;
 };

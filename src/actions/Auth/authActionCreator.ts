@@ -3,7 +3,8 @@ import * as ActionType from './authConstants';
 
 // todo: use src/services/posts/models.ts
 export interface AuthResult {
-  isAuthorised: boolean;
+  isAuthenticated: boolean;
+  userId: number;
 }
 
 export const authenticate = {

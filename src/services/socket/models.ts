@@ -1,5 +1,5 @@
 export interface Tweet {
-  userId: number;
+  userId?: number;
   userName: string;
   message: string;
   postedAt: string;

@@ -4,6 +4,6 @@ export interface Tweet {
   userName: string;
   message: string;
   postedAt: string;
-  lat: string;
-  lng: string;
+  lat: number;
+  lng: number;
 }

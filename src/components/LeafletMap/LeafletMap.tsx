@@ -10,27 +10,23 @@ import Clock from '../../containers/Clock/Clock';
 import Socket from './Socket';
 
 export interface LeafletMapProps {
-  centre?: L.LatLngTuple;
-  zoom?: number;
-  positions?: L.LatLngTuple[];
   tweets?: Tweet[];
   syncTweet?: (tweet: Tweet) => void;
 }
 
-const LeafletMap: React.FC<LeafletMapProps> = ({
-  centre = [35.680722, 139.767271], // lat, long
-  zoom = 15,
-  positions = [[35.771991, 140.3906614]],
-  tweets = [],
-  syncTweet = () => {},
-}) => {
-  const bounds = L.latLngBounds([35.2564493, 139.1532045], [35.8559256, 140.4057111]);
+const LeafletMap: React.FC<LeafletMapProps> = ({tweets = [], syncTweet = () => {}}) => {
+  const positions: L.LatLngTuple[] = [];
+  /* eslint-disable array-callback-return */
+  tweets.map(t => {
+    positions.push([t.lat, t.lng]);
+  });
+  /* eslint-enable array-callback-return */
   return (
     <Map
       className="l-leafletmap"
-      center={centre}
-      zoom={zoom}
-      maxBounds={bounds}
+      center={[35.680722, 139.767271]}
+      zoom={15}
+      maxBounds={L.latLngBounds([35.2564493, 139.1532045], [35.8559256, 140.4057111])}
       zoomControl={false}
     >
       <LeafletSearch position="topleft" zoom={15} />

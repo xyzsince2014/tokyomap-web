@@ -19,8 +19,8 @@ const Socket: React.FC<SocketProps> = ({tweets = [], syncTweet = () => {}}) => {
       userName: userName.value,
       message: message.value,
       postedAt: '', // todo: to be deleted
-      lat: lat.value,
-      lng: lng.value,
+      lat: Number(lat.value),
+      lng: Number(lng.value),
     });
 
     message.value = '';

@@ -15,6 +15,7 @@ const Socket: React.FC<SocketProps> = ({tweets = [], syncTweet = () => {}}) => {
     const lng: HTMLInputElement = document.getElementById('lng') as HTMLInputElement;
 
     syncTweet({
+      tweetId: '',
       userName: userName.value,
       message: message.value,
       postedAt: '', // todo: to be deleted
@@ -29,17 +30,19 @@ const Socket: React.FC<SocketProps> = ({tweets = [], syncTweet = () => {}}) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form>
         <input id="message" type="text" placeholder="message" />
         <input id="user" type="text" placeholder="userName" />
         <input id="lat" type="text" defaultValue="35.7263716" />
         <input id="lng" type="text" defaultValue="139.7029377" />
-        <input type="submit" className="button" value="Post" />
+        <button type="button" className="button" onClick={handleSubmit}>
+          Post
+        </button>
       </form>
       {tweets ? (
         <ul>
           {tweets.map(t => (
-            <li key={t.userId}>
+            <li key={t.tweetId}>
               <span>{t.userName}</span> : {t.message} (
               {t.postedAt.replace('T', ' ').replace('.000Z', '')}, {t.lat}&quot;N {t.lng}&quot;E)
             </li>

@@ -44,7 +44,7 @@ const Socket: React.FC<SocketProps> = ({tweets = [], syncTweet = () => {}}) => {
           {tweets.map(t => (
             <li key={t.tweetId}>
               <span>{t.userName}</span> : {t.message} (
-              {t.postedAt.replace('T', ' ').replace('.000Z', '')}, {t.lat}&quot;N {t.lng}&quot;E)
+              {t.postedAt.replace('T', ' ').replace('.000Z', '')})
             </li>
           ))}
         </ul>

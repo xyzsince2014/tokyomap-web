@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+@import '../../foundation';
+
+.c-popup {
+  margin: 0;
+  padding: 5px;
+
+  & a {
+    text-decoration: none;
+  }
+}

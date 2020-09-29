@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+@import '../../foundation';
+
+.c-tooltip {
+  border: none;
+  min-width: 100px;
+  background-color: rgba($colour-black, .7);
+  color: $colour-white;
+}

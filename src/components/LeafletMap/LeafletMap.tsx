@@ -15,12 +15,6 @@ export interface LeafletMapProps {
 }
 
 const LeafletMap: React.FC<LeafletMapProps> = ({tweets = [], syncTweet = () => {}}) => {
-  const positions: L.LatLngTuple[] = [];
-  /* eslint-disable array-callback-return */
-  tweets.map(t => {
-    positions.push([t.lat, t.lng]);
-  });
-  /* eslint-enable array-callback-return */
   return (
     <Map
       className="l-leafletmap"
@@ -35,11 +29,9 @@ const LeafletMap: React.FC<LeafletMapProps> = ({tweets = [], syncTweet = () => {
         attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
       />
       <ZoomControl position="bottomright" />
-      {positions.map(pos => (
-        <Marker position={pos}>
-          <Popup>
-            A pretty CSS3 popup.<span className="u-phrase">Easily customizable.</span>
-          </Popup>
+      {tweets.map(t => (
+        <Marker position={[t.lat, t.lng]}>
+          <Popup>{t.message}</Popup>
         </Marker>
       ))}
       <Control position="topright">

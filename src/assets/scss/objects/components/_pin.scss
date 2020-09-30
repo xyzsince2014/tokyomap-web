@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+@import '../../foundation';
+
+$colour: #ce7575;
+
+.c-pin {
+  path {
+    fill: $colour;
+  }
+
+  .ring_inner {
+    animation: opacity-pulse 2s cubic-bezier(.4, .74, .56, .82);
+    animation-iteration-count: infinite;
+    opacity: .8;
+  }
+
+  .ring_outer {
+    animation: opacity-pulse 2s cubic-bezier(1, .14, 1, 1);
+    animation-iteration-count: infinite;
+    opacity: .5;
+  }
+}
+
+@keyframes opacity-pulse {
+  0% { opacity: .1; }
+  50% { opacity: 1; }
+  100% { opacity: .1; }
+}
+

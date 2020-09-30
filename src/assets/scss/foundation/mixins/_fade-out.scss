@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+@mixin fade-out {
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+      display: none;
+    }
+  }
+}

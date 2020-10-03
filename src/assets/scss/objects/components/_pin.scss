@@ -12,11 +12,6 @@ $delay-pin: $delay-pulse * 2;
 
 .c-pin {
   &__svg {
-    &__pin {
-      animation: fade-out $duration-pin linear $delay-pin;
-      animation-fill-mode: forwards;
-    }
-
     &__ring-inner {
       animation: opacity-pulse-contessa $duration-pulse cubic-bezier(.4, .74, .56, .82) $iteration-pulse, opacity-pulse-yellow $duration-pulse cubic-bezier(.4, .74, .56, .82) $iteration-pulse $delay-pulse;
       opacity: 0;
@@ -31,4 +26,4 @@ $delay-pin: $delay-pulse * 2;
 
 @include opacity-pulse('contessa', $colour-contessa);
 @include opacity-pulse('yellow', $colour-yellow);
-@include fade-out;
+

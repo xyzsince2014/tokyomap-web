@@ -1,20 +1,10 @@
 import * as React from 'react';
 
 import Clock from '../../components/Clock/Clock';
+import {fetchCurrentDatetime} from '../../utils/dateTime';
 
 const useClock = () => {
-  const fetchCurrentDatetime = () =>
-    new Date()
-      .toLocaleString('en-GB', {
-        hour12: false,
-        day: 'numeric',
-        month: 'short',
-        hour: 'numeric',
-        minute: 'numeric',
-      })
-      .replace(',', '');
-
-  const [time, setTime] = React.useState<string>(fetchCurrentDatetime());
+  const [datetime, setTime] = React.useState<string>(fetchCurrentDatetime());
 
   const tick = () => {
     setTime(fetchCurrentDatetime());
@@ -25,7 +15,7 @@ const useClock = () => {
     return () => clearInterval(timer);
   }, []);
 
-  return time;
+  return datetime;
 };
 
 const ClockContainer: React.FC<{}> = () => <Clock datetime={useClock()} />;

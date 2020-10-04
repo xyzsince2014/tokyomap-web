@@ -5,14 +5,7 @@
 $duration-pulse: 2s;
 $iteration-pulse: infinite;
 
-// $duration-pin: 60s * 80;
-
-.c-custom-maker {
-  // & .pin {
-  //   animation: fade-out $duration-pin linear;
-  //   animation-fill-mode: forwards;
-  // }
-
+.c-custom-marker {
   & .ring-inner {
     opacity: 0;
 
@@ -45,7 +38,6 @@ $iteration-pulse: infinite;
     }
   }
 }
-
 
 @include opacity-pulse('contessa', $colour-contessa);
 @include opacity-pulse('yellow', $colour-yellow);

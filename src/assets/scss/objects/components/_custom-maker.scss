@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+@import '../../foundation';
+
+$duration-pulse: 2s;
+$iteration-pulse: infinite;
+
+// $duration-pin: 60s * 80;
+
+.c-custom-maker {
+  // & .pin {
+  //   animation: fade-out $duration-pin linear;
+  //   animation-fill-mode: forwards;
+  // }
+
+  & .ring-inner {
+    opacity: 0;
+
+    &[aria-label='warning'] {
+      animation: opacity-pulse-contessa $duration-pulse cubic-bezier(.4, .74, .56, .82) $iteration-pulse;
+    }
+
+    &[aria-label='caution'] {
+      animation: opacity-pulse-yellow $duration-pulse cubic-bezier(.4, .74, .56, .82) $iteration-pulse;
+    }
+
+    &[aria-hidden='true'] {
+      display: none;
+    }
+  }
+
+  & .ring-outer {
+    opacity: 0;
+
+    &[aria-label='warning'] {
+      animation: opacity-pulse-contessa $duration-pulse cubic-bezier(.4, .74, .56, .82) $iteration-pulse;
+    }
+
+    &[aria-label='caution'] {
+      animation: opacity-pulse-yellow $duration-pulse cubic-bezier(.4, .74, .56, .82) $iteration-pulse;
+    }
+
+    &[aria-hidden='true'] {
+      display: none;
+    }
+  }
+}
+
+
+@include opacity-pulse('contessa', $colour-contessa);
+@include opacity-pulse('yellow', $colour-yellow);
+@include fade-out;

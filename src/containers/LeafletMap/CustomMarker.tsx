@@ -20,7 +20,7 @@ const useTimer = (tweet: Tweet) => {
   };
 
   React.useEffect(() => {
-    const timer = setInterval(tick, 1000);
+    const timer = setInterval(tick, 1000 * 10);
     return () => clearInterval(timer);
   }, []);
 

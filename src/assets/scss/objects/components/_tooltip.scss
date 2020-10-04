@@ -7,4 +7,9 @@
   min-width: 100px;
   background-color: rgba($colour-black, .7);
   color: $colour-white;
+
+  &__posted-at {
+    display: inline-block;
+    margin-right: .5em;
+  }
 }

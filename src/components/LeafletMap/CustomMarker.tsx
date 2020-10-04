@@ -2,7 +2,9 @@ import * as React from 'react';
 import * as L from 'leaflet';
 import {Marker, Popup, Tooltip} from 'react-leaflet';
 
+import {FaTwitter, FaFacebookF, FaLine, FaTelegram} from 'react-icons/fa';
 import {Tweet} from '../../services/socket/models';
+import {formatDateTime} from '../../utils/dateTime';
 
 export interface CustomMarkerProps {
   tweet: Tweet;
@@ -28,30 +30,35 @@ const CustomMarker: React.FC<CustomMarkerProps> = ({tweet, timeRemaining}) => {
   return (
     /* eslint-disable jsx-a11y/anchor-is-valid */
     <Marker position={[tweet.lat, tweet.lng]} icon={icon} key={`marker_${tweet.tweetId}`}>
-      <Popup className="leaflet-popup-content-wrapper">
-        <div className="leaflet-popup-content">
-          <a className="permlink" title={tweet.postedAt} href="#">
-            {tweet.postedAt.replace('T', ' ').replace('.000Z', '').substr(-8, 5)}
+      <Popup className="leaflet-popup-content-wrapper c-popup">
+        <div className="leaflet-popup-content c-popup__content">
+          <span className="c-popup__content__user-name">{tweet.userName}</span>
+          <a className="c-popup__content__posted-at" title={tweet.postedAt} href="#">
+            {formatDateTime(tweet.postedAt).substr(-8, 5)}
           </a>
           <br />
-          {tweet.message}
-          <div className="sharemin">
-            <a
-              href="https://facebook.com/sharer/sharer.php?u=hoge"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-            >
-              Fb
-            </a>
-            &nbsp;
+          <span className="c-popup__content__message">{tweet.message}</span>
+          <div className="c-popup__content__links">
             <a
               href="https://twitter.com/intent/tweet/?text=@hkmaplive&url=hoge"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Twitter"
             >
-              Tw
+              <FaTwitter />
+            </a>
+            &nbsp;
+            <a
+              href="https://facebook.com/sharer/sharer.php?u=hoge"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              <FaFacebookF />
+            </a>
+            &nbsp;
+            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Line">
+              <FaLine />
             </a>
             &nbsp;
             <a
@@ -60,15 +67,14 @@ const CustomMarker: React.FC<CustomMarkerProps> = ({tweet, timeRemaining}) => {
               rel="noopener noreferrer"
               aria-label="Telegram"
             >
-              Tel
+              <FaTelegram />
             </a>
           </div>
         </div>
       </Popup>
       <Tooltip className="c-tooltip">
-        {timeRemaining}
-        <br />
-        {tweet.postedAt.replace('T', ' ').replace('.000Z', '').substr(-8, 5)}&nbsp;{tweet.message}
+        <span className="c-tooltip__posted-at">{formatDateTime(tweet.postedAt).substr(-8, 5)}</span>
+        {tweet.message}
       </Tooltip>
     </Marker>
     /* eslint-enable jsx-a11y/anchor-is-valid */

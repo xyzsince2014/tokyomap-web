@@ -33,11 +33,11 @@ $iteration-pulse: infinite;
     opacity: 0;
 
     &[aria-label='warning'] {
-      animation: opacity-pulse-contessa $duration-pulse cubic-bezier(.4, .74, .56, .82) $iteration-pulse;
+      animation: opacity-pulse-contessa $duration-pulse  cubic-bezier(1, .14, 1, 1) $iteration-pulse;
     }
 
     &[aria-label='caution'] {
-      animation: opacity-pulse-yellow $duration-pulse cubic-bezier(.4, .74, .56, .82) $iteration-pulse;
+      animation: opacity-pulse-yellow $duration-pulse  cubic-bezier(1, .14, 1, 1) $iteration-pulse;
     }
 
     &[aria-hidden='true'] {

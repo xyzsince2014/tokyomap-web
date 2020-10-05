@@ -18,8 +18,8 @@ const Socket: React.FC<SocketProps> = ({tweets = [], syncTweet = () => {}}) => {
       tweetId: '',
       userName: userName.value,
       message: message.value,
-      postedAt: '', // todo: to be deleted
-      disappearAt: '', // todo: to be deleted
+      postedAt: '',
+      disappearAt: '',
       lat: Number(lat.value),
       lng: Number(lng.value),
     });
@@ -32,13 +32,25 @@ const Socket: React.FC<SocketProps> = ({tweets = [], syncTweet = () => {}}) => {
   return (
     <div>
       <form>
-        <input id="message" type="text" placeholder="message" />
-        <input id="user" type="text" placeholder="userName" />
-        <input id="lat" type="text" defaultValue="35.7263716" />
-        <input id="lng" type="text" defaultValue="139.7029377" />
-        <button type="button" className="button" onClick={handleSubmit}>
-          Post
-        </button>
+        <ul>
+          <li>
+            <input id="message" type="text" placeholder="message" />
+          </li>
+          <li>
+            <input id="user" type="text" placeholder="userName" />
+          </li>
+          <li>
+            <input id="lat" type="text" defaultValue="35.7263716" />
+          </li>
+          <li>
+            <input id="lng" type="text" defaultValue="139.7029377" />
+          </li>
+          <li>
+            <button type="button" className="button" onClick={handleSubmit}>
+              Post
+            </button>
+          </li>
+        </ul>
       </form>
       {tweets ? (
         <ul>

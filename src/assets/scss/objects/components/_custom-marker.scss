@@ -41,4 +41,3 @@ $iteration-pulse: infinite;
 
 @include opacity-pulse('contessa', $colour-contessa);
 @include opacity-pulse('yellow', $colour-yellow);
-@include fade-out;

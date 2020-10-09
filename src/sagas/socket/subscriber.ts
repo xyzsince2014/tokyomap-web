@@ -1,21 +1,21 @@
 import {eventChannel} from 'redux-saga';
 
-import {getTweets} from '../../actions/Socket/socketActionCreator';
+import {putTweets} from '../../actions/Socket/socketActionCreator';
 import * as Models from '../../services/socket/models';
 
 const subscribe = (socket: SocketIOClient.Socket) =>
   eventChannel(emit => {
     const socketStateHandler = async (tweets: Models.Tweet[]) => {
-      emit(getTweets.begin(tweets));
+      emit(putTweets.begin(tweets));
     };
 
-    socket.on('initState:done', socketStateHandler);
-    socket.on('broadcastTweet:done', socketStateHandler);
+    socket.on('initSocketState:done', socketStateHandler);
+    socket.on('postTweet:done', socketStateHandler);
 
     // the subscriber must return `unsubscribe()`, which will be invoked when the saga calls `channel.close()`
     const unsubscribe = () => {
-      socket.off('initState:done', socketStateHandler);
-      socket.off('broadcastTweet:done', socketStateHandler);
+      socket.off('initSocketState:done', socketStateHandler);
+      socket.off('postTweet:done', socketStateHandler);
     };
 
     return unsubscribe;

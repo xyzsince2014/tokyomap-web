@@ -19,7 +19,7 @@ const socketReducer: Reducer<SocketState, SocketAction> = (
       return {
         ...state,
       };
-    case ActionType.TWEET_GET:
+    case ActionType.TWEET_PUT:
       return {
         ...state,
         tweets: action.payload.tweets,

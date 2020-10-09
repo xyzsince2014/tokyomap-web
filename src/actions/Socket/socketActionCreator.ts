@@ -8,9 +8,9 @@ export const connectToSocket = {
   }),
 };
 
-export const getTweets = {
+export const putTweets = {
   begin: (tweets: Models.Tweet[]) => ({
-    type: ActionType.TWEET_GET as typeof ActionType.TWEET_GET,
+    type: ActionType.TWEET_PUT as typeof ActionType.TWEET_PUT,
     payload: {tweets},
   }),
   // resolve
@@ -28,5 +28,5 @@ export const postTweet = {
 
 export type SocketAction =
   | ReturnType<typeof connectToSocket.init>
-  | ReturnType<typeof getTweets.begin>
+  | ReturnType<typeof putTweets.begin>
   | ReturnType<typeof postTweet.begin>;

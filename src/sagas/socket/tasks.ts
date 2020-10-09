@@ -20,8 +20,8 @@ export const createSocketConnection = () => {
  * @param socket
  * @param userId
  */
-export function* initState(socket: SocketIOClient.Socket, userId: string) {
-  yield socket.emit('initState', {userId});
+export function* initSocketState(socket: SocketIOClient.Socket, userId: string) {
+  yield socket.emit('initSocketState', {userId});
 }
 
 /**
@@ -29,11 +29,11 @@ export function* initState(socket: SocketIOClient.Socket, userId: string) {
  * @param socket
  * @param userId
  */
-export function* syncState(socket: SocketIOClient.Socket, userId: string) {
+export function* updateSocketState(socket: SocketIOClient.Socket, userId: string) {
   while (true) {
     const action: ReturnType<typeof postTweet.begin> = yield take(ActionType.TWEET_POST);
     const {tweet} = action.payload;
-    yield socket.emit('broadcastTweet', {tweet, userId});
+    yield socket.emit('postTweet', {tweet, userId});
   }
 }
 
@@ -41,7 +41,7 @@ export function* syncState(socket: SocketIOClient.Socket, userId: string) {
  * fetch an action from the channel and dispatch it
  * @param socket
  */
-export function* writeState(socket: SocketIOClient.Socket) {
+export function* dispatchActionFromChannel(socket: SocketIOClient.Socket) {
   const channel = yield call(subscribe, socket);
   while (true) {
     const action = yield take(channel);

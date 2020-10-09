@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as L from 'leaflet';
 import {Map, TileLayer, ZoomControl} from 'react-leaflet';
 import LeafletSearch from 'react-leaflet-search';
 import Control from 'react-leaflet-control';
@@ -20,7 +21,7 @@ const LeafletMap: React.FC<LeafletMapProps> = ({tweets = [], postTweet = () => {
       className="l-leafletmap"
       center={[35.680722, 139.767271]}
       zoom={15}
-      // maxBounds={L.latLngBounds([35.2564493, 139.1532045], [35.8559256, 140.4057111])}
+      maxBounds={L.latLngBounds([35.2564493, 139.1532045], [35.8559256, 140.4057111])}
       zoomControl={false}
     >
       <LeafletSearch position="topleft" zoom={15} />

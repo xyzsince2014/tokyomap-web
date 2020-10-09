@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+@import '../../foundation';
+
+.c-popup {
+  min-width: 140px;
+
+  & > div > div {
+    margin: 13px;
+    padding-top: 3px;
+  }
+
+  &__content {
+    margin: 0;
+    line-height: 1.65;
+    word-break: break-word;
+
+    &__user-name {
+      display: inline-block;
+      margin-right: .5em;
+      font-weight: $font-weight-bold;
+    }
+
+    &__posted-at {
+      @include link-all-status-content {
+        cursor: pointer;
+        color: $colour-blue;
+        text-decoration: none;
+        font-size: .9em;
+      }
+    }
+
+    &__message {
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+
+    &__links {
+      text-align: right;
+    }
+  }
+}

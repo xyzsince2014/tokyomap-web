@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-@import './libs/reset';
 @import './functions/strip-unit';
 @import './variables';
 @import './mixins/clear-fix';
@@ -10,3 +9,4 @@
 @import './mixins/view-at';
 @import './mixins/font-size';
 @import './mixins/appearance';
+@import './mixins/opacity-pulse';

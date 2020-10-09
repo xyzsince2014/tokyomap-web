@@ -5,12 +5,14 @@ import * as ActionType from '../actions/Auth/authConstants';
 
 export interface AuthState {
   isLoading: boolean;
-  isAuthorised: boolean;
+  isAuthenticated: boolean;
+  userId: number;
 }
 
 export const initialAuthState = {
   isLoading: true,
-  isAuthorised: false,
+  isAuthenticated: false,
+  userId: 0,
 };
 
 const authReducer: Reducer<AuthState, AuthAction> = (
@@ -26,14 +28,15 @@ const authReducer: Reducer<AuthState, AuthAction> = (
     case ActionType.RESOLVE:
       return {
         ...state,
-        isAuthorised: action.payload.result.isAuthorised,
         isLoading: false,
+        isAuthenticated: action.payload.result.isAuthenticated,
+        userId: action.payload.result.userId,
       };
     case ActionType.REJECT:
       return {
         ...state,
-        isAuthorised: false,
         isLoading: false,
+        isAuthenticated: false,
       };
     default:
       /* eslint-disable no-case-declarations */

@@ -5,7 +5,7 @@
 $gap: 5px;
 
 @for $i from 0 to 16 {
-  .u-mb#{$i * strip-unit($gap)} {
+  .u-mt#{$i * strip-unit($gap)} {
     margin-top: $i * $gap;
 
     &-pc {

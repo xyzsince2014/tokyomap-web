@@ -1,28 +1,32 @@
 import * as ActionType from './socketConstants';
 import * as Models from '../../services/socket/models';
 
-export const initSocket = {
+export const connectToSocket = {
   init: (userId: string) => ({
-    type: ActionType.SOCKET_INIT as typeof ActionType.SOCKET_INIT,
+    type: ActionType.SOCKET_CONNECT as typeof ActionType.SOCKET_CONNECT,
     payload: {userId},
   }),
 };
 
-export const updateTweets = {
+export const getTweets = {
   begin: (tweets: Models.Tweet[]) => ({
-    type: ActionType.STATE_UPDATE as typeof ActionType.STATE_UPDATE,
+    type: ActionType.TWEET_GET as typeof ActionType.TWEET_GET,
     payload: {tweets},
   }),
+  // resolve
+  // reject
 };
 
-export const syncTweet = {
+export const postTweet = {
   begin: (tweet: Models.Tweet) => ({
-    type: ActionType.STATE_SYNC as typeof ActionType.STATE_SYNC,
+    type: ActionType.TWEET_POST as typeof ActionType.TWEET_POST,
     payload: {tweet},
   }),
+  // resolve
+  // reject
 };
 
 export type SocketAction =
-  | ReturnType<typeof initSocket.init>
-  | ReturnType<typeof updateTweets.begin>
-  | ReturnType<typeof syncTweet.begin>;
+  | ReturnType<typeof connectToSocket.init>
+  | ReturnType<typeof getTweets.begin>
+  | ReturnType<typeof postTweet.begin>;

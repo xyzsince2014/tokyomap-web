@@ -1,3 +1,3 @@
-export const SOCKET_INIT = 'SOCKET/INIT';
-export const STATE_UPDATE = 'STATE/UPDATE';
-export const STATE_SYNC = 'STATE/SYNC';
+export const SOCKET_CONNECT = 'SOCKET/CONNECT';
+export const TWEET_GET = 'TWEET/GET';
+export const TWEET_POST = 'TWEET/POST';

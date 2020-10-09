@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators, Dispatch} from 'redux';
 
 import * as Models from '../../services/socket/models';
-import {initSocket, syncTweet} from '../../actions/Socket/socketActionCreator';
+import {connectToSocket, postTweet} from '../../actions/Socket/socketActionCreator';
 import {RootState} from '../../reducers/rootReducer';
 
 import LeafletMap, {LeafletMapProps} from '../../components/LeafletMap/LeafletMap';
@@ -14,8 +14,8 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  initSocketInit: (userId: number) => void;
-  syncTweetBegin: (tweet: Models.Tweet) => void;
+  connectToSocketInit: (userId: number) => void;
+  postTweetBegin: (tweet: Models.Tweet) => void;
 }
 
 type EnhancedLeafletMapProps = LeafletMapProps & StateProps & DispatchProps;
@@ -28,22 +28,22 @@ const mapStateToProps = (state: RootState): StateProps => ({
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
   bindActionCreators(
     {
-      initSocketInit: userId => initSocket.init(userId),
-      syncTweetBegin: tweet => syncTweet.begin(tweet),
+      connectToSocketInit: userId => connectToSocket.init(userId),
+      postTweetBegin: tweet => postTweet.begin(tweet),
     },
     dispatch,
   );
 
 const LeafletMapContainer: React.FC<EnhancedLeafletMapProps> = ({
   tweetsFetched,
-  initSocketInit,
-  syncTweetBegin,
+  connectToSocketInit,
+  postTweetBegin,
   userId,
 }) => {
   React.useEffect(() => {
-    initSocketInit(userId);
+    connectToSocketInit(userId);
   }, []);
-  return <LeafletMap tweets={tweetsFetched} syncTweet={syncTweetBegin} />;
+  return <LeafletMap tweets={tweetsFetched} postTweet={postTweetBegin} />;
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LeafletMapContainer);

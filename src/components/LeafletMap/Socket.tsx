@@ -4,17 +4,17 @@ import {Tweet} from '../../services/socket/models';
 
 export interface SocketProps {
   tweets?: Tweet[];
-  syncTweet?: (tweet: Tweet) => void;
+  postTweet?: (tweet: Tweet) => void;
 }
 
-const Socket: React.FC<SocketProps> = ({tweets = [], syncTweet = () => {}}) => {
+const Socket: React.FC<SocketProps> = ({tweets = [], postTweet = () => {}}) => {
   const handleSubmit = () => {
     const message: HTMLInputElement = document.getElementById('message') as HTMLInputElement;
     const userName: HTMLInputElement = document.getElementById('user') as HTMLInputElement;
     const lat: HTMLInputElement = document.getElementById('lat') as HTMLInputElement;
     const lng: HTMLInputElement = document.getElementById('lng') as HTMLInputElement;
 
-    syncTweet({
+    postTweet({
       tweetId: '',
       userName: userName.value,
       message: message.value,

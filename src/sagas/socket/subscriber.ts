@@ -1,12 +1,12 @@
 import {eventChannel} from 'redux-saga';
 
-import {updateTweets} from '../../actions/Socket/socketActionCreator';
+import {getTweets} from '../../actions/Socket/socketActionCreator';
 import * as Models from '../../services/socket/models';
 
 const subscribe = (socket: SocketIOClient.Socket) =>
   eventChannel(emit => {
     const socketStateHandler = async (tweets: Models.Tweet[]) => {
-      emit(updateTweets.begin(tweets));
+      emit(getTweets.begin(tweets));
     };
 
     socket.on('initState:done', socketStateHandler);

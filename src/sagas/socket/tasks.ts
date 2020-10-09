@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 
 import subscribe from './subscriber';
 import * as ActionType from '../../actions/Socket/socketConstants';
-import {syncTweet} from '../../actions/Socket/socketActionCreator';
+import {postTweet} from '../../actions/Socket/socketActionCreator';
 
 export const createSocketConnection = () => {
   const socket = io('http://localhost:4000');
@@ -31,7 +31,7 @@ export function* initState(socket: SocketIOClient.Socket, userId: string) {
  */
 export function* syncState(socket: SocketIOClient.Socket, userId: string) {
   while (true) {
-    const action: ReturnType<typeof syncTweet.begin> = yield take(ActionType.STATE_SYNC);
+    const action: ReturnType<typeof postTweet.begin> = yield take(ActionType.TWEET_POST);
     const {tweet} = action.payload;
     yield socket.emit('broadcastTweet', {tweet, userId});
   }

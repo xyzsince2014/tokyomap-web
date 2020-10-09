@@ -15,16 +15,16 @@ const socketReducer: Reducer<SocketState, SocketAction> = (
   action: SocketAction,
 ): SocketState => {
   switch (action.type) {
-    case ActionType.SOCKET_INIT:
+    case ActionType.SOCKET_CONNECT:
       return {
         ...state,
       };
-    case ActionType.STATE_UPDATE:
+    case ActionType.TWEET_GET:
       return {
         ...state,
         tweets: action.payload.tweets,
       };
-    case ActionType.STATE_SYNC:
+    case ActionType.TWEET_POST:
       return {
         ...state,
       };

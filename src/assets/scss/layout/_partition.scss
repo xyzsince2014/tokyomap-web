@@ -19,8 +19,9 @@ $side-gap: 20px;
     flex: 1 0 auto;
     height: 100%;
     width: 100%;
-    background-image: url(https://i.imgur.com/AtLEgFQ.jpg);
+    background: linear-gradient($colour-black, $colour-black), url(https://i.imgur.com/AtLEgFQ.jpg);
     background-size: cover;
+    background-blend-mode: saturation;
 
     &__content {
       position: absolute;

@@ -10,12 +10,12 @@ import {authenticate} from '../actions/Auth/authActionCreator';
 import {RootState} from '../reducers/rootReducer';
 import Auth from './Auth';
 
-import LeafletMap from '../components/LeafletMap/LeafletMap';
+import LeafletMap from '../containers/LeafletMap/LeafletMap';
 import Spinner from '../components/common/Spinner';
 
 interface StateProps {
   isLoading: boolean;
-  isAuthorised: boolean;
+  isAuthenticated: boolean;
 }
 
 interface DispatchProps {
@@ -26,7 +26,7 @@ type EnhancedRouterProps = StateProps & DispatchProps;
 
 const mapStateToProps = (state: RootState): StateProps => ({
   isLoading: state.authState.isLoading,
-  isAuthorised: state.authState.isAuthorised,
+  isAuthenticated: state.authState.isAuthenticated,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
@@ -39,7 +39,7 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
 
 const Router: React.FC<EnhancedRouterProps> = ({
   isLoading = true,
-  isAuthorised = false,
+  isAuthenticated = false,
   getIsAuthorised,
 }) => {
   React.useEffect(() => {
@@ -51,7 +51,7 @@ const Router: React.FC<EnhancedRouterProps> = ({
   ) : (
     <BrowserRouter>
       <Switch>
-        <Auth isAuthorised={isAuthorised}>
+        <Auth isAuthenticated={isAuthenticated}>
           <Route path="/" component={LeafletMap} />
           <Redirect to="/" />
         </Auth>

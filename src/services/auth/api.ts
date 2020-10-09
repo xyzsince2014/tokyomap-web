@@ -42,9 +42,15 @@ export const getAuthFactory = (optionalConfig?: ApiConfig) => {
         return false;
       }
 
-      return response.data.authenticated;
+      return {
+        isAuthenticated: response.data.isAuthenticated ? response.data.isAuthenticated : false,
+        userId: response.data.user.userId ? response.data.user.userId : 0,
+      };
     } catch (err) {
-      return false;
+      return {
+        isAuthenticated: false,
+        userId: '',
+      };
     }
   };
 

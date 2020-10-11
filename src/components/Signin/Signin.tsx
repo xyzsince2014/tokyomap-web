@@ -1,23 +1,7 @@
 import * as React from 'react';
-// import Particles, {IParticlesParams} from 'react-particles-js';
 
 import ListSignin from './ListSignin';
 import Clock from '../../containers/Clock/Clock';
-
-/* eslint-disable @typescript-eslint/camelcase */
-// const particleConfig: IParticlesParams = {
-//   interactivity: {
-//     detect_on: 'window',
-//     events: {
-//       onhover: {
-//         enable: true,
-//         mode: 'grab',
-//       },
-//       resize: true,
-//     },
-//   },
-// };
-/* eslint-enable @typescript-eslint/camelcase */
 
 const SignIn: React.FC = () => (
   <div className="l-partition">

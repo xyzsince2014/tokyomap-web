@@ -39,7 +39,10 @@ export const getAuthFactory = (optionalConfig?: ApiConfig) => {
       });
 
       if (response.status !== 200) {
-        return false;
+        return {
+          isAuthenticated: false,
+          userId: '',
+        };
       }
 
       return {

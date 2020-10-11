@@ -40,19 +40,27 @@ const CustomMarker: React.FC<CustomMarkerProps> = ({tweet, timeRemaining}) => {
           <span className="c-popup__content__message">{tweet.message}</span>
           <div className="c-popup__content__links">
             <a
-              href="https://twitter.com/intent/tweet/?text=@hkmaplive&url=hoge"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#"
+              // href="https://twitter.com/intent/tweet/?text=@hkmaplive&url=hoge"
+              // target="_blank"
+              // rel="noopener noreferrer"
               aria-label="Twitter"
+              onClick={() => {
+                window.alert('Not available yet.');
+              }}
             >
               <FaTwitter />
             </a>
             &nbsp;
             <a
-              href="https://facebook.com/sharer/sharer.php?u=hoge"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#"
+              // href="https://facebook.com/sharer/sharer.php?u=hoge"
+              // target="_blank"
+              // rel="noopener noreferrer"
               aria-label="Facebook"
+              onClick={() => {
+                window.alert('Not available yet.');
+              }}
             >
               <FaFacebookF />
             </a>
@@ -62,10 +70,14 @@ const CustomMarker: React.FC<CustomMarkerProps> = ({tweet, timeRemaining}) => {
             </a>
             &nbsp;
             <a
-              href="https://telegram.me/share/url?text=頻道%3A@hkmaplive&url=hoge"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#"
+              // href="https://telegram.me/share/url?text=頻道%3A@hkmaplive&url=hoge"
+              // target="_blank"
+              // rel="noopener noreferrer"
               aria-label="Telegram"
+              onClick={() => {
+                window.alert('Not available yet.');
+              }}
             >
               <FaTelegram />
             </a>

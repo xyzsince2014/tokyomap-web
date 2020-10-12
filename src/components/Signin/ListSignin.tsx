@@ -38,8 +38,7 @@ const ListSignin = () => (
         role="button"
         tabIndex={0}
         onClick={() => {
-          window.alert('Not available yet.');
-          // window.location.href = `${process.env.DOMAIN_API_AUTH}/auth/line`;
+          window.location.href = `${process.env.DOMAIN_API_AUTH}/auth/line`;
         }}
         className="c-social-signin-btn__content"
       >

@@ -10,11 +10,11 @@ import LeafletMap, {LeafletMapProps} from '../../components/LeafletMap/LeafletMa
 
 interface StateProps {
   tweetsFetched: Models.Tweet[];
-  userId: number;
+  userId: string;
 }
 
 interface DispatchProps {
-  connectToSocketInit: (userId: number) => void;
+  connectToSocketInit: (userId: string) => void;
   postTweetBegin: (tweet: Models.Tweet) => void;
 }
 

@@ -6,13 +6,13 @@ import * as ActionType from '../actions/Auth/authConstants';
 export interface AuthState {
   isLoading: boolean;
   isAuthenticated: boolean;
-  userId: number;
+  userId: string;
 }
 
 export const initialAuthState = {
   isLoading: true,
   isAuthenticated: false,
-  userId: 0,
+  userId: '0',
 };
 
 const authReducer: Reducer<AuthState, AuthAction> = (

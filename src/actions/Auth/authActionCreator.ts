@@ -3,7 +3,7 @@ import * as ActionType from './authConstants';
 
 export interface AuthResult {
   isAuthenticated: boolean;
-  userId: number;
+  userId: string;
 }
 
 export const authenticate = {

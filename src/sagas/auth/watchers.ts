@@ -11,9 +11,9 @@
  */
 import {takeLatest} from 'redux-saga/effects';
 
-import {runGetIsAuthorised} from './tasks';
+import {runAuthenticate} from './tasks';
 import * as ActionType from '../../actions/Auth/authConstants';
 
 export function* watchGetIsAuthorised() {
-  yield takeLatest(ActionType.BEGIN, runGetIsAuthorised);
+  yield takeLatest(ActionType.BEGIN, runAuthenticate);
 }

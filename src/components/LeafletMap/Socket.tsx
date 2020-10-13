@@ -10,22 +10,20 @@ export interface SocketProps {
 const Socket: React.FC<SocketProps> = ({tweets = [], postTweet = () => {}}) => {
   const handleSubmit = () => {
     const message: HTMLInputElement = document.getElementById('message') as HTMLInputElement;
-    const userName: HTMLInputElement = document.getElementById('user') as HTMLInputElement;
     const lat: HTMLInputElement = document.getElementById('lat') as HTMLInputElement;
     const lng: HTMLInputElement = document.getElementById('lng') as HTMLInputElement;
 
     postTweet({
       tweetId: '',
-      userName: userName.value,
+      userName: '', // to be deleted
       message: message.value,
-      postedAt: '',
-      disappearAt: '',
+      postedAt: '', // to be deleted
+      disappearAt: '', // to be deleted
       lat: Number(lat.value),
       lng: Number(lng.value),
     });
 
     message.value = '';
-    userName.value = '';
     return false;
   };
 
@@ -35,9 +33,6 @@ const Socket: React.FC<SocketProps> = ({tweets = [], postTweet = () => {}}) => {
         <ul>
           <li>
             <input id="message" type="text" placeholder="message" />
-          </li>
-          <li>
-            <input id="user" type="text" placeholder="userName" />
           </li>
           <li>
             <input id="lat" type="text" defaultValue="35.7263716" />

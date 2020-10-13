@@ -28,12 +28,17 @@ const createAxiosInstance = (optionalConfig?: ApiConfig) => {
 /* ******************************************************
  * api handlers
  ****************************************************** */
+interface AuthenticateResult {
+  isAuthenticated: boolean;
+  userId: string;
+}
+
 export const getAuthFactory = (optionalConfig?: ApiConfig) => {
   const instance = createAxiosInstance();
 
-  const getIsAuthorised = async () => {
+  const authenticate = async (): Promise<AuthenticateResult> => {
     try {
-      const response = await instance.get('/auth/verify', {
+      const response = await instance.get('/auth/authenticate', {
         validateStatus: status => status < 500,
         withCredentials: true,
       });
@@ -47,7 +52,7 @@ export const getAuthFactory = (optionalConfig?: ApiConfig) => {
 
       return {
         isAuthenticated: response.data.isAuthenticated ? response.data.isAuthenticated : false,
-        userId: response.data.user.userId ? response.data.user.userId : 0,
+        userId: response.data.user.userId ? response.data.user.userId : '0',
       };
     } catch (err) {
       return {
@@ -57,5 +62,5 @@ export const getAuthFactory = (optionalConfig?: ApiConfig) => {
     }
   };
 
-  return getIsAuthorised;
+  return authenticate;
 };

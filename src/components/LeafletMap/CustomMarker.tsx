@@ -65,7 +65,15 @@ const CustomMarker: React.FC<CustomMarkerProps> = ({tweet, timeRemaining}) => {
               <FaFacebookF />
             </a>
             &nbsp;
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Line">
+            <a
+              href="#"
+              // target="_blank"
+              // rel="noopener noreferrer"
+              aria-label="Line"
+              onClick={() => {
+                window.alert('Not available yet.');
+              }}
+            >
               <FaLine />
             </a>
             &nbsp;

@@ -1,28 +1,18 @@
 import * as React from 'react';
+import L from 'leaflet';
 
 import {Tweet} from '../../services/socket/models';
 
 export interface SocketProps {
   tweets?: Tweet[];
-  postTweet?: (tweet: Tweet) => void;
+  postTweet?: (message: string, geolocation: L.LatLngTuple) => void;
+  geolocation: L.LatLngTuple;
 }
 
-const Socket: React.FC<SocketProps> = ({tweets = [], postTweet = () => {}}) => {
+const Socket: React.FC<SocketProps> = ({tweets = [], postTweet = () => {}, geolocation}) => {
   const handleSubmit = () => {
     const message: HTMLInputElement = document.getElementById('message') as HTMLInputElement;
-    const lat: HTMLInputElement = document.getElementById('lat') as HTMLInputElement;
-    const lng: HTMLInputElement = document.getElementById('lng') as HTMLInputElement;
-
-    postTweet({
-      tweetId: '',
-      userName: '', // to be deleted
-      message: message.value,
-      postedAt: '', // to be deleted
-      disappearAt: '', // to be deleted
-      lat: Number(lat.value),
-      lng: Number(lng.value),
-    });
-
+    postTweet(message.value, geolocation);
     message.value = '';
     return false;
   };
@@ -33,12 +23,6 @@ const Socket: React.FC<SocketProps> = ({tweets = [], postTweet = () => {}}) => {
         <ul>
           <li>
             <input id="message" type="text" placeholder="message" />
-          </li>
-          <li>
-            <input id="lat" type="text" defaultValue="35.7263716" />
-          </li>
-          <li>
-            <input id="lng" type="text" defaultValue="139.7029377" />
           </li>
           <li>
             <button type="button" className="button" onClick={handleSubmit}>

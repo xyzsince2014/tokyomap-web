@@ -18,9 +18,18 @@ export const putTweets = {
 };
 
 export const postTweet = {
-  begin: (tweet: Models.Tweet) => ({
+  begin: (message: string, geolocation: L.LatLngTuple) => ({
     type: ActionType.TWEET_POST as typeof ActionType.TWEET_POST,
-    payload: {tweet},
+    payload: {message, geolocation},
+  }),
+  // resolve
+  // reject
+};
+
+export const getGeolocation = {
+  begin: (geolocation: L.LatLngTuple) => ({
+    type: ActionType.GEOLOCATION_GET as typeof ActionType.GEOLOCATION_GET,
+    payload: {geolocation},
   }),
   // resolve
   // reject
@@ -29,4 +38,5 @@ export const postTweet = {
 export type SocketAction =
   | ReturnType<typeof connectToSocket.init>
   | ReturnType<typeof putTweets.begin>
-  | ReturnType<typeof postTweet.begin>;
+  | ReturnType<typeof postTweet.begin>
+  | ReturnType<typeof getGeolocation.begin>;

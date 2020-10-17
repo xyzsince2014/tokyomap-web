@@ -12,10 +12,15 @@ import Socket from './Socket';
 
 export interface LeafletMapProps {
   tweets?: Tweet[];
-  postTweet?: (tweet: Tweet) => void;
+  postTweet?: (message: string, geolocation: L.LatLngTuple) => void;
+  geolocation: L.LatLngTuple;
 }
 
-const LeafletMap: React.FC<LeafletMapProps> = ({tweets = [], postTweet = () => {}}) => {
+const LeafletMap: React.FC<LeafletMapProps> = ({
+  tweets = [],
+  postTweet = () => {},
+  geolocation,
+}) => {
   return (
     <Map
       className="l-leafletmap"
@@ -42,7 +47,12 @@ const LeafletMap: React.FC<LeafletMapProps> = ({tweets = [], postTweet = () => {
         >
           <BiLogOutCircle />
         </button>
-        <Socket tweets={tweets} postTweet={postTweet} />
+        {geolocation ? (
+          <Socket tweets={tweets} postTweet={postTweet} geolocation={geolocation} />
+        ) : (
+          <div />
+        )}
+        {/* // <Socket tweets={tweets} postTweet={postTweet} position={position} /> */}
       </Control>
       <div className="l-leafletmap__bottom">
         <Clock />

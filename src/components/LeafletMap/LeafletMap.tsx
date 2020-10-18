@@ -8,7 +8,7 @@ import {BiLogOutCircle} from 'react-icons/bi';
 import {Tweet} from '../../services/socket/models';
 import Clock from '../../containers/Clock/Clock';
 import CustomMarker from '../../containers/LeafletMap/CustomMarker';
-import Socket from './Socket';
+import Modal from './Modal';
 
 export interface LeafletMapProps {
   tweets?: Tweet[];
@@ -47,12 +47,7 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
         >
           <BiLogOutCircle />
         </button>
-        {geolocation ? (
-          <Socket tweets={tweets} postTweet={postTweet} geolocation={geolocation} />
-        ) : (
-          <div />
-        )}
-        {/* // <Socket tweets={tweets} postTweet={postTweet} position={position} /> */}
+        <Modal tweets={tweets} postTweet={postTweet} geolocation={geolocation} />
       </Control>
       <div className="l-leafletmap__bottom">
         <Clock />

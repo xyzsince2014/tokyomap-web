@@ -1,15 +1,6 @@
 @charset "UTF-8";
 
 $leaflet-bottom-clock: 1000;
-
-// todo: delete if not necesarry
+$z-index-modal: 2000;
 $min-width-pc-view: 768px;
-$content-max-width: 834px;
 
-$content-gutter-pc: 15px;
-$content-gutter-sp: 10px;
-
-$z-index-header: 10000;
-$z-index-side: 11000;
-$z-index-notice: 12000;
-$z-index-modal: 20000;

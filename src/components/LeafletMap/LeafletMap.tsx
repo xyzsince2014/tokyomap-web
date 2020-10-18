@@ -8,7 +8,7 @@ import {BiLogOutCircle} from 'react-icons/bi';
 import {Tweet} from '../../services/socket/models';
 import Clock from '../../containers/Clock/Clock';
 import CustomMarker from '../../containers/LeafletMap/CustomMarker';
-import Modal from './Modal';
+import Modal from '../../containers/LeafletMap/Modal';
 
 export interface LeafletMapProps {
   tweets?: Tweet[];

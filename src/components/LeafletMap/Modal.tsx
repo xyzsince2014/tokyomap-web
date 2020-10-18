@@ -17,15 +17,13 @@ const Modal: React.FC<MolalProps> = ({tweets = [], postTweet = () => {}, geoloca
   };
 
   return (
-    /* eslint-disable jsx-a11y/control-has-associated-label */
     <div
       className="l-modal"
-      // tabIndex=1
       role="dialog"
       data-modal="modal_socket"
       aria-modal="true"
-      aria-hidden="true"
-      //   aria-hidden="false"
+      // aria-hidden="true"
+      aria-hidden="false"
     >
       <div className="l-modal__inner">
         <div className="l-modal__inner__content" data-modal-wrapper="modal_socket">
@@ -52,27 +50,29 @@ const Modal: React.FC<MolalProps> = ({tweets = [], postTweet = () => {}, geoloca
               )}
             </div>
             <div className="c-modal__select">
-              <button
-                type="button"
+              <div
+                role="button"
                 className="c-modal__select__btn"
                 data-modal-jump="modal_socket"
                 onClick={handleSubmit}
+                onKeyDown={handleSubmit}
+                tabIndex={0}
               >
                 <span>Post</span>
-              </button>
-              <button
-                type="button"
+              </div>
+              <div
+                role="button"
                 className="c-modal__select__btn c-modal__select__btn--close"
                 data-modal-close="modal_socket"
+                tabIndex={0}
               >
                 <span>Close</span>
-              </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    /* eslint-enable jsx-a11y/control-has-associated-label */
   );
 };
 

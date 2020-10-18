@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators, Dispatch} from 'redux';
 
 import * as Models from '../../services/socket/models';
-import {connectToSocket, postTweet} from '../../actions/Socket/socketActionCreator';
+import {connectToSocket, getGeolocation, postTweet} from '../../actions/Socket/socketActionCreator';
 import {RootState} from '../../reducers/rootReducer';
 import LeafletMap, {LeafletMapProps} from '../../components/LeafletMap/LeafletMap';
 
@@ -16,6 +16,7 @@ interface StateProps {
 interface DispatchProps {
   connectToSocketInit: (userId: string) => void;
   postTweetBegin: (message: string, geolocation: L.LatLngTuple) => void;
+  getGeolocationBegin: () => void;
 }
 
 type EnhancedLeafletMapProps = LeafletMapProps & StateProps & DispatchProps;
@@ -31,6 +32,7 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
     {
       connectToSocketInit: userId => connectToSocket.init(userId),
       postTweetBegin: (message, geolocation) => postTweet.begin(message, geolocation),
+      getGeolocationBegin: () => getGeolocation.begin(),
     },
     dispatch,
   );
@@ -41,8 +43,10 @@ const LeafletMapContainer: React.FC<EnhancedLeafletMapProps> = ({
   userId,
   connectToSocketInit,
   postTweetBegin,
+  getGeolocationBegin,
 }) => {
   React.useEffect(() => {
+    getGeolocationBegin();
     connectToSocketInit(userId);
   }, []);
   return <LeafletMap tweets={tweetsFetched} postTweet={postTweetBegin} geolocation={geolocation} />;

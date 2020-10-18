@@ -3,7 +3,8 @@ import io from 'socket.io-client';
 
 import subscribe from './subscriber';
 import * as ActionType from '../../actions/Socket/socketConstants';
-import {postTweet} from '../../actions/Socket/socketActionCreator';
+import {postTweet, getGeolocation} from '../../actions/Socket/socketActionCreator';
+import {getGeolocationFactory} from '../../services/socket/api';
 
 export const createSocketConnection = () => {
   const socket = io('http://localhost:4000');
@@ -46,5 +47,15 @@ export function* dispatchActionFromChannel(socket: SocketIOClient.Socket) {
   while (true) {
     const action = yield take(channel);
     yield put(action);
+  }
+}
+
+export function* runGetGeolocation(action: ReturnType<typeof getGeolocation.begin>) {
+  try {
+    const geolocation = yield call(getGeolocationFactory());
+    yield put(getGeolocation.resolve(geolocation));
+  } catch (err) {
+    // yield put(getGeolocation.resject());
+    console.log(err);
   }
 }

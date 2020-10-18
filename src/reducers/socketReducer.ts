@@ -27,7 +27,11 @@ const socketReducer: Reducer<SocketState, SocketAction> = (
       return {
         ...state,
       };
-    case ActionType.GEOLOCATION_GET:
+    case ActionType.GET_GEOLOCATION_BEGIN:
+      return {
+        ...state,
+      };
+    case ActionType.GET_GEOLOCATION_RESOLVE:
       return {
         ...state,
         geolocation: action.payload.geolocation,

@@ -4,6 +4,7 @@ import {Map, TileLayer, ZoomControl} from 'react-leaflet';
 import LeafletSearch from 'react-leaflet-search';
 import Control from 'react-leaflet-control';
 import {BiLogOutCircle} from 'react-icons/bi';
+import {TiMessage} from 'react-icons/ti';
 
 import {Tweet} from '../../services/socket/models';
 import Clock from '../../containers/Clock/Clock';
@@ -47,6 +48,9 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
             }}
           >
             <BiLogOutCircle />
+          </button>
+          <button type="button" data-modal-trigger="modal_socket">
+            <TiMessage />
           </button>
         </Control>
         <div className="l-leafletmap__bottom">

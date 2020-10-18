@@ -14,7 +14,7 @@ const Modal: React.FC<MolalProps> = ({tweets = [], handleSubmit = () => {}, geol
     role="dialog"
     data-modal="modal_socket"
     aria-modal="true"
-    aria-hidden="false"
+    aria-hidden="true"
   >
     <div className="l-modal__inner">
       <div className="l-modal__inner__content" data-modal-wrapper="modal_socket">

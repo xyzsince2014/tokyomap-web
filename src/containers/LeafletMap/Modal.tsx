@@ -3,6 +3,7 @@ import * as React from 'react';
 import Modal from '../../components/LeafletMap/Modal';
 
 import {Tweet} from '../../services/socket/models';
+import {setModals} from '../../utils/modal';
 
 export interface EnhancedModalProps {
   tweets?: Tweet[];
@@ -17,6 +18,13 @@ const ModalContainer: React.FC<EnhancedModalProps> = ({tweets = [], postTweet, g
     message.value = '';
     return false;
   };
+
+  React.useEffect(() => {
+    Array.from(document.querySelectorAll('.l-modal')).map(modal => {
+      setModals(modal);
+      return false;
+    });
+  }, []);
 
   return <Modal tweets={tweets} handleSubmit={handleSubmit} geolocation={geolocation} />;
 };

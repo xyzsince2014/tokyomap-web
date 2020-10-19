@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import Modal from '../../components/LeafletMap/Modal';
+import Modal from '../../presentationals/LeafletMap/Modal';
 
 import {Tweet} from '../../services/socket/models';
 import {setModals} from '../../utils/modal';

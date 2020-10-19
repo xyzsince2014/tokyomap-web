@@ -11,7 +11,7 @@ import {RootState} from '../reducers/rootReducer';
 import Auth from './Auth';
 
 import LeafletMap from '../containers/LeafletMap/LeafletMap';
-import Spinner from '../components/common/Spinner';
+import Spinner from '../presentationals/common/Spinner';
 
 interface StateProps {
   isLoading: boolean;

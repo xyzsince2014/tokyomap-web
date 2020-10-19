@@ -5,7 +5,7 @@ import {bindActionCreators, Dispatch} from 'redux';
 import * as Models from '../../services/socket/models';
 import {connectToSocket, getGeolocation, postTweet} from '../../actions/Socket/socketActionCreator';
 import {RootState} from '../../reducers/rootReducer';
-import LeafletMap, {LeafletMapProps} from '../../components/LeafletMap/LeafletMap';
+import LeafletMap, {LeafletMapProps} from '../../presentationals/LeafletMap/LeafletMap';
 
 interface StateProps {
   tweetsFetched: Models.Tweet[];

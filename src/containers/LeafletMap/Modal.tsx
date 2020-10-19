@@ -20,7 +20,7 @@ const ModalContainer: React.FC<EnhancedModalProps> = ({tweets = [], postTweet, g
   };
 
   React.useEffect(() => {
-    Array.from(document.querySelectorAll('.l-modal')).map(modal => {
+    Array.from(document.getElementsByClassName('l-modal')).map(modal => {
       setModals(modal);
       return false;
     });

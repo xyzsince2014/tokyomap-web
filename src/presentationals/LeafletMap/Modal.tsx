@@ -27,7 +27,7 @@ const Modal: React.FC<MolalProps> = ({tweets = [], handleSubmit = () => {}, geol
                 </li>
               </ul>
             </form>
-            {geolocation && tweets ? (
+            {/* {geolocation && tweets ? (
               <ul>
                 {tweets.map(t => (
                   <li key={t.tweetId}>
@@ -38,7 +38,7 @@ const Modal: React.FC<MolalProps> = ({tweets = [], handleSubmit = () => {}, geol
               </ul>
             ) : (
               'No tweets'
-            )}
+            )} */}
           </div>
           <div className="c-modal__select">
             <div

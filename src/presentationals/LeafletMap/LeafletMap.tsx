@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as L from 'leaflet';
 import {Map, TileLayer, ZoomControl} from 'react-leaflet';
 import LeafletSearch from 'react-leaflet-search';
-import Control from 'react-leaflet-control';
 import {BiLogOutCircle} from 'react-icons/bi';
 import {TiMessage} from 'react-icons/ti';
 
@@ -40,7 +39,9 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
         {tweets.map(t => (
           <CustomMarker tweet={t} />
         ))}
-        <Control position="topright">
+      </Map>
+      <div className="l-control">
+        <div className="l-control__topright">
           <button
             type="button"
             onClick={() => {
@@ -52,11 +53,11 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
           <button type="button" data-modal-trigger="modal_socket">
             <TiMessage />
           </button>
-        </Control>
-        <div className="l-leafletmap__bottom">
+        </div>
+        <div className="l-control__bottomleft">
           <Clock />
         </div>
-      </Map>
+      </div>
       <Modal tweets={tweets} postTweet={postTweet} geolocation={geolocation} />
     </div>
   );

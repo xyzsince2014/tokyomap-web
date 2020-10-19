@@ -49,7 +49,14 @@ const LeafletMapContainer: React.FC<EnhancedLeafletMapProps> = ({
     getGeolocationBegin();
     connectToSocketInit(userId);
   }, []);
-  return <LeafletMap tweets={tweetsFetched} postTweet={postTweetBegin} geolocation={geolocation} />;
+  return (
+    <LeafletMap
+      tweets={tweetsFetched}
+      postTweet={postTweetBegin}
+      geolocation={geolocation}
+      getGeolocationBegin={getGeolocationBegin}
+    />
+  );
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LeafletMapContainer);

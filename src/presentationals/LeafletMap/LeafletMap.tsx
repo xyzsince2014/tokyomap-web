@@ -14,12 +14,14 @@ export interface LeafletMapProps {
   tweets?: Tweet[];
   postTweet?: (message: string, geolocation: L.LatLngTuple) => void;
   geolocation: L.LatLngTuple;
+  getGeolocationBegin: () => void;
 }
 
 const LeafletMap: React.FC<LeafletMapProps> = ({
   tweets = [],
   postTweet = () => {},
   geolocation,
+  getGeolocationBegin,
 }) => {
   return (
     <div>
@@ -50,7 +52,7 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
           >
             <BiLogOutCircle />
           </button>
-          <button type="button" data-modal-trigger="modal_socket">
+          <button type="button" data-modal-trigger="modal_socket" onClick={getGeolocationBegin}>
             <TiMessage />
           </button>
         </div>

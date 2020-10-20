@@ -4,11 +4,11 @@ import {Tweet} from '../../services/socket/models';
 
 export interface MolalProps {
   tweets?: Tweet[];
-  handleSubmit: () => void;
+  handlePost: () => void;
   geolocation: L.LatLngTuple;
 }
 
-const Modal: React.FC<MolalProps> = ({tweets = [], handleSubmit = () => {}, geolocation}) => (
+const Modal: React.FC<MolalProps> = ({tweets = [], handlePost = () => {}, geolocation}) => (
   <div
     className="l-modal"
     role="dialog"
@@ -45,8 +45,8 @@ const Modal: React.FC<MolalProps> = ({tweets = [], handleSubmit = () => {}, geol
               role="button"
               className="c-modal__select__btn"
               data-modal-jump="modal_socket"
-              onClick={handleSubmit}
-              onKeyDown={handleSubmit}
+              onClick={handlePost}
+              onKeyDown={handlePost}
               tabIndex={0}
             >
               <span>Post</span>

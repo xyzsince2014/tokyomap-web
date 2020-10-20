@@ -12,7 +12,7 @@ export interface EnhancedModalProps {
 }
 
 const ModalContainer: React.FC<EnhancedModalProps> = ({tweets = [], postTweet, geolocation}) => {
-  const handleSubmit = () => {
+  const handlePost = () => {
     const message: HTMLInputElement = document.getElementById('message') as HTMLInputElement;
     postTweet(message.value, geolocation);
     message.value = '';
@@ -26,7 +26,7 @@ const ModalContainer: React.FC<EnhancedModalProps> = ({tweets = [], postTweet, g
     });
   }, []);
 
-  return <Modal tweets={tweets} handleSubmit={handleSubmit} geolocation={geolocation} />;
+  return <Modal tweets={tweets} handlePost={handlePost} geolocation={geolocation} />;
 };
 
 export default ModalContainer;

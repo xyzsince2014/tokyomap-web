@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+@mixin control {
+  position: fixed;
+  z-index: $z-index-control;
+  @content;
+}

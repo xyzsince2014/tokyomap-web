@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import CustormMarker from '../../components/LeafletMap/CustomMarker';
+import CustormMarker from '../../presentationals/LeafletMap/CustomMarker';
 import {Tweet} from '../../services/socket/models';
 import {formatDateTime, fetchCurrentTime} from '../../utils/dateTime';
 

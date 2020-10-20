@@ -6,12 +6,11 @@ import * as Models from '../services/socket/models';
 
 export interface SocketState {
   tweets: Models.Tweet[];
+  geolocation: L.LatLngTuple;
 }
 
-export const initialSocketState = {tweets: []};
-
 const socketReducer: Reducer<SocketState, SocketAction> = (
-  state: SocketState = initialSocketState,
+  state: SocketState = {tweets: [], geolocation: [35.680722, 139.767271]}, // default geolocation is Tokyo Sta.
   action: SocketAction,
 ): SocketState => {
   switch (action.type) {
@@ -27,6 +26,15 @@ const socketReducer: Reducer<SocketState, SocketAction> = (
     case ActionType.TWEET_POST:
       return {
         ...state,
+      };
+    case ActionType.GET_GEOLOCATION_BEGIN:
+      return {
+        ...state,
+      };
+    case ActionType.GET_GEOLOCATION_RESOLVE:
+      return {
+        ...state,
+        geolocation: action.payload.geolocation,
       };
     default:
       /* eslint-disable no-case-declarations */

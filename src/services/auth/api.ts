@@ -25,9 +25,6 @@ const createAxiosInstance = (optionalConfig?: ApiConfig) => {
   return instance;
 };
 
-/* ******************************************************
- * api handlers
- ****************************************************** */
 interface AuthenticateResult {
   isAuthenticated: boolean;
   userId: string;

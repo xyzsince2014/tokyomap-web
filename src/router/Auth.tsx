@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Route, Redirect} from 'react-router';
 
-import SignIn from '../components/Signin/Signin';
+import SignIn from '../presentationals/Signin/Signin';
 
 interface AuthProps {
   isAuthenticated: boolean;

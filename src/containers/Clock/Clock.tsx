@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import Clock from '../../components/Clock/Clock';
+import Clock from '../../presentationals/Clock/Clock';
 import {fetchCurrentDatetime} from '../../utils/dateTime';
 
 const useClock = () => {

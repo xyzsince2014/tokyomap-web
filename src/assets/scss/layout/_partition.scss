@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-@import '../foundation';
-
 $side-width: 270px;
 $side-gap: 20px;
 
@@ -10,10 +8,6 @@ $side-gap: 20px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-
-  // &__header {}
-
-  // &__side {}
 
   &__main {
     flex: 1 0 auto;
@@ -40,6 +34,4 @@ $side-gap: 20px;
     pointer-events: none;
     background-color: rgba($colour-black, 1);
   }
-
-  // &__notice {}
 }

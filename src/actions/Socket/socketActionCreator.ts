@@ -2,32 +2,27 @@ import * as ActionType from './socketConstants';
 import * as Models from '../../services/socket/models';
 
 export const connectToSocket = {
-  init: (userId: string) => ({
-    type: ActionType.SOCKET_CONNECT as typeof ActionType.SOCKET_CONNECT,
+  begin: (userId: string) => ({
+    type: ActionType.CONNECT_SOCKET_BEGIN as typeof ActionType.CONNECT_SOCKET_BEGIN,
     payload: {userId},
   }),
-};
-
-export const putTweets = {
-  begin: (tweets: Models.Tweet[]) => ({
-    type: ActionType.TWEET_PUT as typeof ActionType.TWEET_PUT,
+  resolve: (tweets: Models.Tweet[]) => ({
+    type: ActionType.CONNECT_SOCKET_RESOLVE as typeof ActionType.CONNECT_SOCKET_RESOLVE,
     payload: {tweets},
   }),
-  // resolve
-  // reject
+  // todo: reject
 };
 
 export const postTweet = {
   begin: (message: string, geolocation: L.LatLngTuple) => ({
-    // type: ActionType.POST_TWEET_BEGIN as typeof ActionType.POST_TWEET_BEGIN,
-    type: ActionType.TWEET_POST as typeof ActionType.TWEET_POST,
+    type: ActionType.POST_TWEET_BEGIN as typeof ActionType.POST_TWEET_BEGIN,
     payload: {message, geolocation},
   }),
-  // resolve: (tweets: Models.Tweet[]) => ({
-  //   type: ActionType.POST_TWEET_RESOLVE as typeof ActionType.POST_TWEET_RESOLVE,
-  //   payload: {tweets},
-  // }),
-  // reject
+  resolve: (tweets: Models.Tweet[]) => ({
+    type: ActionType.POST_TWEET_RESOLVE as typeof ActionType.POST_TWEET_RESOLVE,
+    payload: {tweets},
+  }),
+  // todo: reject
 };
 
 export const getGeolocation = {
@@ -46,8 +41,9 @@ export const getGeolocation = {
 };
 
 export type SocketAction =
-  | ReturnType<typeof connectToSocket.init>
-  | ReturnType<typeof putTweets.begin>
+  | ReturnType<typeof connectToSocket.begin>
+  | ReturnType<typeof connectToSocket.resolve>
   | ReturnType<typeof postTweet.begin>
+  | ReturnType<typeof postTweet.resolve>
   | ReturnType<typeof getGeolocation.begin>
   | ReturnType<typeof getGeolocation.resolve>;

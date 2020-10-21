@@ -14,18 +14,23 @@ const socketReducer: Reducer<SocketState, SocketAction> = (
   action: SocketAction,
 ): SocketState => {
   switch (action.type) {
-    case ActionType.SOCKET_CONNECT:
+    case ActionType.CONNECT_SOCKET_BEGIN:
       return {
         ...state,
       };
-    case ActionType.TWEET_PUT:
+    case ActionType.CONNECT_SOCKET_RESOLVE:
       return {
         ...state,
         tweets: action.payload.tweets,
       };
-    case ActionType.TWEET_POST:
+    case ActionType.POST_TWEET_BEGIN:
       return {
         ...state,
+      };
+    case ActionType.POST_TWEET_RESOLVE:
+      return {
+        ...state,
+        tweets: action.payload.tweets,
       };
     case ActionType.GET_GEOLOCATION_BEGIN:
       return {

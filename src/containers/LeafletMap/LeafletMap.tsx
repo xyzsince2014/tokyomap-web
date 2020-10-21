@@ -30,7 +30,7 @@ const mapStateToProps = (state: RootState): StateProps => ({
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
   bindActionCreators(
     {
-      connectToSocketInit: userId => connectToSocket.init(userId),
+      connectToSocketInit: userId => connectToSocket.begin(userId),
       postTweetBegin: (message, geolocation) => postTweet.begin(message, geolocation),
       getGeolocationBegin: () => getGeolocation.begin(),
     },

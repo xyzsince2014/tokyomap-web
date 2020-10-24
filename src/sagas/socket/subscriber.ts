@@ -13,12 +13,18 @@ const subscribe = (socket: SocketIOClient.Socket) =>
       emit(postTweet.resolve(tweets));
     };
 
-    socket.on('initSocketState:done', initSocketState);
+    const handleError = (err: Error) => {
+      window.alert('failed to fetch tweets'); // todo: display error notification
+      emit(connectToSocket.resolve([]));
+    };
+
+    socket.on('initSocketState:resolve', initSocketState);
+    socket.on('initSocketState:reject', handleError);
     socket.on('postTweet:done', updateSocketState);
 
     // the subscriber must return `unsubscribe()`, which will be invoked when the saga calls `channel.close()`
     const unsubscribe = () => {
-      socket.off('initSocketState:done', initSocketState);
+      socket.off('initSocketState:resolve', initSocketState);
       socket.off('postTweet:done', updateSocketState);
     };
 

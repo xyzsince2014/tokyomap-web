@@ -44,9 +44,9 @@ export function* updateSocketState(socket: SocketIOClient.Socket, userId: string
  * @param socket
  */
 export function* dispatchActionFromChannel(socket: SocketIOClient.Socket) {
-  const channel = yield call(subscribe, socket);
+  const eventChannel = yield call(subscribe, socket);
   while (true) {
-    const action = yield take(channel);
+    const action = yield take(eventChannel);
     yield put(action);
   }
 }

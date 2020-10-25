@@ -11,14 +11,16 @@ import * as ActionType from '../../actions/Socket/socketConstants';
 
 export function* watchSocket() {
   while (true) {
-    yield takeLatest(ActionType.GET_GEOLOCATION_BEGIN, runGetGeolocation);
     const action: ReturnType<typeof connectToSocket.begin> = yield take(
       ActionType.CONNECT_SOCKET_BEGIN,
     );
-    // todo: try-catch?
-    const socket = yield call(createSocketConnection);
+    const socket = yield call(createSocketConnection); // todo: try-catch?
     yield fork(initSocketState, socket, action.payload.userId);
     yield fork(updateSocketState, socket, action.payload.userId);
     yield fork(dispatchActionFromChannel, socket);
   }
+}
+
+export function* watchGeolocation() {
+  yield takeLatest(ActionType.GET_GEOLOCATION_BEGIN, runGetGeolocation);
 }

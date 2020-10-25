@@ -15,6 +15,7 @@ export function* watchSocket() {
     const action: ReturnType<typeof connectToSocket.begin> = yield take(
       ActionType.CONNECT_SOCKET_BEGIN,
     );
+    // todo: try-catch?
     const socket = yield call(createSocketConnection);
     yield fork(initSocketState, socket, action.payload.userId);
     yield fork(updateSocketState, socket, action.payload.userId);

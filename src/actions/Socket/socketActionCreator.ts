@@ -10,7 +10,10 @@ export const connectToSocket = {
     type: ActionType.CONNECT_SOCKET_RESOLVE as typeof ActionType.CONNECT_SOCKET_RESOLVE,
     payload: {tweets},
   }),
-  // todo: reject
+  reject: () => ({
+    type: ActionType.CONNECT_SOCKET_REJECT as typeof ActionType.CONNECT_SOCKET_REJECT,
+    error: true,
+  }),
 };
 
 export const postTweet = {
@@ -24,6 +27,7 @@ export const postTweet = {
   }),
   reject: () => ({
     type: ActionType.POST_TWEET_REJECT as typeof ActionType.POST_TWEET_REJECT,
+    error: true,
   }),
 };
 
@@ -45,6 +49,7 @@ export const getGeolocation = {
 export type SocketAction =
   | ReturnType<typeof connectToSocket.begin>
   | ReturnType<typeof connectToSocket.resolve>
+  | ReturnType<typeof connectToSocket.reject>
   | ReturnType<typeof postTweet.begin>
   | ReturnType<typeof postTweet.resolve>
   | ReturnType<typeof postTweet.reject>

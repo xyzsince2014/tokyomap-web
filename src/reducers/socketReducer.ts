@@ -23,6 +23,10 @@ const socketReducer: Reducer<SocketState, SocketAction> = (
         ...state,
         tweets: action.payload.tweets,
       };
+    case ActionType.CONNECT_SOCKET_REJECT:
+      return {
+        ...state,
+      };
     case ActionType.POST_TWEET_BEGIN:
       return {
         ...state,

@@ -6,12 +6,13 @@ import * as Models from '../../services/socket/models';
 const subscribe = (socket: SocketIOClient.Socket) =>
   eventChannel(emit => {
     const initSocketStateResolve = (tweets: Models.Tweet[]) => {
+      // todo: display connection notification
       emit(connectToSocket.resolve(tweets));
     };
 
     const initSocketStateReject = (err: Error) => {
       window.alert('failed to fetch tweets'); // todo: display error notification
-      emit(connectToSocket.resolve([])); // todo: revoke connectToSocket.reject()
+      emit(connectToSocket.reject());
     };
 
     const updateSocketStateResolve = (tweets: Models.Tweet[]) => {

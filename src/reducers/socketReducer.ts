@@ -32,6 +32,10 @@ const socketReducer: Reducer<SocketState, SocketAction> = (
         ...state,
         tweets: action.payload.tweets,
       };
+    case ActionType.POST_TWEET_REJECT:
+      return {
+        ...state,
+      };
     case ActionType.GET_GEOLOCATION_BEGIN:
       return {
         ...state,

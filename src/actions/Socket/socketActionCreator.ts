@@ -22,7 +22,9 @@ export const postTweet = {
     type: ActionType.POST_TWEET_RESOLVE as typeof ActionType.POST_TWEET_RESOLVE,
     payload: {tweets},
   }),
-  // todo: reject
+  reject: () => ({
+    type: ActionType.POST_TWEET_REJECT as typeof ActionType.POST_TWEET_REJECT,
+  }),
 };
 
 export const getGeolocation = {
@@ -45,5 +47,6 @@ export type SocketAction =
   | ReturnType<typeof connectToSocket.resolve>
   | ReturnType<typeof postTweet.begin>
   | ReturnType<typeof postTweet.resolve>
+  | ReturnType<typeof postTweet.reject>
   | ReturnType<typeof getGeolocation.begin>
   | ReturnType<typeof getGeolocation.resolve>;

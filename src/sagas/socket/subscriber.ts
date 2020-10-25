@@ -5,27 +5,35 @@ import * as Models from '../../services/socket/models';
 
 const subscribe = (socket: SocketIOClient.Socket) =>
   eventChannel(emit => {
-    const initSocketState = (tweets: Models.Tweet[]) => {
+    const initSocketStateResolve = (tweets: Models.Tweet[]) => {
       emit(connectToSocket.resolve(tweets));
     };
 
-    const updateSocketState = (tweets: Models.Tweet[]) => {
+    const initSocketStateReject = (err: Error) => {
+      window.alert('failed to fetch tweets'); // todo: display error notification
+      emit(connectToSocket.resolve([])); // todo: revoke connectToSocket.reject()
+    };
+
+    const updateSocketStateResolve = (tweets: Models.Tweet[]) => {
       emit(postTweet.resolve(tweets));
     };
 
-    const handleError = (err: Error) => {
-      window.alert('failed to fetch tweets'); // todo: display error notification
-      emit(connectToSocket.resolve([]));
+    const updateSocketStateReject = (err: Error) => {
+      window.alert('failed to post'); // todo: display error notification
+      emit(postTweet.reject());
     };
 
-    socket.on('initSocketState:resolve', initSocketState);
-    socket.on('initSocketState:reject', handleError);
-    socket.on('postTweet:done', updateSocketState);
+    socket.on('initSocketState:resolve', initSocketStateResolve);
+    socket.on('initSocketState:reject', initSocketStateReject);
+    socket.on('postTweet:resolve', updateSocketStateResolve);
+    socket.on('postTweet:reject', updateSocketStateReject);
 
     // the subscriber must return `unsubscribe()`, which will be invoked when the saga calls `channel.close()`
     const unsubscribe = () => {
-      socket.off('initSocketState:resolve', initSocketState);
-      socket.off('postTweet:done', updateSocketState);
+      socket.off('initSocketState:resolve', initSocketStateResolve);
+      socket.off('initSocketState:reject', initSocketStateReject);
+      socket.off('postTweet:resolve', updateSocketStateResolve);
+      socket.off('postTweet:reject', updateSocketStateReject);
     };
 
     return unsubscribe;

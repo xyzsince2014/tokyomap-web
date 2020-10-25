@@ -49,6 +49,11 @@ const socketReducer: Reducer<SocketState, SocketAction> = (
         ...state,
         geolocation: action.payload.geolocation,
       };
+    case ActionType.GET_GEOLOCATION_REJECT:
+      return {
+        ...state,
+        geolocation: [35.680722, 139.767271], // set geolocation = Tokyo Sta.
+      };
     default:
       /* eslint-disable no-case-declarations */
       // eslint-disable-next-line @typescript-eslint/no-unused-vars

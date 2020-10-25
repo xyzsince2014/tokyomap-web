@@ -56,7 +56,7 @@ export function* runGetGeolocation(action: ReturnType<typeof getGeolocation.begi
     const geolocation = yield call(getGeolocationFactory());
     yield put(getGeolocation.resolve(geolocation));
   } catch (err) {
-    // yield put(getGeolocation.resject());
-    console.log(err);
+    window.alert('Enable geolocation'); // todo: display error notification
+    yield put(getGeolocation.reject());
   }
 }

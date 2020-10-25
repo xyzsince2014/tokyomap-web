@@ -1,6 +1,7 @@
 import * as ActionType from './socketConstants';
 import * as Models from '../../services/socket/models';
 
+// todo: seperate to connecToSocket & initTweets
 export const connectToSocket = {
   begin: (userId: string) => ({
     type: ActionType.CONNECT_SOCKET_BEGIN as typeof ActionType.CONNECT_SOCKET_BEGIN,
@@ -39,11 +40,10 @@ export const getGeolocation = {
     type: ActionType.GET_GEOLOCATION_RESOLVE as typeof ActionType.GET_GEOLOCATION_RESOLVE,
     payload: {geolocation},
   }),
-  // reject: (params: SearchRepositoriesParams, error: AxiosError) => ({
-  //   type: ActionType.SEARCH_REPOSITORIES_FAIL as typeof ActionType.SEARCH_REPOSITORIES_FAIL,
-  //   payload: {params, error},
-  //   error: true,
-  // }),
+  reject: () => ({
+    type: ActionType.GET_GEOLOCATION_REJECT as typeof ActionType.GET_GEOLOCATION_REJECT,
+    error: true,
+  }),
 };
 
 export type SocketAction =
@@ -54,4 +54,5 @@ export type SocketAction =
   | ReturnType<typeof postTweet.resolve>
   | ReturnType<typeof postTweet.reject>
   | ReturnType<typeof getGeolocation.begin>
-  | ReturnType<typeof getGeolocation.resolve>;
+  | ReturnType<typeof getGeolocation.resolve>
+  | ReturnType<typeof getGeolocation.reject>;

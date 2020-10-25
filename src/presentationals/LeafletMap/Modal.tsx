@@ -16,7 +16,6 @@ const Modal: React.FC<MolalProps> = ({handlePost = () => {}}) => (
       <div className="l-modal__inner__content" data-modal-wrapper="modal_socket">
         <div className="c-modal" role="document">
           <div className="c-modal__content">
-            {/* todo: validation */}
             <form>
               <ul>
                 <li>

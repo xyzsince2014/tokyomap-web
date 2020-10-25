@@ -9,11 +9,14 @@ export interface EnhancedModalProps {
 }
 
 const ModalContainer: React.FC<EnhancedModalProps> = ({postTweet, geolocation}) => {
-  const handlePost = () => {
+  const handlePost = (): void => {
     const message: HTMLInputElement = document.getElementById('message') as HTMLInputElement;
+    if (!message.value || !(Buffer.byteLength(message.value, 'utf-8') < 256)) {
+      window.alert('invalid input');
+      return;
+    }
     postTweet(message.value, geolocation);
     message.value = '';
-    return false;
   };
 
   React.useEffect(() => {

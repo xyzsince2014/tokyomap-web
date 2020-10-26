@@ -9,10 +9,9 @@ import {getGeolocationFactory} from '../../services/socket/api';
 export const createSocketConnection = () => {
   const socket = io('http://localhost:4000');
 
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     socket.on('connect', () => {
       resolve(socket);
-      // todo: reject();
     });
   });
 };

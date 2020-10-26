@@ -1,7 +1,6 @@
 import * as ActionType from './socketConstants';
 import * as Models from '../../services/socket/models';
 
-// todo: seperate to connecToSocket & initTweets
 export const connectToSocket = {
   begin: (userId: string) => ({
     type: ActionType.CONNECT_SOCKET_BEGIN as typeof ActionType.CONNECT_SOCKET_BEGIN,

@@ -1,14 +1,10 @@
 import * as React from 'react';
 
-import {Tweet} from '../../services/socket/models';
-
 export interface MolalProps {
-  tweets?: Tweet[];
   handlePost: () => void;
-  geolocation: L.LatLngTuple;
 }
 
-const Modal: React.FC<MolalProps> = ({tweets = [], handlePost = () => {}, geolocation}) => (
+const Modal: React.FC<MolalProps> = ({handlePost = () => {}}) => (
   <div
     className="l-modal"
     role="dialog"
@@ -27,18 +23,6 @@ const Modal: React.FC<MolalProps> = ({tweets = [], handlePost = () => {}, geoloc
                 </li>
               </ul>
             </form>
-            {/* {geolocation && tweets ? (
-              <ul>
-                {tweets.map(t => (
-                  <li key={t.tweetId}>
-                    <span>{t.userName}</span> : {t.message} (
-                    {t.postedAt.replace('T', ' ').replace('.000Z', '')})
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              'No tweets'
-            )} */}
           </div>
           <div className="c-modal__select">
             <div

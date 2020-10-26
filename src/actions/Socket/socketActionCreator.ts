@@ -10,7 +10,10 @@ export const connectToSocket = {
     type: ActionType.CONNECT_SOCKET_RESOLVE as typeof ActionType.CONNECT_SOCKET_RESOLVE,
     payload: {tweets},
   }),
-  // todo: reject
+  reject: () => ({
+    type: ActionType.CONNECT_SOCKET_REJECT as typeof ActionType.CONNECT_SOCKET_REJECT,
+    error: true,
+  }),
 };
 
 export const postTweet = {
@@ -22,7 +25,10 @@ export const postTweet = {
     type: ActionType.POST_TWEET_RESOLVE as typeof ActionType.POST_TWEET_RESOLVE,
     payload: {tweets},
   }),
-  // todo: reject
+  reject: () => ({
+    type: ActionType.POST_TWEET_REJECT as typeof ActionType.POST_TWEET_REJECT,
+    error: true,
+  }),
 };
 
 export const getGeolocation = {
@@ -33,17 +39,19 @@ export const getGeolocation = {
     type: ActionType.GET_GEOLOCATION_RESOLVE as typeof ActionType.GET_GEOLOCATION_RESOLVE,
     payload: {geolocation},
   }),
-  // reject: (params: SearchRepositoriesParams, error: AxiosError) => ({
-  //   type: ActionType.SEARCH_REPOSITORIES_FAIL as typeof ActionType.SEARCH_REPOSITORIES_FAIL,
-  //   payload: {params, error},
-  //   error: true,
-  // }),
+  reject: () => ({
+    type: ActionType.GET_GEOLOCATION_REJECT as typeof ActionType.GET_GEOLOCATION_REJECT,
+    error: true,
+  }),
 };
 
 export type SocketAction =
   | ReturnType<typeof connectToSocket.begin>
   | ReturnType<typeof connectToSocket.resolve>
+  | ReturnType<typeof connectToSocket.reject>
   | ReturnType<typeof postTweet.begin>
   | ReturnType<typeof postTweet.resolve>
+  | ReturnType<typeof postTweet.reject>
   | ReturnType<typeof getGeolocation.begin>
-  | ReturnType<typeof getGeolocation.resolve>;
+  | ReturnType<typeof getGeolocation.resolve>
+  | ReturnType<typeof getGeolocation.reject>;

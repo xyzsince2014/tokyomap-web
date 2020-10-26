@@ -23,6 +23,10 @@ const socketReducer: Reducer<SocketState, SocketAction> = (
         ...state,
         tweets: action.payload.tweets,
       };
+    case ActionType.CONNECT_SOCKET_REJECT:
+      return {
+        ...state,
+      };
     case ActionType.POST_TWEET_BEGIN:
       return {
         ...state,
@@ -32,6 +36,10 @@ const socketReducer: Reducer<SocketState, SocketAction> = (
         ...state,
         tweets: action.payload.tweets,
       };
+    case ActionType.POST_TWEET_REJECT:
+      return {
+        ...state,
+      };
     case ActionType.GET_GEOLOCATION_BEGIN:
       return {
         ...state,
@@ -40,6 +48,11 @@ const socketReducer: Reducer<SocketState, SocketAction> = (
       return {
         ...state,
         geolocation: action.payload.geolocation,
+      };
+    case ActionType.GET_GEOLOCATION_REJECT:
+      return {
+        ...state,
+        geolocation: [35.680722, 139.767271], // set geolocation = Tokyo Sta.
       };
     default:
       /* eslint-disable no-case-declarations */

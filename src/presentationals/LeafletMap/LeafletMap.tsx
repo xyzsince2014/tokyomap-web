@@ -60,7 +60,7 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
           <Clock />
         </div>
       </div>
-      <Modal tweets={tweets} postTweet={postTweet} geolocation={geolocation} />
+      <Modal postTweet={postTweet} geolocation={geolocation} />
     </div>
   );
 };

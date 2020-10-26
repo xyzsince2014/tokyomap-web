@@ -9,10 +9,9 @@ import {getGeolocationFactory} from '../../services/socket/api';
 export const createSocketConnection = () => {
   const socket = io('http://localhost:4000');
 
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     socket.on('connect', () => {
       resolve(socket);
-      // todo: reject();
     });
   });
 };
@@ -44,9 +43,9 @@ export function* updateSocketState(socket: SocketIOClient.Socket, userId: string
  * @param socket
  */
 export function* dispatchActionFromChannel(socket: SocketIOClient.Socket) {
-  const channel = yield call(subscribe, socket);
+  const eventChannel = yield call(subscribe, socket);
   while (true) {
-    const action = yield take(channel);
+    const action = yield take(eventChannel);
     yield put(action);
   }
 }
@@ -56,7 +55,7 @@ export function* runGetGeolocation(action: ReturnType<typeof getGeolocation.begi
     const geolocation = yield call(getGeolocationFactory());
     yield put(getGeolocation.resolve(geolocation));
   } catch (err) {
-    // yield put(getGeolocation.resject());
-    console.log(err);
+    window.alert('Enable geolocation'); // todo: display error notification
+    yield put(getGeolocation.reject());
   }
 }

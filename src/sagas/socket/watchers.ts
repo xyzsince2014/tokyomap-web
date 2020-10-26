@@ -11,7 +11,6 @@ import * as ActionType from '../../actions/Socket/socketConstants';
 
 export function* watchSocket() {
   while (true) {
-    yield takeLatest(ActionType.GET_GEOLOCATION_BEGIN, runGetGeolocation);
     const action: ReturnType<typeof connectToSocket.begin> = yield take(
       ActionType.CONNECT_SOCKET_BEGIN,
     );
@@ -20,4 +19,8 @@ export function* watchSocket() {
     yield fork(updateSocketState, socket, action.payload.userId);
     yield fork(dispatchActionFromChannel, socket);
   }
+}
+
+export function* watchGeolocation() {
+  yield takeLatest(ActionType.GET_GEOLOCATION_BEGIN, runGetGeolocation);
 }

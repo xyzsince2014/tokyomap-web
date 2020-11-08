@@ -18,6 +18,7 @@
     "tsBuildInfoFile": "./buildcache/tsbuildinfo",
     "importHelpers": true,
     "downlevelIteration": true,
+    "esModuleInterop": true,
   },
   "include": ["src/**/*"]
 }

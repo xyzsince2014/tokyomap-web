@@ -16,3 +16,5 @@ public/
 # misc
 .DS_Store
 
+# jest coverage
+coverage/

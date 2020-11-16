@@ -6,6 +6,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const outputPath = path.resolve(__dirname, "public");
 
@@ -27,6 +28,10 @@ module.exports = (env, args) => {
       port: 3000,
     },
     plugins: [
+      new BundleAnalyzerPlugin({
+        analyzerMode: "static",
+        openAnalyzer: false
+      }),
       new MiniCssExtractPlugin({
         filename: "assets/css/[name].[hash:8].css",
       }),

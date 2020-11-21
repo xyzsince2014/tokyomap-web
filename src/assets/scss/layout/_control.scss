@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+.l-control {
+  &__topright {
+    @include control;
+    top: 0;
+    right: 0;
+    margin: 10px 10px 0 0;
+    height: 20px;
+    width: 30px;
+  }
+
+  &__bottomleft {
+    @include control;
+    left: 0;
+    bottom: 0;
+    pointer-events: none;
+  }
+}

@@ -25,28 +25,39 @@ const createAxiosInstance = (optionalConfig?: ApiConfig) => {
   return instance;
 };
 
-/* ******************************************************
- * api handlers
- ****************************************************** */
+interface AuthenticateResult {
+  isAuthenticated: boolean;
+  userId: string;
+}
+
 export const getAuthFactory = (optionalConfig?: ApiConfig) => {
   const instance = createAxiosInstance();
 
-  const getIsAuthorised = async () => {
+  const authenticate = async (): Promise<AuthenticateResult> => {
     try {
-      const response = await instance.get('/auth/verify', {
+      const response = await instance.get('/auth/authenticate', {
         validateStatus: status => status < 500,
         withCredentials: true,
       });
 
       if (response.status !== 200) {
-        return false;
+        return {
+          isAuthenticated: false,
+          userId: '',
+        };
       }
 
-      return response.data.authenticated;
+      return {
+        isAuthenticated: response.data.isAuthenticated ? response.data.isAuthenticated : false,
+        userId: response.data.user.userId ? response.data.user.userId : '0',
+      };
     } catch (err) {
-      return false;
+      return {
+        isAuthenticated: false,
+        userId: '',
+      };
     }
   };
 
-  return getIsAuthorised;
+  return authenticate;
 };

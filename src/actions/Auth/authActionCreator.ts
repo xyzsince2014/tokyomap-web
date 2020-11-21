@@ -2,7 +2,8 @@ import {AxiosError} from 'axios';
 import * as ActionType from './authConstants';
 
 export interface AuthResult {
-  isAuthorised: boolean;
+  isAuthenticated: boolean;
+  userId: string;
 }
 
 export const authenticate = {

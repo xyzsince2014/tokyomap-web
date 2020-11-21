@@ -4,10 +4,16 @@ import {AuthAction} from '../actions/Auth/authActionCreator';
 import * as ActionType from '../actions/Auth/authConstants';
 
 export interface AuthState {
-  isAuthorised: boolean;
+  isLoading: boolean;
+  isAuthenticated: boolean;
+  userId: string;
 }
 
-export const initialAuthState = {isAuthorised: false};
+export const initialAuthState = {
+  isLoading: true,
+  isAuthenticated: false,
+  userId: '0',
+};
 
 const authReducer: Reducer<AuthState, AuthAction> = (
   state: AuthState = initialAuthState,
@@ -17,16 +23,20 @@ const authReducer: Reducer<AuthState, AuthAction> = (
     case ActionType.BEGIN:
       return {
         ...state,
+        isLoading: true,
       };
     case ActionType.RESOLVE:
       return {
         ...state,
-        isAuthorised: action.payload.result.isAuthorised,
+        isLoading: false,
+        isAuthenticated: action.payload.result.isAuthenticated,
+        userId: action.payload.result.userId,
       };
     case ActionType.REJECT:
       return {
         ...state,
-        isAuthorised: false,
+        isLoading: false,
+        isAuthenticated: false,
       };
     default:
       /* eslint-disable no-case-declarations */

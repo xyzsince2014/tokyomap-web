@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+@import './libs/reset';
 @import './foundation';
 @import './layout';
 @import './objects';
@@ -12,4 +13,3 @@
     box-sizing: border-box;
   }
 }
-

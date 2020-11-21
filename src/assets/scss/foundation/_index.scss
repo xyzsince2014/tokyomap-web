@@ -1,12 +1,14 @@
 @charset "UTF-8";
 
-@import './libs/reset';
 @import './functions/strip-unit';
-@import './variables';
+@import './variables/colour';
+@import './variables/font-weight';
+@import './variables/layout';
 @import './mixins/clear-fix';
-@import './mixins/content';
 @import './mixins/link-all-status-content';
 @import './mixins/placeholder';
 @import './mixins/view-at';
 @import './mixins/font-size';
 @import './mixins/appearance';
+@import './mixins/opacity-pulse';
+@import './mixins/control';

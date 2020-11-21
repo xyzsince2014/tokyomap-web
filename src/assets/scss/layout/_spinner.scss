@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.l-spinner {
+  & > div {
+    position: absolute;
+    top: 40%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 30px;
+  }
+}

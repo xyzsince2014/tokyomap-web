@@ -38,15 +38,21 @@ jobs:
           name: Deploy to S3
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              aws s3 sync ~/workspace/public s3://${AWS_S3_BUCKET_NAME}/ --exact-timestamps --delete
+              aws s3 sync ~/workspace/public s3://${AWS_S3_BUCKET_NAME} --exact-timestamps --delete --exclude "report.html" --acl private
               exit;
             fi
-            aws s3 sync ~/workspace/public s3://${AWS_S3_BUCKET_NAME_TEST}/ --exact-timestamps --delete
+            aws s3 sync ~/workspace/public s3://${AWS_S3_BUCKET_NAME_TEST} --exact-timestamps --delete --exclude "report.html" --acl private
 workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - build
+      # - test
+      - build:
+          filters:
+            branches:
+              only:
+                - master
+                - develop
       - deploy:
           filters:
             branches:
@@ -55,5 +61,3 @@ workflows:
                 - develop
           requires:
             - build
-
-

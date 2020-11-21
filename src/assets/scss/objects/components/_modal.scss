@@ -1,169 +1,51 @@
 @charset "UTF-8";
 
-@import '../../foundation';
-
 .c-modal {
   position: relative;
   display: block;
   margin: 0 auto;
-  width: 85%;
+  border-radius: .3125em;
+  width: 480px;
   background-color: #fff;
-
-  // モーダルヘッダー
-  &__header {
-    border-bottom: solid 5px #484848;
-    padding: 5px 20px;
-
-    &__title {
-      margin: 15px 10px 15px 0;
-      font-size: 1.5em;
-      font-weight: bold;
-      color: #333;
-    }
-  }
-
-  // xボタン
-  &__close {
-    position: relative;
-    background-color: transparent;
-    cursor: pointer;
-
-    &::before {
-      content: '';
-      position: absolute;
-      right: 0;
-      width: 4px;
-      height: 32px;
-      background-color: $colour-white;
-      transform: translateY(-55px) rotate(45deg);
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      right: 0;
-      width: 4px;
-      height: 32px;
-      background-color: $colour-white;
-      transform: translateY(-55px) rotate(-45deg);
-    }
-
-    &:focus,
-    &:hover {
-      opacity: .5;
-    }
-  }
+  padding: 1.25em;
 
   &__content {
+    height: 250px;
     padding: 10px 20px;
+
+    & textarea {
+      height: 180px;
+      width: 100%;
+      max-width: 100%;
+      max-height: 250px;
+    }
   }
 
-  // 選択するボタン
   &__select {
-    line-height: 2em;
-    background-color: #ff5a00;
-    padding: 20px 0;
-    cursor: pointer;
+    margin: 10px auto 0;
+    width: 80%;
+    text-align: center;
 
-    & > span {
-      display: block;
-      font-size: 1.3em;
-      font-weight: bold;
-      color: $colour-white;
-      text-align: center;
+    &__btn {
+      display: inline-block;
+      margin: 10px;
+      height: 35px;
+      width: 110px;
+      border-radius: .25em;
+      background-color: #3085d6;
+      padding: .55em 10px;
+      cursor: pointer;
+
+      &--close {
+        background-color: $colour-gray-dark;
+      }
+
+      & > span {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.3em;
+        font-weight: $font-weight-normal;
+        color: $colour-white;
+      }
     }
   }
 }
-
-// modal in meisai
-// .c-modal {
-//   max-width: 600px;
-//   margin: 0 auto;
-//   position: relative;
-//   display: block;
-//   width: 100%;
-//   border-radius: 8px;
-//   background-color: $color-white;
-
-//   &--cover {
-//     max-width: none;
-//   }
-
-//   &__header {
-//     display: flex;
-//     align-items: center;
-//     border-bottom: solid 1px $color-gray;
-//     padding: 5px 20px;
-
-//     &__logo {
-//       flex: 1 0 auto;
-//       justify-self: start;
-//       line-height: 1;
-//       margin: 5px 10px 5px 0;
-
-//       & > img {
-//         max-height: 24px;
-
-//         @include view-at(u) {
-//           max-width: 110px;
-//         }
-
-//         @include view-at(l) {
-//           max-width: 90px;
-//         }
-//       }
-//     }
-
-//     &__text {
-//       flex: 2 1 auto;
-//       justify-self: start;
-//       font-size: 14px;
-//       margin: 15px 10px 15px 0;
-//     }
-
-//     &__close {
-//       font-size: 12px;
-//       flex: 0 0 auto;
-//       justify-self: end;
-//       position: relative;
-//       padding: 0 24px 0 0;
-//       background-color: transparent;
-//       border: 0;
-//       font-weight: $font-weight-bold;
-//       line-height: 50px;
-//       cursor: pointer;
-//       outline: 0;
-
-//       &::before {
-//         content: '';
-//         position: absolute;
-//         top: 50%;
-//         right: 0;
-//         width: 2px;
-//         height: 16px;
-//         background-color: $color-black;
-//         transform: translate(-10px, -50%) rotate(45deg);
-//       }
-
-//       &::after {
-//         content: '';
-//         position: absolute;
-//         top: 50%;
-//         right: 0;
-//         width: 2px;
-//         height: 16px;
-//         background-color: $color-black;
-//         transform: translate(-10px, -50%) rotate(-45deg);
-//       }
-
-//       &:focus,
-//       &:hover {
-//         opacity: .5;
-//       }
-//     }
-//   }
-
-//   &__content {
-//     padding: 20px 20px 40px;
-//   }
-// }

@@ -1,6 +1,6 @@
 {
   "name": "tokyo.live",
-  "version": "0.0.1",
+  "version": "1.1",
   "private": true,
   "description": "A mock of https://hkmap.live/",
   "main": "./src/index.tsx",
@@ -19,8 +19,8 @@
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
     "build": "webpack --mode production",
-    "lint": "eslint --ext ./ 'src/**/*.{js,jsx,ts,tsx}'; stylelint 'src/assets/**/*.{scss,css}'",
-    "lint:fix": "eslint --fix --ext ./ 'src/**/*.{js,jsx,ts,tsx}'; stylelint 'src/assets/**/*.{scss,css}'",
+    "lint": "eslint --ext ts,.tsx src/; stylelint 'src/assets/scss/**/*.scss'",
+    "lint:fix": "yarn lint --fix",
     "storybook": "start-storybook -p 6006",
     "build:storybook": "build-storybook -o docs",
     "test": "jest"
@@ -143,11 +143,11 @@
     "xml-loader": "^1.2.1"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix"
+    "src/**/*.{ts,tsx}": [
+      "eslint"
     ],
-    "*.{css,scss}": [
-      "stylelint --fix"
+    "src/assets/scss/**/*.scss": [
+      "stylelint"
     ]
   },
   "husky": {

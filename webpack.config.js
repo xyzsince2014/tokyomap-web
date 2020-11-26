@@ -41,7 +41,7 @@ module.exports = (env, args) => {
         template: "src/index.html",
       }),
       new CleanWebpackPlugin({}),
-      new Dotenv({ path: isProduction ? "./env/.env" : "./env/.env.dev" }),
+      new Dotenv({ path: isProduction ? "./env/.env" : "./env/.dev.env" }),
       new FaviconsWebpackPlugin({
         logo: "./src/assets/favicon/logo192.ico",
         outputPath: "/assets/favicon",

@@ -5,11 +5,9 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": false,
     "jsx": "react",
-    "rootDirs": ["src"],
+    "rootDir": "src",
     "removeComments": true,
     "isolatedModules": true,
-    "plugins": [{ "name": "css-module-types" }],
-    "typeRoots": ["src/types", "node_modules/@types"],
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
@@ -21,6 +19,5 @@
     "importHelpers": true,
     "downlevelIteration": true,
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "public"]
+  "include": ["src/**/*"]
 }

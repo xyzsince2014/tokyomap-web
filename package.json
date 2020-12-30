@@ -23,7 +23,7 @@
     "lint:fix": "yarn lint --fix",
     "storybook": "start-storybook -p 6006",
     "build:storybook": "build-storybook -o docs",
-    "test": "jest --coverage"
+    "test": "jest --coverage --verbose"
   },
   "browserslist": {
     "production": [

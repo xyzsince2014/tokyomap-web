@@ -17,8 +17,9 @@
     "email": "xyzsince2014@gmail.com"
   },
   "scripts": {
-    "start": "webpack-dev-server --open --mode development",
+    "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
     "lint": "eslint --ext ts,.tsx src/; stylelint 'src/assets/scss/**/*.scss'",
     "lint:fix": "yarn lint --fix",
     "storybook": "start-storybook -p 6006",

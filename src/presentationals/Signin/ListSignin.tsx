@@ -12,7 +12,7 @@ const ListSignin = () => (
         role="button"
         tabIndex={0}
         onClick={() => {
-          window.location.href = `${process.env.DOMAIN_API_AUTH}/auth/twitter`;
+          window.location.href = `${process.env.DOMAIN_API}/auth/twitter`;
         }}
         className="c-social-signin-btn__content"
       >
@@ -25,7 +25,7 @@ const ListSignin = () => (
         role="button"
         tabIndex={0}
         onClick={() => {
-          window.location.href = `${process.env.DOMAIN_API_AUTH}/auth/facebook`;
+          window.location.href = `${process.env.DOMAIN_API}/auth/facebook`;
         }}
         className="c-social-signin-btn__content"
       >
@@ -38,7 +38,7 @@ const ListSignin = () => (
         role="button"
         tabIndex={0}
         onClick={() => {
-          window.location.href = `${process.env.DOMAIN_API_AUTH}/auth/line`;
+          window.location.href = `${process.env.DOMAIN_API}/auth/line`;
         }}
         className="c-social-signin-btn__content"
       >
@@ -52,7 +52,7 @@ const ListSignin = () => (
         tabIndex={0}
         onClick={() => {
           window.alert('Not available yet.');
-          // window.location.href = `${process.env.DOMAIN_API_AUTH}/auth/telegram`;
+          // window.location.href = `${process.env.DOMAIN_API}/auth/telegram`;
         }}
         className="c-social-signin-btn__content"
       >

@@ -1,0 +1,13 @@
+version: "3"
+services:
+    web:
+        build:
+            context: ./web
+        image: tokyomap.web:dev
+        container_name: tokyomap-web
+        volumes:
+            - "./public:/usr/share/nginx"
+        ports:
+            - "80:80"
+            # - "444:443"
+        # network_mode: "host"

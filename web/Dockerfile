@@ -1,4 +1,14 @@
-FROM nginx:1.17	
+FROM nginx:1.17
+
+RUN mkdir -p /var/log/nginx/index
+RUN touch /var/log/nginx/index/access.log
+RUN touch /var/log/nginx/index/error.log
+RUN mkdir -p /var/log/nginx/api
+RUN touch /var/log/nginx/api/access.log
+RUN touch /var/log/nginx/api/error.log
+RUN mkdir -p /var/log/nginx/socket
+RUN touch /var/log/nginx/socket/access.log
+RUN touch /var/log/nginx/socket/error.log
 
 # Nginx conf
 COPY ./default.conf /etc/nginx/conf.d/default.conf

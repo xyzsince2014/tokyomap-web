@@ -7,8 +7,7 @@ services:
         container_name: tokyomap-web
         volumes:
             - "./public:/usr/share/nginx"
+            - "./web/certs:/etc/ssl/certs"
             - "./web/logs:/var/log/nginx"
         ports:
-            - "80:80"
-            # - "444:443"
-        # network_mode: "host"
+            - "443:443"

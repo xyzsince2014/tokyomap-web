@@ -9,5 +9,6 @@ services:
             - "./public:/usr/share/nginx"
             - "./web/certs:/etc/ssl/certs"
             - "./web/logs:/var/log/nginx"
+            - "./web/dev.conf:/etc/nginx/conf.d/dev.conf"
         ports:
             - "443:443"

@@ -6,8 +6,7 @@ services:
         image: tokyomap.web:dev
         container_name: tokyomap-web
         volumes:
-            - "./web/certs:/etc/ssl/certs"
+            - "./web/public:/usr/share/nginx" # todo: hot reload
             - "./web/logs:/var/log/nginx"
-            - "./web/dev.conf:/etc/nginx/conf.d/dev.conf"
         ports:
             - "443:443"

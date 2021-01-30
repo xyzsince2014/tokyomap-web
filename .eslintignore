@@ -3,3 +3,5 @@ docs/
 node_modules/
 src/assets/**/libs/*
 webpack.config.js
+web/logs
+web/public

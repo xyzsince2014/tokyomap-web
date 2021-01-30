@@ -8,7 +8,7 @@ const Dotenv = require("dotenv-webpack");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-const outputPath = path.resolve(__dirname, "public");
+const outputPath = path.resolve(__dirname, "web/public");
 
 module.exports = (env, args) => {
   const isProduction = args.mode === "production";

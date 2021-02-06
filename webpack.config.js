@@ -8,10 +8,10 @@ const Dotenv = require("dotenv-webpack");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-const outputPath = path.resolve(__dirname, "public");
-
 module.exports = (env, args) => {
   const isProduction = args.mode === "production";
+  const outputPath = isProduction ? path.resolve(__dirname, "aws/public") : path.resolve(__dirname, "web/public");
+
   return {
     mode: isProduction ? "production" : "development",
     entry: "./src/index.tsx",

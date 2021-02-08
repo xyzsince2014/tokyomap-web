@@ -6,7 +6,7 @@ interface ApiConfig {
 }
 
 const DEFAULT_API_CONFIG: ApiConfig = {
-  baseURL: process.env.DOMAIN_API_AUTH,
+  baseURL: process.env.DOMAIN_API,
   timeout: 1000 * 10,
 };
 

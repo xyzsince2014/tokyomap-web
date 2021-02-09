@@ -2,7 +2,6 @@ import * as React from 'react';
 import TwitterLogo from '../../assets/images/icons/logo_tw.png';
 import FacebookLogo from '../../assets/images/icons/logo_fb.png';
 import LineLogo from '../../assets/images/icons/logo_line.png';
-import TelegramLogo from '../../assets/images/icons/logo_telegram.png';
 
 const ListSignin = () => (
   /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -44,20 +43,6 @@ const ListSignin = () => (
       >
         <img src={LineLogo} alt="Sign in with Line" />
         <span>Sign in with Line</span>
-      </div>
-    </li>
-    <li className="c-social-signin-btn c-social-signin-btn--telegram" key={4}>
-      <div
-        role="button"
-        tabIndex={0}
-        onClick={() => {
-          window.alert('Not available yet.');
-          // window.location.href = `${process.env.DOMAIN_API}/auth/telegram`;
-        }}
-        className="c-social-signin-btn__content"
-      >
-        <img src={TelegramLogo} alt="Sign in with Telegram" />
-        <span>Sign in with Telegram</span>
       </div>
     </li>
   </ul>

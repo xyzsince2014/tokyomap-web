@@ -47,7 +47,7 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
           <button
             type="button"
             onClick={() => {
-              window.location.href = `${process.env.DOMAIN_API_AUTH}/auth/signout`;
+              window.location.href = `${process.env.DOMAIN_API}/auth/signout`;
             }}
           >
             <BiLogOutCircle />

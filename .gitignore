@@ -16,3 +16,7 @@ public/
 # misc
 .DS_Store
 
+# prod
+aws/public/
+aws/certs/
+aws/*.sh

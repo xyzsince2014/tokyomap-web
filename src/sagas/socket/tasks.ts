@@ -7,7 +7,7 @@ import {postTweet, getGeolocation} from '../../actions/Socket/socketActionCreato
 import {getGeolocationFactory} from '../../services/socket/api';
 
 export const createSocketConnection = () => {
-  const socket = io(`${process.env.DOMAIN_API_AUTH}`);
+  const socket = io(`${process.env.DOMAIN_WEB}`, {transports: ['websocket']});
 
   return new Promise(resolve => {
     socket.on('connect', () => {

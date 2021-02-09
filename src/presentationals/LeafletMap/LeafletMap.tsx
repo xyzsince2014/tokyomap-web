@@ -41,7 +41,7 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
         ))}
       </Map>
       <div className="l-control">
-        <div className="l-control__topright">
+        <div className="l-control__topleft">
           <button
             type="button"
             onClick={() => {
@@ -50,6 +50,8 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
           >
             <BiLogOutCircle />
           </button>
+        </div>
+        <div className="l-control__topright">
           <button type="button" data-modal-trigger="modal_socket" onClick={getGeolocationBegin}>
             <TiMessage />
           </button>

@@ -37,7 +37,9 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
         />
         <ZoomControl position="bottomright" />
         {tweets.map(t => (
-          <CustomMarker tweet={t} />
+          <div key={`tweet_${t.tweetId}`}>
+            <CustomMarker tweet={t} />
+          </div>
         ))}
       </Map>
       <div className="l-control">

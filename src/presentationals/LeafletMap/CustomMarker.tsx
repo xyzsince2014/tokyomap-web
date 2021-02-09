@@ -29,7 +29,7 @@ const CustomMarker: React.FC<CustomMarkerProps> = ({tweet, timeRemaining}) => {
 
   return (
     /* eslint-disable jsx-a11y/anchor-is-valid */
-    <Marker position={[tweet.lat, tweet.lng]} icon={icon} key={`marker_${tweet.tweetId}`}>
+    <Marker position={[tweet.lat, tweet.lng]} icon={icon}>
       <Popup className="leaflet-popup-content-wrapper p-popup">
         <div className="leaflet-popup-content p-popup__content">
           <span className="p-popup__content__user-name">{tweet.userName}</span>

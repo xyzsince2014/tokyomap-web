@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-@import '../variables/layout';
-
 @mixin view-at($mode, $breakpoint: $min-width-pc-view) {
   @if ($mode == 's') {
     @media (max-width: $breakpoint - 1) {

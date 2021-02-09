@@ -3,6 +3,28 @@
 $duration-pulse: 2s;
 $iteration-pulse: infinite;
 
+@mixin opacity-pulse ($colour-name, $colour) {
+  @keyframes opacity-pulse-#{$colour-name} {
+    0% {
+      opacity: .1;
+      fill: $colour;
+    }
+
+    50% {
+      opacity: 1;
+      fill: $colour;
+    }
+
+    100% {
+      opacity: .1;
+      fill: $colour;
+    }
+  }
+}
+
+@include opacity-pulse('contessa', $colour-contessa);
+@include opacity-pulse('yellow', $colour-yellow);
+
 .p-custom-marker {
   & .ring-inner {
     opacity: 0;
@@ -36,6 +58,3 @@ $iteration-pulse: infinite;
     }
   }
 }
-
-@include opacity-pulse('contessa', $colour-contessa);
-@include opacity-pulse('yellow', $colour-yellow);

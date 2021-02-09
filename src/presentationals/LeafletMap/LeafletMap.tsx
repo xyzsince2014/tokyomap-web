@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as L from 'leaflet';
 import {Map, TileLayer, ZoomControl} from 'react-leaflet';
-import LeafletSearch from 'react-leaflet-search';
 import {BiLogOutCircle} from 'react-icons/bi';
 import {TiMessage} from 'react-icons/ti';
 
@@ -32,7 +31,6 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
         maxBounds={L.latLngBounds([35.2564493, 139.1532045], [35.8559256, 140.4057111])}
         zoomControl={false}
       >
-        <LeafletSearch position="topleft" zoom={15} />
         <TileLayer
           url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
           attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'

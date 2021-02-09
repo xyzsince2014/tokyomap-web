@@ -20,7 +20,7 @@ const CustomMarker: React.FC<CustomMarkerProps> = ({tweet, timeRemaining}) => {
     '%23',
   );
   const icon = L.divIcon({
-    className: `leaflet-data-marker c-custom-marker`,
+    className: `leaflet-data-marker p-custom-marker`,
     html,
     iconAnchor: [22, 28],
     iconSize: [36, 42],
@@ -29,71 +29,19 @@ const CustomMarker: React.FC<CustomMarkerProps> = ({tweet, timeRemaining}) => {
 
   return (
     /* eslint-disable jsx-a11y/anchor-is-valid */
-    <Marker position={[tweet.lat, tweet.lng]} icon={icon} key={`marker_${tweet.tweetId}`}>
-      <Popup className="leaflet-popup-content-wrapper c-popup">
-        <div className="leaflet-popup-content c-popup__content">
-          <span className="c-popup__content__user-name">{tweet.userName}</span>
-          <a className="c-popup__content__posted-at" title={tweet.postedAt} href="#">
+    <Marker position={[tweet.lat, tweet.lng]} icon={icon}>
+      <Popup className="leaflet-popup-content-wrapper p-popup">
+        <div className="leaflet-popup-content p-popup__content">
+          <span className="p-popup__content__user-name">{tweet.userName}</span>
+          <a className="p-popup__content__posted-at" title={tweet.postedAt} href="#">
             {formatDateTime(tweet.postedAt).substr(-8, 5)}
           </a>
           <br />
-          <span className="c-popup__content__message">{tweet.message}</span>
-          <div className="c-popup__content__links">
-            <a
-              href="#"
-              // href="https://twitter.com/intent/tweet/?text=@hkmaplive&url=hoge"
-              // target="_blank"
-              // rel="noopener noreferrer"
-              aria-label="Twitter"
-              onClick={() => {
-                window.alert('Not available yet.');
-              }}
-            >
-              <FaTwitter />
-            </a>
-            &nbsp;
-            <a
-              href="#"
-              // href="https://facebook.com/sharer/sharer.php?u=hoge"
-              // target="_blank"
-              // rel="noopener noreferrer"
-              aria-label="Facebook"
-              onClick={() => {
-                window.alert('Not available yet.');
-              }}
-            >
-              <FaFacebookF />
-            </a>
-            &nbsp;
-            <a
-              href="#"
-              // target="_blank"
-              // rel="noopener noreferrer"
-              aria-label="Line"
-              onClick={() => {
-                window.alert('Not available yet.');
-              }}
-            >
-              <FaLine />
-            </a>
-            &nbsp;
-            <a
-              href="#"
-              // href="https://telegram.me/share/url?text=頻道%3A@hkmaplive&url=hoge"
-              // target="_blank"
-              // rel="noopener noreferrer"
-              aria-label="Telegram"
-              onClick={() => {
-                window.alert('Not available yet.');
-              }}
-            >
-              <FaTelegram />
-            </a>
-          </div>
+          <span className="p-popup__content__message">{tweet.message}</span>
         </div>
       </Popup>
-      <Tooltip className="c-tooltip">
-        <span className="c-tooltip__posted-at">{formatDateTime(tweet.postedAt).substr(-8, 5)}</span>
+      <Tooltip className="p-tooltip">
+        <span className="p-tooltip__posted-at">{formatDateTime(tweet.postedAt).substr(-8, 5)}</span>
         {tweet.message}
       </Tooltip>
     </Marker>

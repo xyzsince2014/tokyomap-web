@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as L from 'leaflet';
 import {Map, TileLayer, ZoomControl} from 'react-leaflet';
-import LeafletSearch from 'react-leaflet-search';
 import {BiLogOutCircle} from 'react-icons/bi';
 import {TiMessage} from 'react-icons/ti';
 
@@ -32,18 +31,19 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
         maxBounds={L.latLngBounds([35.2564493, 139.1532045], [35.8559256, 140.4057111])}
         zoomControl={false}
       >
-        <LeafletSearch position="topleft" zoom={15} />
         <TileLayer
           url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
-          attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+          attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>'
         />
         <ZoomControl position="bottomright" />
         {tweets.map(t => (
-          <CustomMarker tweet={t} />
+          <div key={`tweet_${t.tweetId}`}>
+            <CustomMarker tweet={t} />
+          </div>
         ))}
       </Map>
       <div className="l-control">
-        <div className="l-control__topright">
+        <div className="l-control__topleft">
           <button
             type="button"
             onClick={() => {
@@ -52,6 +52,8 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
           >
             <BiLogOutCircle />
           </button>
+        </div>
+        <div className="l-control__topright">
           <button type="button" data-modal-trigger="modal_socket" onClick={getGeolocationBegin}>
             <TiMessage />
           </button>

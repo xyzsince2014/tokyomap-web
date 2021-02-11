@@ -20,3 +20,6 @@ public/
 aws/public/
 aws/certs/
 aws/*.sh
+
+# vscode
+.vscode/chrome

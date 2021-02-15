@@ -6,12 +6,12 @@ phases:
       nodejs: 12
     commands:
       - yarn install
-      - yarn build
   pre_build:
     commands:
       - aws s3 cp --recursive s3://tokyomap-web/certs/ aws/certs/
   build:
     commands:
+      - yarn build
       - docker build -t ${ECR_REPO}:${VERSION} aws
   post_build:
     commands:

@@ -17,9 +17,9 @@ export const connectToSocket = {
 };
 
 export const postTweet = {
-  begin: (message: string, geolocation: L.LatLngTuple) => ({
+  begin: (userId: string, message: string, geolocation: L.LatLngTuple) => ({
     type: ActionType.POST_TWEET_BEGIN as typeof ActionType.POST_TWEET_BEGIN,
-    payload: {message, geolocation},
+    payload: {userId, message, geolocation},
   }),
   resolve: (tweets: Models.Tweet[]) => ({
     type: ActionType.POST_TWEET_RESOLVE as typeof ActionType.POST_TWEET_RESOLVE,

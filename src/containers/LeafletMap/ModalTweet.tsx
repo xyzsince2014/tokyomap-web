@@ -1,21 +1,22 @@
 import * as React from 'react';
 
-import Modal from '../../presentationals/LeafletMap/Modal';
+import ModalTweet from '../../presentationals/LeafletMap/ModalTweet';
 import {setModals} from '../../utils/modal';
 
 export interface EnhancedModalProps {
-  postTweet: (message: string, geolocation: L.LatLngTuple) => void;
+  userId: string;
+  postTweet: (userId: string, message: string, geolocation: L.LatLngTuple) => void;
   geolocation: L.LatLngTuple;
 }
 
-const ModalContainer: React.FC<EnhancedModalProps> = ({postTweet, geolocation}) => {
+const ModalContainer: React.FC<EnhancedModalProps> = ({userId, postTweet, geolocation}) => {
   const handlePost = (): void => {
     const message: HTMLInputElement = document.getElementById('message') as HTMLInputElement;
     if (!message.value || !(Buffer.byteLength(message.value, 'utf-8') < 256)) {
       window.alert('invalid input');
       return;
     }
-    postTweet(message.value, geolocation);
+    postTweet(userId, message.value, geolocation);
     message.value = '';
   };
 
@@ -26,7 +27,7 @@ const ModalContainer: React.FC<EnhancedModalProps> = ({postTweet, geolocation}) 
     });
   }, []);
 
-  return <Modal handlePost={handlePost} />;
+  return <ModalTweet handlePost={handlePost} />;
 };
 
 export default ModalContainer;

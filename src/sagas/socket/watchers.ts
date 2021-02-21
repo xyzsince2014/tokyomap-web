@@ -15,8 +15,8 @@ export function* watchSocket() {
       ActionType.CONNECT_SOCKET_BEGIN,
     );
     const socket = yield call(createSocketConnection);
-    yield fork(initSocketState, socket, action.payload.userId);
-    yield fork(updateSocketState, socket, action.payload.userId);
+    yield fork(initSocketState, socket);
+    yield fork(updateSocketState, socket);
     yield fork(dispatchActionFromChannel, socket);
   }
 }

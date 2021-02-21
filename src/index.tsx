@@ -25,12 +25,11 @@ const sagaMiddleWare = createSagaMiddleware();
 const enhancer = composeEnhancers(applyMiddleware(sagaMiddleWare));
 const store = createStore(rootReducer, enhancer);
 
+sagaMiddleWare.run(rootSaga); // execute rootSaga() to run Saga's watchers
+
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('root') as HTMLElement,
 );
-
-// execute rootSaga() to run Saga's watchers
-sagaMiddleWare.run(rootSaga);

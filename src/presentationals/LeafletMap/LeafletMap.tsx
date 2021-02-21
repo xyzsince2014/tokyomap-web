@@ -7,20 +7,25 @@ import {TiMessage} from 'react-icons/ti';
 import {Tweet} from '../../services/socket/models';
 import Clock from '../../containers/Clock/Clock';
 import CustomMarker from '../../containers/LeafletMap/CustomMarker';
-import Modal from '../../containers/LeafletMap/Modal';
+import ModalTweet from '../../containers/LeafletMap/ModalTweet';
+import ModalAuth from '../../containers/LeafletMap/ModalAuth';
 
 export interface LeafletMapProps {
+  userId: string;
   tweets?: Tweet[];
-  postTweet?: (message: string, geolocation: L.LatLngTuple) => void;
+  postTweet?: (userId: string, message: string, geolocation: L.LatLngTuple) => void;
   geolocation: L.LatLngTuple;
-  getGeolocationBegin: () => void;
+  getGeolocation: () => void;
+  isAuthenticated: boolean;
 }
 
 const LeafletMap: React.FC<LeafletMapProps> = ({
+  userId,
   tweets = [],
   postTweet = () => {},
   geolocation,
-  getGeolocationBegin,
+  getGeolocation,
+  isAuthenticated = false,
 }) => {
   return (
     <div>
@@ -42,27 +47,45 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
           </div>
         ))}
       </Map>
-      <div className="l-control">
-        <div className="l-control__topleft">
-          <button
-            type="button"
-            onClick={() => {
-              window.location.href = `${process.env.DOMAIN_API}/auth/signout`;
-            }}
-          >
-            <BiLogOutCircle />
-          </button>
+      {isAuthenticated ? (
+        <div>
+          <div className="l-control">
+            <div className="l-control__topleft">
+              <button
+                type="button"
+                onClick={() => {
+                  window.location.href = `${process.env.DOMAIN_API}/auth/signout`;
+                }}
+              >
+                <BiLogOutCircle />
+              </button>
+            </div>
+            <div className="l-control__topright">
+              <button type="button" data-modal-trigger="modal_tweet" onClick={getGeolocation}>
+                <TiMessage />
+              </button>
+            </div>
+            <div className="l-control__bottomleft">
+              <Clock />
+            </div>
+          </div>
+          <ModalTweet userId={userId} postTweet={postTweet} geolocation={geolocation} />
         </div>
-        <div className="l-control__topright">
-          <button type="button" data-modal-trigger="modal_socket" onClick={getGeolocationBegin}>
-            <TiMessage />
-          </button>
+      ) : (
+        <div>
+          <div className="l-control">
+            <div className="l-control__topright">
+              <button type="button" data-modal-trigger="modal_auth">
+                <TiMessage />
+              </button>
+            </div>
+            <div className="l-control__bottomleft">
+              <Clock />
+            </div>
+          </div>
+          <ModalAuth />
         </div>
-        <div className="l-control__bottomleft">
-          <Clock />
-        </div>
-      </div>
-      <Modal postTweet={postTweet} geolocation={geolocation} />
+      )}
     </div>
   );
 };

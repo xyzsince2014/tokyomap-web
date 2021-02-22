@@ -15,43 +15,43 @@ const ModalAuth: React.FC = () => (
   >
     <div className="l-modal__inner">
       <div className="l-modal__inner__content" data-modal-wrapper="modal_auth">
-        <div className="c-modal" role="document">
+        <div className="c-modal c-modal--transparent" role="document">
           <div className="c-modal__content">
-            <ul className="l-social-signin">
-              <li className="c-social-signin-btn c-social-signin-btn--twitter" key={1}>
+            <ul className="p-modal-auth">
+              <li className="p-modal-auth__btn p-modal-auth__btn--twitter" key={1}>
                 <div
                   role="button"
                   tabIndex={0}
                   onClick={() => {
                     window.location.href = `${process.env.DOMAIN_API}/auth/twitter`;
                   }}
-                  className="c-social-signin-btn__content"
+                  className="p-modal-auth__btn__inner"
                 >
                   <img src={TwitterLogo} alt="Sign In with Twitter" />
                   <span>Sign In with Twitter</span>
                 </div>
               </li>
-              <li className="c-social-signin-btn c-social-signin-btn--facebook" key={2}>
+              <li className="p-modal-auth__btn p-modal-auth__btn--facebook" key={2}>
                 <div
                   role="button"
                   tabIndex={0}
                   onClick={() => {
                     window.location.href = `${process.env.DOMAIN_API}/auth/facebook`;
                   }}
-                  className="c-social-signin-btn__content"
+                  className="p-modal-auth__btn__inner"
                 >
                   <img src={FacebookLogo} alt="Sign In with Facebook" />
                   <span>Sign In with Facebook</span>
                 </div>
               </li>
-              <li className="c-social-signin-btn c-social-signin-btn--line" key={3}>
+              <li className="p-modal-auth__btn p-modal-auth__btn--line" key={3}>
                 <div
                   role="button"
                   tabIndex={0}
                   onClick={() => {
                     window.location.href = `${process.env.DOMAIN_API}/auth/line`;
                   }}
-                  className="c-social-signin-btn__content"
+                  className="p-modal-auth__btn__inner"
                 >
                   <img src={LineLogo} alt="Sign In with Line" />
                   <span>Sign In with Line</span>
@@ -62,7 +62,7 @@ const ModalAuth: React.FC = () => (
           <div className="c-modal__select">
             <div
               role="button"
-              className="c-modal__select__btn c-modal__select__btn--close"
+              className="c-modal__select__btn c-modal__select__btn--white"
               data-modal-close="modal_auth"
               tabIndex={0}
             >

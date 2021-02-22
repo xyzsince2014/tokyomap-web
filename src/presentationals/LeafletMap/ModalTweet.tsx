@@ -37,7 +37,7 @@ const Modal: React.FC<ModalTweetProps> = ({handlePost = () => {}}) => (
             </div>
             <div
               role="button"
-              className="c-modal__select__btn c-modal__select__btn--close"
+              className="c-modal__select__btn c-modal__select__btn--gray-dark"
               data-modal-close="modal_tweet"
               tabIndex={0}
             >

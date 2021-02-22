@@ -31,8 +31,7 @@ export function* initSocketState(socket: SocketIOClient.Socket) {
 export function* updateSocketState(socket: SocketIOClient.Socket) {
   while (true) {
     const action: ReturnType<typeof postTweet.begin> = yield take(ActionType.POST_TWEET_BEGIN);
-    const {userId, message, geolocation} = action.payload;
-    yield socket.emit('postTweet', {userId, geolocation, message});
+    yield socket.emit('postTweet', action.payload);
   }
 }
 

@@ -7,7 +7,10 @@
   width: 100%;
   max-height: 250px;
   max-width: 300px;
-  padding: 25px;
+
+  @include view-at('p') {
+    padding: 25px;
+  }
 
   &::after {
     position: absolute;
@@ -29,7 +32,6 @@
   }
 
   &__btn {
-    margin: 0 0 0 16px;
     color: $colour-white;
     font-size: 16px;
     font-weight: $font-weight-bold;

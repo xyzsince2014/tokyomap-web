@@ -19,22 +19,19 @@ export const createSocketConnection = () => {
 /**
  * initialise the socket state
  * @param socket
- * @param userId
  */
-export function* initSocketState(socket: SocketIOClient.Socket, userId: string) {
-  yield socket.emit('initSocketState', {userId});
+export function* initSocketState(socket: SocketIOClient.Socket) {
+  yield socket.emit('initSocketState');
 }
 
 /**
  * add a tweet, and syncronise the socket state
  * @param socket
- * @param userId
  */
-export function* updateSocketState(socket: SocketIOClient.Socket, userId: string) {
+export function* updateSocketState(socket: SocketIOClient.Socket) {
   while (true) {
     const action: ReturnType<typeof postTweet.begin> = yield take(ActionType.POST_TWEET_BEGIN);
-    const {message, geolocation} = action.payload;
-    yield socket.emit('postTweet', {userId, geolocation, message});
+    yield socket.emit('postTweet', action.payload);
   }
 }
 

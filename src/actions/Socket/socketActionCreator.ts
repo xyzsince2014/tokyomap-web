@@ -2,9 +2,8 @@ import * as ActionType from './socketConstants';
 import * as Models from '../../services/socket/models';
 
 export const connectToSocket = {
-  begin: (userId: string) => ({
+  begin: () => ({
     type: ActionType.CONNECT_SOCKET_BEGIN as typeof ActionType.CONNECT_SOCKET_BEGIN,
-    payload: {userId},
   }),
   resolve: (tweets: Models.Tweet[]) => ({
     type: ActionType.CONNECT_SOCKET_RESOLVE as typeof ActionType.CONNECT_SOCKET_RESOLVE,
@@ -17,9 +16,9 @@ export const connectToSocket = {
 };
 
 export const postTweet = {
-  begin: (message: string, geolocation: L.LatLngTuple) => ({
+  begin: (userId: string, message: string, geolocation: L.LatLngTuple) => ({
     type: ActionType.POST_TWEET_BEGIN as typeof ActionType.POST_TWEET_BEGIN,
-    payload: {message, geolocation},
+    payload: {userId, message, geolocation},
   }),
   resolve: (tweets: Models.Tweet[]) => ({
     type: ActionType.POST_TWEET_RESOLVE as typeof ActionType.POST_TWEET_RESOLVE,

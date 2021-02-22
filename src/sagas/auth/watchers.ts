@@ -19,9 +19,8 @@ import {runAuthenticate} from './tasks';
 import * as ActionType from '../../actions/Auth/authConstants';
 
 export function* watchGetIsAuthorised() {
-  // `yield takeLatest(ActionType.BEGIN, runAuthenticate);`
-  // is a kind of syntactic sugar for the snippet below
   // cf. https://github.com/redux-saga/redux-saga/issues/684
+  // `yield takeLatest(ActionType.BEGIN, runAuthenticate);` is a kind of syntactic sugar for the snippet below
   while (true) {
     const action = yield take(ActionType.BEGIN);
     yield fork(runAuthenticate, action);

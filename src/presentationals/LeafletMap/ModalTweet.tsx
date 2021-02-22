@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-export interface MolalProps {
+export interface ModalTweetProps {
   handlePost: () => void;
 }
 
-const Modal: React.FC<MolalProps> = ({handlePost = () => {}}) => (
+const Modal: React.FC<ModalTweetProps> = ({handlePost = () => {}}) => (
   <div
     className="l-modal"
     role="dialog"

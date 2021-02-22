@@ -3,7 +3,7 @@ import * as React from 'react';
 import ModalAuth from '../../presentationals/LeafletMap/ModalAuth';
 import {setModals} from '../../utils/modal';
 
-const ModalContainer: React.FC = () => {
+const ModalAuthContainer: React.FC = () => {
   React.useEffect(() => {
     Array.from(document.getElementsByClassName('l-modal')).map(modal => {
       setModals(modal);
@@ -14,4 +14,4 @@ const ModalContainer: React.FC = () => {
   return <ModalAuth />;
 };
 
-export default ModalContainer;
+export default ModalAuthContainer;

@@ -1,22 +1,52 @@
 import * as React from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators, Dispatch} from 'redux';
 
+import {getGeolocation, postTweet} from '../../actions/Socket/socketActionCreator';
+import {RootState} from '../../reducers/rootReducer';
 import ModalTweet from '../../presentationals/LeafletMap/ModalTweet';
 import {setModals} from '../../utils/modal';
 
-export interface EnhancedModalProps {
+interface StateProps {
   userId: string;
-  postTweet: (userId: string, message: string, geolocation: L.LatLngTuple) => void;
   geolocation: L.LatLngTuple;
 }
 
-const ModalContainer: React.FC<EnhancedModalProps> = ({userId, postTweet, geolocation}) => {
+interface DispatchProps {
+  getGeolocationBegin: () => void;
+  postTweetBegin: (userId: string, message: string, geolocation: L.LatLngTuple) => void;
+}
+
+export type EnhancedModalTweetProps = StateProps & DispatchProps;
+
+const mapStateToProps = (state: RootState): StateProps => ({
+  userId: state.authState.userId,
+  geolocation: state.socketState.geolocation,
+});
+
+const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
+  bindActionCreators(
+    {
+      postTweetBegin: (userId, message, geolocation) =>
+        postTweet.begin(userId, message, geolocation),
+      getGeolocationBegin: () => getGeolocation.begin(),
+    },
+    dispatch,
+  );
+
+const ModalTweetContainer: React.FC<EnhancedModalTweetProps> = ({
+  userId,
+  geolocation,
+  postTweetBegin,
+  getGeolocationBegin,
+}) => {
   const handlePost = (): void => {
     const message: HTMLInputElement = document.getElementById('message') as HTMLInputElement;
     if (!message.value || !(Buffer.byteLength(message.value, 'utf-8') < 256)) {
       window.alert('invalid input');
       return;
     }
-    postTweet(userId, message.value, geolocation);
+    postTweetBegin(userId, message.value, geolocation);
     message.value = '';
   };
 
@@ -25,9 +55,10 @@ const ModalContainer: React.FC<EnhancedModalProps> = ({userId, postTweet, geoloc
       setModals(modal);
       return false;
     });
+    getGeolocationBegin();
   }, []);
 
   return <ModalTweet handlePost={handlePost} />;
 };
 
-export default ModalContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(ModalTweetContainer);

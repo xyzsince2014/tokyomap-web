@@ -4,7 +4,7 @@ import TwitterLogo from '../../assets/images/icons/logo_tw.png';
 import FacebookLogo from '../../assets/images/icons/logo_fb.png';
 import LineLogo from '../../assets/images/icons/logo_line.png';
 
-const Modal: React.FC = () => (
+const ModalAuth: React.FC = () => (
   /* eslint-disable jsx-a11y/click-events-have-key-events */
   <div
     className="l-modal"
@@ -76,4 +76,4 @@ const Modal: React.FC = () => (
   /* eslint-enable jsx-a11y/click-events-have-key-events */
 );
 
-export default Modal;
+export default ModalAuth;

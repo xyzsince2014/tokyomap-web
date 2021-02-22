@@ -1,6 +1,5 @@
 import * as React from 'react';
-import {BrowserRouter} from 'react-router-dom';
-import {Redirect, Route, Switch} from 'react-router';
+import {BrowserRouter, Switch, Redirect, Route} from 'react-router-dom';
 
 import LeafletMap from '../containers/LeafletMap/LeafletMap';
 

@@ -5,19 +5,30 @@
   display: block;
   margin: 0 auto;
   border-radius: .3125em;
-  width: 480px;
-  background-color: #fff;
+  background-color: $colour-white;
   padding: 1.25em;
 
+  @include view-at('p') {
+    max-width: 400px;
+  }
+
+  @include view-at('s') {
+    width: 90%;
+  }
+
+  &--transparent {
+    background: transparent;
+  }
+
   &__content {
-    height: 250px;
+    height: 200px;
     padding: 10px 20px;
 
     & textarea {
-      height: 180px;
+      height: 190px;
       width: 100%;
+      max-height: 190px;
       max-width: 100%;
-      max-height: 250px;
     }
   }
 
@@ -32,19 +43,27 @@
       height: 35px;
       width: 110px;
       border-radius: .25em;
-      background-color: #3085d6;
+      background-color: $colour-blue;
       padding: .55em 10px;
       cursor: pointer;
-
-      &--close {
-        background-color: $colour-gray-dark;
-      }
 
       & > span {
         font-family: Arial, Helvetica, sans-serif;
         font-size: 1.3em;
         font-weight: $font-weight-normal;
         color: $colour-white;
+      }
+
+      &--white {
+        background-color: $colour-white;
+
+        & > span {
+          color: $colour-black;
+        }
+      }
+
+      &--gray-dark {
+        background-color: $colour-gray-dark;
       }
     }
   }

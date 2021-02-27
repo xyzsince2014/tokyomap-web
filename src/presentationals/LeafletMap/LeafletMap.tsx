@@ -1,28 +1,21 @@
 import * as React from 'react';
 import * as L from 'leaflet';
 import {Map, TileLayer, ZoomControl} from 'react-leaflet';
-import LeafletSearch from 'react-leaflet-search';
 import {BiLogOutCircle} from 'react-icons/bi';
 import {TiMessage} from 'react-icons/ti';
 
 import {Tweet} from '../../services/socket/models';
 import Clock from '../../containers/Clock/Clock';
 import CustomMarker from '../../containers/LeafletMap/CustomMarker';
-import Modal from '../../containers/LeafletMap/Modal';
+import ModalTweet from '../../containers/LeafletMap/ModalTweet';
+import ModalAuth from '../../containers/LeafletMap/ModalAuth';
 
 export interface LeafletMapProps {
   tweets?: Tweet[];
-  postTweet?: (message: string, geolocation: L.LatLngTuple) => void;
-  geolocation: L.LatLngTuple;
-  getGeolocationBegin: () => void;
+  isAuthenticated: boolean;
 }
 
-const LeafletMap: React.FC<LeafletMapProps> = ({
-  tweets = [],
-  postTweet = () => {},
-  geolocation,
-  getGeolocationBegin,
-}) => {
+const LeafletMap: React.FC<LeafletMapProps> = ({tweets = [], isAuthenticated = false}) => {
   return (
     <div>
       <Map
@@ -32,35 +25,56 @@ const LeafletMap: React.FC<LeafletMapProps> = ({
         maxBounds={L.latLngBounds([35.2564493, 139.1532045], [35.8559256, 140.4057111])}
         zoomControl={false}
       >
-        <LeafletSearch position="topleft" zoom={15} />
         <TileLayer
           url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
-          attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+          attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>'
         />
         <ZoomControl position="bottomright" />
         {tweets.map(t => (
-          <CustomMarker tweet={t} />
+          <div key={`tweet_${t.tweetId}`}>
+            <CustomMarker tweet={t} />
+          </div>
         ))}
       </Map>
-      <div className="l-control">
-        <div className="l-control__topright">
-          <button
-            type="button"
-            onClick={() => {
-              window.location.href = `${process.env.DOMAIN_API_AUTH}/auth/signout`;
-            }}
-          >
-            <BiLogOutCircle />
-          </button>
-          <button type="button" data-modal-trigger="modal_socket" onClick={getGeolocationBegin}>
-            <TiMessage />
-          </button>
+      {isAuthenticated ? (
+        <div>
+          <div className="l-control">
+            <div className="l-control__topleft">
+              <button
+                type="button"
+                onClick={() => {
+                  window.location.href = `${process.env.DOMAIN_API}/auth/signout`;
+                }}
+              >
+                <BiLogOutCircle />
+              </button>
+            </div>
+            <div className="l-control__topright">
+              <button type="button" data-modal-trigger="modal_tweet">
+                <TiMessage />
+              </button>
+            </div>
+            <div className="l-control__bottomleft">
+              <Clock />
+            </div>
+          </div>
+          <ModalTweet />
         </div>
-        <div className="l-control__bottomleft">
-          <Clock />
+      ) : (
+        <div>
+          <div className="l-control">
+            <div className="l-control__topright">
+              <button type="button" data-modal-trigger="modal_auth">
+                <TiMessage />
+              </button>
+            </div>
+            <div className="l-control__bottomleft">
+              <Clock />
+            </div>
+          </div>
+          <ModalAuth />
         </div>
-      </div>
-      <Modal postTweet={postTweet} geolocation={geolocation} />
+      )}
     </div>
   );
 };

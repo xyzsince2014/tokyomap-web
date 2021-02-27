@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.c-popup {
+.p-popup {
   min-width: 140px;
 
   & > div > div {
@@ -31,10 +31,6 @@
     &__message {
       display: inline-block;
       margin-bottom: 5px;
-    }
-
-    &__links {
-      text-align: right;
     }
   }
 }

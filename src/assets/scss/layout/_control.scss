@@ -1,6 +1,21 @@
 @charset "UTF-8";
 
+@mixin control {
+  position: fixed;
+  z-index: $z-index-control;
+  @content;
+}
+
 .l-control {
+  &__topleft {
+    @include control;
+    top: 0;
+    left: 0;
+    margin: 10px 0 0 10px;
+    height: 20px;
+    width: 30px;
+  }
+
   &__topright {
     @include control;
     top: 0;

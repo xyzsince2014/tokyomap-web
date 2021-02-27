@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators, Dispatch} from 'redux';
 
 import {authenticate} from '../../actions/Auth/authActionCreator';
-import {connectToSocket} from '../../actions/Socket/socketActionCreator';
+import {connectToSocket, getGeolocation} from '../../actions/Socket/socketActionCreator';
+
 import {RootState} from '../../reducers/rootReducer';
 import * as Models from '../../services/socket/models';
 import LeafletMap, {LeafletMapProps} from '../../presentationals/LeafletMap/LeafletMap';
@@ -16,6 +17,7 @@ interface StateProps {
 interface DispatchProps {
   connectToSocketInit: () => void;
   getIsAuthorisedBegin: () => void;
+  getGeolocationBegin: () => void;
 }
 
 type EnhancedLeafletMapProps = LeafletMapProps & StateProps & DispatchProps;
@@ -30,6 +32,7 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
     {
       connectToSocketInit: () => connectToSocket.begin(),
       getIsAuthorisedBegin: () => authenticate.begin(),
+      getGeolocationBegin: () => getGeolocation.begin(),
     },
     dispatch,
   );
@@ -39,12 +42,19 @@ const LeafletMapContainer: React.FC<EnhancedLeafletMapProps> = ({
   isAuthenticated,
   connectToSocketInit,
   getIsAuthorisedBegin,
+  getGeolocationBegin,
 }) => {
   React.useEffect(() => {
     connectToSocketInit();
     getIsAuthorisedBegin();
   }, []);
-  return <LeafletMap tweets={tweets} isAuthenticated={isAuthenticated} />;
+  return (
+    <LeafletMap
+      tweets={tweets}
+      isAuthenticated={isAuthenticated}
+      getGeolocationBegin={getGeolocationBegin}
+    />
+  );
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LeafletMapContainer);

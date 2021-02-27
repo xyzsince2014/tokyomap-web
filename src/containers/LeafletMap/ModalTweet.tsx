@@ -2,7 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators, Dispatch} from 'redux';
 
-import {getGeolocation, postTweet} from '../../actions/Socket/socketActionCreator';
+import {postTweet} from '../../actions/Socket/socketActionCreator';
 import {RootState} from '../../reducers/rootReducer';
 import ModalTweet from '../../presentationals/LeafletMap/ModalTweet';
 import {setModals} from '../../utils/modal';
@@ -13,7 +13,6 @@ interface StateProps {
 }
 
 interface DispatchProps {
-  getGeolocationBegin: () => void;
   postTweetBegin: (userId: string, message: string, geolocation: L.LatLngTuple) => void;
 }
 
@@ -29,7 +28,6 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps =>
     {
       postTweetBegin: (userId, message, geolocation) =>
         postTweet.begin(userId, message, geolocation),
-      getGeolocationBegin: () => getGeolocation.begin(),
     },
     dispatch,
   );
@@ -38,7 +36,6 @@ const ModalTweetContainer: React.FC<EnhancedModalTweetProps> = ({
   userId,
   geolocation,
   postTweetBegin,
-  getGeolocationBegin,
 }) => {
   const handlePost = (): void => {
     const message: HTMLInputElement = document.getElementById('message') as HTMLInputElement;
@@ -55,7 +52,6 @@ const ModalTweetContainer: React.FC<EnhancedModalTweetProps> = ({
       setModals(modal);
       return false;
     });
-    getGeolocationBegin();
   }, []);
 
   return <ModalTweet handlePost={handlePost} />;

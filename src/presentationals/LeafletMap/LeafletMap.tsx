@@ -12,10 +12,15 @@ import ModalAuth from '../../containers/LeafletMap/ModalAuth';
 
 export interface LeafletMapProps {
   tweets?: Tweet[];
-  isAuthenticated: boolean;
+  isAuthenticated?: boolean;
+  getGeolocationBegin?: () => void;
 }
 
-const LeafletMap: React.FC<LeafletMapProps> = ({tweets = [], isAuthenticated = false}) => {
+const LeafletMap: React.FC<LeafletMapProps> = ({
+  tweets = [],
+  isAuthenticated = false,
+  getGeolocationBegin = () => {},
+}) => {
   return (
     <div>
       <Map
@@ -50,7 +55,7 @@ const LeafletMap: React.FC<LeafletMapProps> = ({tweets = [], isAuthenticated = f
               </button>
             </div>
             <div className="l-control__topright">
-              <button type="button" data-modal-trigger="modal_tweet">
+              <button type="button" data-modal-trigger="modal_tweet" onClick={getGeolocationBegin}>
                 <TiMessage />
               </button>
             </div>

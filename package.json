@@ -54,7 +54,7 @@
     "@types/socket.io-client": "^1.4.33",
     "@types/sprintf-js": "^1.1.2",
     "@types/storybook__react": "^5.2.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "camelcase-keys": "^6.2.2",
     "leaflet": "^1.6.0",
     "lodash": "^4.17.15",

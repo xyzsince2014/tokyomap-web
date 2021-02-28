@@ -26,7 +26,7 @@ https://www.tokyomap.live
 
 <br>
 
-### 2. 投稿から時間経過に応じてアイコンのスタイルを動的に変化
+### 2. 投稿からの時間経過に応じたアイコンのスタイル変化
 <p>
 <img src="https://user-images.githubusercontent.com/30502252/109419718-31e4a480-7a12-11eb-94b9-3c828b8b7247.gif" height="280px" width="25%">
 &nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/30502252/109419721-3741ef00-7a12-11eb-8692-e37ff476952b.gif" height="280px" width="25%">
@@ -39,8 +39,8 @@ https://www.tokyomap.live
 
 <br>
 
-### 3. 認証機能
-<p>メッセージアイコン(画面右上)押下でSNS認証用モーダル表示する.</p>
+### 3. ログイン
+<p>メッセージアイコン(画面右上)押下でSNSログイン用モーダル表示する.</p>
 
 <br>
 
@@ -53,7 +53,7 @@ https://www.tokyomap.live
 
 <br>
 
-### 6. ログアウト機能
+### 5. ログアウト
 <p>認証後、画面左上にログアウトボタンを表示される.</p>
 
 <br>
@@ -73,7 +73,7 @@ APサーバリソース用レポジトリ(tokyomap-app)のmasterブランチか�
 - redux 4.0.5
 - redux-saga 1.1.3
 - typescript 3.8.3
-- socket.io-client 2.3.0
+- axios 0.21.1
 - eslint 6.8.0
 - webpack 4.42.1
 

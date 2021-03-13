@@ -14,6 +14,7 @@ React&nbsp;+&nbsp;Redux, Node.js, 及びAWSの勉強として作成したアプ�
 
 ## URL
 https://www.tokyomap.live
+※ コストが嵩む為休止中(3/13現在)
 
 <br>
 

@@ -1,4 +1,4 @@
-FROM nginx:1.17
+FROM nginx:1.18
 
 COPY ./certs /etc/ssl/certs
 COPY ./default.conf /etc/nginx/conf.d/default.conf

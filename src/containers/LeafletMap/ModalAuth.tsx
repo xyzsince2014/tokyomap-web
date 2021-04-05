@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import ModalAuth from '../../presentationals/LeafletMap/ModalAuth';
+import ModalAuth from '../../components/LeafletMap/ModalAuth';
 import {setModals} from '../../utils/modal';
 
 const ModalAuthContainer: React.FC = () => {

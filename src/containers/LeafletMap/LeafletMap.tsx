@@ -7,7 +7,7 @@ import {connectToSocket, getGeolocation} from '../../actions/Socket/socketAction
 
 import {RootState} from '../../reducers/rootReducer';
 import * as Models from '../../services/socket/models';
-import LeafletMap, {LeafletMapProps} from '../../presentationals/LeafletMap/LeafletMap';
+import LeafletMap, {LeafletMapProps} from '../../components/LeafletMap/LeafletMap';
 
 interface StateProps {
   tweets: Models.Tweet[];

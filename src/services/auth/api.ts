@@ -49,7 +49,7 @@ export const getAuthFactory = (optionalConfig?: ApiConfig) => {
 
       return {
         isAuthenticated: response.data.isAuthenticated ? response.data.isAuthenticated : false,
-        userId: response.data.user.userId ? response.data.user.userId : '0',
+        userId: response.data.user.userId ? response.data.user.userId : '0', // todo: setting '0' here is improper
       };
     } catch (err) {
       return {

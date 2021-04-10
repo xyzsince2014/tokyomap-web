@@ -8,9 +8,9 @@ import '../src/assets/scss/parts/_base.scss';
 const req = require.context('../src/stories', true, /.(story|storeis).tsx$/);
 
 const loadStoreis = () => {
-    addDecorator(withInfo);
-    addDecorator(withKnobs);
-    req.keys().forEach(req);
+  addDecorator(withInfo);
+  addDecorator(withKnobs);
+  req.keys().forEach(req);
 }
 
 configure(loadStoreis, module);

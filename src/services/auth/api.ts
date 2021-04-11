@@ -52,10 +52,7 @@ export const getAuthFactory = (optionalConfig?: ApiConfig) => {
         userId: response.data.user.userId ? response.data.user.userId : '0', // todo: setting '0' here is improper
       };
     } catch (err) {
-      return {
-        isAuthenticated: false,
-        userId: '',
-      };
+      return err;
     }
   };
 

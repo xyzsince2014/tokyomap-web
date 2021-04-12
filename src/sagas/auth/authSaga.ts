@@ -1,4 +1,4 @@
-import {take, all, fork, put, call} from 'redux-saga/effects';
+import {takeLatest, all, fork, put, call} from 'redux-saga/effects';
 
 import * as api from '../../services/auth/api';
 import * as authActions from '../../actions/Auth/authActionCreator';
@@ -13,19 +13,15 @@ export default function* authSaga() {
 
 /* watchers */
 export function* watchGetIsAuthorised(apiHandler: typeof authenticate) {
-  // cf. https://github.com/redux-saga/redux-saga/issues/684
-  // `yield takeLatest(ActionType.BEGIN, runAuthenticate, apiHandler);` is a kind of syntactic sugar for the snippet below
-  while (true) {
-    const action: ReturnType<typeof authActions.authenticate.begin> = yield take(ActionType.BEGIN);
-    yield fork(runAuthenticate, apiHandler, action);
-  }
+  // while (true) {
+  //   const action: ReturnType<typeof authActions.authenticate.begin> = yield take(ActionType.BEGIN);
+  //   yield fork(runAuthenticate, apiHandler);
+  // }
+  yield takeLatest(ActionType.BEGIN, runAuthenticate, apiHandler); // a syntactic sugar for the snippet above. cf. https://github.com/redux-saga/redux-saga/issues/684
 }
 
 /* tasks */
-export function* runAuthenticate(
-  apiHandler: typeof authenticate,
-  action: ReturnType<typeof authActions.authenticate.begin>,
-) {
+export function* runAuthenticate(apiHandler: typeof authenticate) {
   try {
     const {isAuthenticated, userId} = yield call(apiHandler);
     yield put(authActions.authenticate.resolve({isAuthenticated, userId}));

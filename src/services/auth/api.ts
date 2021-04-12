@@ -10,7 +10,7 @@ const DEFAULT_API_CONFIG: ApiConfig = {
   timeout: 1000 * 10,
 };
 
-const createAxiosInstance = (optionalConfig?: ApiConfig) => {
+const createAxiosInstance = (optionalConfig: ApiConfig) => {
   const config = {
     ...DEFAULT_API_CONFIG,
     ...optionalConfig,
@@ -30,8 +30,8 @@ interface AuthenticateResult {
   userId: string;
 }
 
-export const getAuthFactory = (optionalConfig?: ApiConfig) => {
-  const instance = createAxiosInstance();
+export const getAuthFactory = (optionalConfig: ApiConfig = {}) => {
+  const instance = createAxiosInstance(optionalConfig);
 
   const authenticate = async (): Promise<AuthenticateResult> => {
     try {

@@ -6,7 +6,8 @@ import createSagaMiddleware from 'redux-saga';
 
 import App from './App';
 import rootReducer from './reducers/rootReducer';
-import rootSaga from './sagas';
+import socketSaga from './sagas/socket/socketSaga';
+import authSaga from './sagas/auth/authSaga';
 
 import './assets/scss/base.scss';
 
@@ -25,7 +26,8 @@ const sagaMiddleWare = createSagaMiddleware();
 const enhancer = composeEnhancers(applyMiddleware(sagaMiddleWare));
 const store = createStore(rootReducer, enhancer);
 
-sagaMiddleWare.run(rootSaga); // execute rootSaga() to run Saga's watchers
+sagaMiddleWare.run(socketSaga);
+sagaMiddleWare.run(authSaga);
 
 ReactDOM.render(
   <Provider store={store}>

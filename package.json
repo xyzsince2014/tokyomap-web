@@ -23,7 +23,7 @@
     "lint:fix": "yarn lint --fix",
     "storybook": "start-storybook -p 6006",
     "build:storybook": "build-storybook -o docs",
-    "test": "jest"
+    "test": "jest --verbose"
   },
   "browserslist": {
     "production": [
@@ -122,6 +122,7 @@
     "prettier": "^2.0.4",
     "prettier-stylelint": "^0.4.2",
     "react-docgen-typescript-loader": "^3.7.2",
+    "redux-saga-test-plan": "^4.0.1",
     "sass-loader": "^8.0.2",
     "stylelint": "^13.3.2",
     "stylelint-config-prettier": "^8.0.1",

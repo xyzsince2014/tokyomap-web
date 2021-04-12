@@ -1,0 +1,17 @@
+name: tokyomap-web-ci
+on:
+  pull_request:
+    branches: [ develop ]
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - uses: actions/checkout@v2
+      - name: yarn install
+        run: yarn install
+      - name: yarn test
+        run: yarn test
